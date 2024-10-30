@@ -4,7 +4,7 @@ import { useGetMyListQuery } from "./listSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
-//import AddListForm from "./AddListForm";
+import AddListForm from "./AddListForm";
 
 // Function that renders a list of all lists
 export default function ItemsList() {
