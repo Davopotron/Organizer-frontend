@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useAddMyListItemMutation } from "./listItemsSlice";
+//import { useAddMyListItemMutation } from "./listItemsSlice";
 
 export default function AddListItemForm() {
   const [listItemData, setListItemData] = useState({
@@ -8,13 +8,13 @@ export default function AddListItemForm() {
     myListId: 0,
   });
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [addListItem] = useAddMyListItemMutation();
 
   const postListItem = async (event) => {
     event.preventDefault();
     try {
-      const listItem = await addListItem({
+      /*const listItem = */ await addListItem({
         ...listItemData,
       }).unwrap();
     } catch (e) {
@@ -38,7 +38,6 @@ export default function AddListItemForm() {
         <label>
           ListId
           <input
-            type="number"
             name="myListId"
             value={listItemData.myListId}
             onChange={(e) =>

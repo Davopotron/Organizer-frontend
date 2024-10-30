@@ -3,11 +3,11 @@ import AuthForm from "./features/auth/AuthForm";
 import Root from "./layout/Root";
 import HomePage from "./features/HomePage";
 import Login from "./features/auth/AuthForm";
-//import AddListForm from "./features/lists/AddListForm";
+import AddListForm from "./features/lists/AddListForm";
 //import ListDetails from "./features/lists/ListDetails";
 import MyLists from "./features/lists/MyLists";
 //import UpdateListForm from "./features/lists/UpdateListForm";
-//import AddListItemForm from "./features/listItems/AddListItemForm";
+import AddListItemForm from "./features/listItems/AddListItemForm";
 //import ListItems from "./features/listItems/ListItems";
 //import UpdateListItemForm from "./features/listItems/UpdateListItemForm";
 
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       //{ path: "/MyList/:id", element: <UpdateListForm /> },
       //{ path: "/listItem", element: <ListItems /> },
       //{ path: "/listItem/:id", element: <UpdateListItemForm /> },
-      //{ path: "/listItem", element: <AddListItemForm /> },
+      { path: "/listItem", element: <AddListItemForm /> },
     ],
   },
 ]);

@@ -6,7 +6,7 @@ const MyListApi = api.injectEndpoints({
       transformResponse: (response) => response,
       providesTags: ["MyList"],
     }),
-    getMyList: build.query({
+    getMyListId: build.query({
       query: (id) => "/MyList/" + id,
       transformResponse: (response) => response.MyLists,
       providesTags: ["MyList"],
