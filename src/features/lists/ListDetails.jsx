@@ -1,20 +1,20 @@
-import React from 'react';
-import {useParams} from 'react-router-dom';
+import React from "react";
+import { useParams } from "react-router-dom";
 // import {useGetProfessorQuery} from '../../store/facultySlice';
 
 // export default function Professor() {
 export default function ListDetails() {
-  const {id} = useParams();
-  const {data: list, isLoading} = useGetListQuery(id);
+  const { id } = useParams();
+  const { data: list, isLoading } = useGetListQuery(id);
   console.log(list);
   if (isLoading) return <p>Loading...</p>;
 
   const handleEdit = () => {
-    console.log('Edit clicked');
+    console.log("Edit clicked");
   };
 
   const handleDelete = () => {
-    console.log('Delete clicked');
+    console.log("Delete clicked");
   };
 
   return (

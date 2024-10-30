@@ -20,9 +20,9 @@ export default function ItemsList() {
     return <p>{error.message}</p>;
   }
 
-  if (!items.length) {
-    return <p>There are no items.</p>;
-  }
+  // if (!items.length) {
+  //   return <p>There are no items.</p>;
+  // }
 
   return (
     <article>
@@ -31,7 +31,7 @@ export default function ItemsList() {
         <div className="listOfLists">
           <ul className="lists">
             {isLoading && <li>Loading lists...</li>}
-            {lists.map((list) => (
+            {myLists.map((list) => (
               <li key={list.id}>
                 <h2>{list.name}</h2>
                 <figure>
