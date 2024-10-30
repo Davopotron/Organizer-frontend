@@ -5,7 +5,7 @@ export default function AddListForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   //const [listIds, setListIds] = useState("");
-  const [ownerId, setOwnerId] = useState(0);
+  const [ownerId, setOwnerId] = useState(1);
 
   const [addList, { isLoading: isAdding, error: addingError }] =
     useAddMyListMutation();
@@ -16,7 +16,7 @@ export default function AddListForm() {
       name,
       description,
       ownerId,
-      //listIds: [1],
+      listIds: [],
     };
 
     console.log("Posting list data:", listData);
