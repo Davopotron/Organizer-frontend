@@ -1,14 +1,14 @@
 import { useState } from "react";
 import ListDetails from "./ListDetails";
-import { useGetListQuery } from "";
+import { useGetMyListQuery } from "./listSlice";
 import { useSelector } from "react-redux";
-// import {selectToken} from '../../store/authSlice';
+import { selectToken } from "../auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
-import AddListForm from "./AddListForm";
+//import AddListForm from "./AddListForm";
 
 // Function that renders a list of all lists
 export default function ItemsList() {
-  const { data: myLists = [], isLoading, error } = useGetListQuery();
+  const { data: myLists = [], isLoading, error } = useGetMyListQuery();
   const token = useSelector(selectToken);
   const navigate = useNavigate();
   //const [filter, setFilter] = useState('');
