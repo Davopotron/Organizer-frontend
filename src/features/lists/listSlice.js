@@ -1,11 +1,11 @@
 import api from "../../app/api";
 const MyListApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getMyList: build.query({
+    getMyLists: build.query({
       query: () => "/MyList",
       transformResponse: (response) => response,
       providesTags: ["MyList"],
-    }),
+    }), //should ln 9 below be getMyLists:   ?
     getMyList: build.query({
       query: (id) => "/MyList/" + id,
       transformResponse: (response) => response.MyLists,
