@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 //Function that renders a singular list's items
 
-export default function RenderItem() {
+export default function RenderItems() {
     const { data: listItem = [], isLoading, error } = useGetListItemsQuery();
     const token = useSelector(selectToken);
     // const navigate = useNavigate();
@@ -30,10 +30,7 @@ export default function RenderItem() {
                   <h2>{list.name}</h2>
                   <p>
                   </p>
-                  <p>
-                    <b>Owner: </b>
-                    {MyListId}
-                  </p>
+                  <p>{MyListId}</p>
                   <p>
                     <b>Items: </b>
                     {list.items.length}
@@ -53,7 +50,7 @@ export default function RenderItem() {
           );
 }
 
-
+//ln 34 had <b>Owner: <b> on it
 
 
 
