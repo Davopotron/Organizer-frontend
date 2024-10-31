@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useGetMyListQuery } from "./listSlice";
+import { useGetMyListQuery } from "./myListsSlice";
 import ListItems from "../listItems/ListItems";
 // import {useGetProfessorQuery} from '../../store/facultySlice';
 
@@ -33,9 +33,9 @@ export default function ListDetails() {
             {myList.ownerId}
           </p>
           {/* <ListItems /> */}
-          {myList.listItem.map((item) => (
-            <li key={item.id}>
-              <h2>{item.item}</h2>
+          {myList.listItems.map((listItem) => (
+            <li key={listItem.id}>
+              <h2>{listItem.itemName}</h2>
             </li>
           ))}
           <div>

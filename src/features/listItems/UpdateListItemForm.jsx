@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ListDetails from "../lists/ListDetails";
+import ListDetails from "../myLists/MyListDetails";
 import { useUpdateListItemsMutation } from "./listItemsSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
