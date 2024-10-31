@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ListDetails from "./ListDetails";
+import ListDetails from "../lists/ListDetails";
 import { useGetListItemsQuery } from "./listItemsSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
@@ -8,60 +8,48 @@ import { Link, useNavigate } from "react-router-dom";
 //Function that renders a singular list's items
 
 export default function RenderItems() {
-    const { data: listItem = [], isLoading, error } = useGetListItemsQuery();
-    const token = useSelector(selectToken);
-    // const navigate = useNavigate();
+  const { data: listItems = [], isLoading, error } = useGetListItemsQuery();
+  const token = useSelector(selectToken);
+  // const navigate = useNavigate();
 
-    if (isLoading) return <h2>Loading Item</h2>;
+  if (isLoading) return <h2>Loading Item</h2>;
 
-    if (error) {
-        return <p>{error.message}</p>;
-    }
+  if (error) {
+    return <p>{error.message}</p>;
+  }
 
-    if (!listItem.length) {
-        return <p>There are no items.</p>;
-    }
+  if (!listItems.length) {
+    return <p>There are no items.</p>;
+  }
 
-        return (
-            <>
-              <h1>List Item</h1>
-              <ul>
-                <li>
-                  <h2>{list.name}</h2>
-                  <p>
-                  </p>
-                  <p>{MyListId}</p>
-                  <p>
-                    <b>Items: </b>
-                    {list.items.length}
-                  </p>
-                  <div>
-                    <button onClick={() => handleEdit()}>Edit List</button>
-                    <button onClick={() => handleDelete()}>Delete</button>
-                  </div>
-                  <div>
-                    {list.items.map((item, index) => (
-                      <p key={index}>{list.name}</p>
-                    ))}
-                  </div>
-                </li>
-              </ul>
-            </>
-          );
+  return (
+    <>
+      <h1>List Items</h1>
+      <ul>
+        <li>
+          <h2>{listItems.name}</h2>
+          <p></p>
+          {/* <p>{MyListId}</p> */}
+          <p>
+            <b>Items: </b>
+            {listItems.length}
+          </p>
+          <div>
+            <button onClick={() => handleEdit()}>Edit List</button>
+            <button onClick={() => handleDelete()}>Delete</button>
+          </div>
+          <div>
+            {listItems.map((listItem) => (
+              <p key={listItem.id}>{listItem.item}</p>
+            ))}
+          </div>
+        </li>
+      </ul>
+    </>
+  );
 }
 
 //ln 34 had <b>Owner: <b> on it
-
-
-
-
-
-
-
-
-
-
-
 
 // return (
 //     <article>
