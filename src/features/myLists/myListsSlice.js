@@ -2,35 +2,35 @@ import api from "../../app/api";
 const MyListApi = api.injectEndpoints({
   endpoints: (build) => ({
     getMyLists: build.query({
-      query: () => "/MyList",
+      query: () => "/myLists",
       transformResponse: (response) => response,
       providesTags: ["MyList"],
     }), //should ln 9 below be getMyLists:   ?
     getMyList: build.query({
-      query: (id) => "/MyList/" + id,
+      query: (id) => "/myLists/" + id,
       transformResponse: (response) => response,
       providesTags: ["MyList"],
     }),
     updateMyList: build.mutation({
-      query: ({ id, ...MyList }) => ({
-        url: "/MyList/" + id,
+      query: ({ id, ...myList }) => ({
+        url: "/myLists/" + id,
         method: "PATCH",
-        body: MyList,
+        body: myList,
       }),
       invalidatesTags: ["MyList"],
     }),
     addMyList: build.mutation({
-      query: (MyList) => ({
-        url: "/MyList",
+      query: (myList) => ({
+        url: "/myLists",
         method: "POST",
-        body: MyList,
+        body: myList,
       }),
       transformResponse: (response) => response,
       invalidatesTags: ["MyList"],
     }),
     deleteMyList: build.mutation({
       query: (id) => ({
-        url: "MyList/" + id,
+        url: "myLists/" + id,
         method: "DELETE",
       }),
       invalidatesTags: ["MyList"],

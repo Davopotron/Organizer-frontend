@@ -1,11 +1,11 @@
 import { useState } from "react";
-import ListDetails from "./ListDetails";
-import { useGetMyListsQuery } from "./listSlice";
-import { useGetMyListQuery } from "./listSlice";
+import ListDetails from "./MyListDetails";
+import { useGetMyListsQuery } from "./myListsSlice";
+import { useGetMyListQuery } from "./myListsSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import AddListForm from "./AddListForm";
+import AddListForm from "./AddMyListForm";
 //import AddListForm from "./AddListForm";
 
 // Function that renders a list of all lists
