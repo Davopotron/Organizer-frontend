@@ -1,0 +1,30 @@
+header {
+  padding: 15px;
+
+  font-size: 1.1rem;
+}
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+menu {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+li,
+a {
+  list-style: none;
+  text-decoration: none;
+  color: black;
+}
+
+.navlink:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
