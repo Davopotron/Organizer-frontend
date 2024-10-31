@@ -3,7 +3,7 @@ import MapComponent from "./map/GoogleMap";
 import "../css/NearMe.css";
 //import ListItems from "../features/listItems/ListItems";
 const GOOGLE_API_KEY = "AIzaSyAvWbZNQYen7dVRqVFPMvphhJY2FRYdP1E";
-
+/*
 function initMap() {
   const location = { lat: 40.76, lng: -111.891 };
   const map = new google.maps.Map(document.getElementById("map"), {
@@ -15,6 +15,7 @@ function initMap() {
     map: map,
   });
 }
+  */
 
 function NearMe() {
   return (

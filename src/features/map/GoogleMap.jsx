@@ -2,14 +2,48 @@ import react from "@vitejs/plugin-react-swc";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 const MapComponent = () => {
-  const mapStyles = {
-    height: "80vh",
-    width: "70%",
-  };
   const defaultCenter = {
     lat: 40.76,
     lng: -111.891,
   };
+
+  const locations = [
+    {
+      name: "Location 1",
+      location: {
+        lat: 40.712776,
+        lng: -74.005974,
+      },
+    },
+    {
+      name: "Location 2",
+      location: {
+        lat: 40.73061,
+        lng: -73.935242,
+      },
+    },
+  ];
+
+  const onMapClick = (event) => {
+    console.log(
+      "Clicked coordinates: ",
+      event.latLng.lat(),
+      event.latLng.lng()
+    );
+  };
+
+  const mapStyles = [
+    {
+      elementType: "geometry",
+      stylers: [{ color: "#ebe3cd" }],
+    },
+    {
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#523735" }],
+    },
+
+    // Add more styles as needed
+  ];
 
   return (
     <LoadScript googleMapsApiKey="AIzaSyAvWbZNQYen7dVRqVFPMvphhJY2FRYdP1E">
@@ -17,6 +51,7 @@ const MapComponent = () => {
         mapContainerStyle={mapStyles}
         zoom={10}
         center={defaultCenter}
+        onClick={onMapClick}
       />
     </LoadScript>
   );
