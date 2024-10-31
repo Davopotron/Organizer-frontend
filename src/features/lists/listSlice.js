@@ -8,7 +8,7 @@ const MyListApi = api.injectEndpoints({
     }), //should ln 9 below be getMyLists:   ?
     getMyList: build.query({
       query: (id) => "/MyList/" + id,
-      transformResponse: (response) => response.MyLists,
+      transformResponse: (response) => response,
       providesTags: ["MyList"],
     }),
     updateMyList: build.mutation({

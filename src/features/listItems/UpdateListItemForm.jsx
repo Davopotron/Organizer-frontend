@@ -2,20 +2,20 @@ import { useState } from "react";
 import ListDetails from "../lists/ListDetails";
 import { useUpdateListItemsMutation } from "./listItemsSlice";
 import { useSelector } from "react-redux";
-import { selectToken } from "..auth/authSlice";
+import { selectToken } from "../auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function UpdateListItemForm({ listItem }) {
   const [item, setItem] = useState(listItem.item);
-//   const [description, setDescription] = useState("");
-//   const [image, setImage] = useState("https://loremflickr.com/200/300/dog");
+  //   const [description, setDescription] = useState("");
+  //   const [image, setImage] = useState("https://loremflickr.com/200/300/dog");
   const [updateListItem, { isLoading: isUpdating, error: updatingError }] =
     useUpdateListItemMutation();
 
   const putListItem = async (event) => {
     event.preventDefault();
     const updatedListItemData = {
-      item
+      item,
     };
 
     console.log("Updating item:", updatedListItemData);
