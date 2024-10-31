@@ -3,13 +3,13 @@ import AuthForm from "./features/auth/AuthForm";
 import Root from "./layout/Root";
 import HomePage from "./features/HomePage";
 import Login from "./features/auth/AuthForm";
-import AddListForm from "./features/lists/AddListForm";
+//import AddListForm from "./features/lists/AddListForm";
 import ListDetails from "./features/lists/ListDetails";
 import MyLists from "./features/lists/MyLists";
-//import UpdateListForm from "./features/lists/UpdateListForm";
+//import UpdateMyListForm from "./features/lists/UpdateListForm";
 import AddListItemForm from "./features/listItems/AddListItemForm";
-//import ListItems from "./features/listItems/ListItems";
-//import UpdateListItemForm from "./features/listItems/UpdateListItemForm";
+import ListItems from "./features/listItems/ListItems";
+import UpdateListItemForm from "./features/listItems/UpdateListItemForm";
 
 const router = createBrowserRouter([
   {
@@ -22,9 +22,9 @@ const router = createBrowserRouter([
       { path: "/MyList", element: <MyLists /> },
       { path: "/MyList/:id", element: <ListDetails /> },
       //{ path: "/MyList", element: <AddListForm /> },
-      //{ path: "/MyList/:id", element: <UpdateListForm /> },
-      //{ path: "/listItem", element: <ListItems /> },
-      //{ path: "/listItem/:id", element: <UpdateListItemForm /> },
+      //{ path: "/MyList/:id", element: <UpdateMyListForm /> },
+      { path: "/listItem", element: <ListItems /> },
+      { path: "/listItem/:id", element: <UpdateListItemForm /> },
       { path: "/listItem", element: <AddListItemForm /> },
     ],
   },

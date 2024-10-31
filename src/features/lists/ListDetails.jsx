@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetMyListQuery } from "./listSlice";
-// import ListItems from "../listItems/ListItems";
+import ListItems from "../listItems/ListItems";
 // import {useGetProfessorQuery} from '../../store/facultySlice';
 
 // export default function Professor() {
@@ -24,7 +24,6 @@ export default function ListDetails() {
       <h1>List Details</h1>
       <ul>
         <li>
-          {console.log(myList)}
           <h2>{myList.name}</h2>
           <p>
             <b>Description:</b> {myList.details}
@@ -34,6 +33,11 @@ export default function ListDetails() {
             {myList.ownerId}
           </p>
           {/* <ListItems /> */}
+          {myList.listItem.map((item) => (
+            <li key={item.id}>
+              <h2>{item.item}</h2>
+            </li>
+          ))}
           <div>
             <button onClick={() => handleEdit()}>Edit List</button>
             <button onClick={() => handleDelete()}>Delete</button>
