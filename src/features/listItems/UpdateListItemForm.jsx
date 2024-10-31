@@ -43,7 +43,7 @@ export default function UpdateListItemForm({ listItem }) {
             onChange={(e) => setItem(e.target.value)}
           />
         </label>
-        {/* <label>
+        <label>
           Description
           <input
             name="description"
@@ -65,7 +65,7 @@ export default function UpdateListItemForm({ listItem }) {
         </label>
         <button type="submit">Update Department</button>
         {isUpdating && <output>Uploading department information...</output>}
-        {updatingError && <output>{updatingError.message}</output>} */}
+        {updatingError && <output>{updatingError.message}</output>}
       </form>
     </>
   );
