@@ -4,7 +4,7 @@ import Root from "./layout/Root";
 import HomePage from "./features/HomePage";
 import Login from "./features/auth/AuthForm";
 import AddListForm from "./features/lists/AddListForm";
-//import ListDetails from "./features/lists/ListDetails";
+import ListDetails from "./features/lists/ListDetails";
 import MyLists from "./features/lists/MyLists";
 //import UpdateListForm from "./features/lists/UpdateListForm";
 import AddListItemForm from "./features/listItems/AddListItemForm";
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
       { path: "/auth", element: <AuthForm /> },
       { path: "/users/login", element: <Login /> },
       { path: "/MyList", element: <MyLists /> },
-      //{ path: "/MyList/:id", element: <ListDetails /> },
+      { path: "/MyList/:id", element: <ListDetails /> },
       //{ path: "/MyList", element: <AddListForm /> },
       //{ path: "/MyList/:id", element: <UpdateListForm /> },
       //{ path: "/listItem", element: <ListItems /> },

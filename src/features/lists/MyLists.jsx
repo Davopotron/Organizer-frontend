@@ -13,6 +13,7 @@ export default function GetList() {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
   const { data: MyLists = [], isLoading, error } = useGetMyListsQuery();
+  const [selectedMyListId, setSelectedMyListId] = useState(null);
 
   if (isLoading) {
     return <h2>Loading List...</h2>;
@@ -25,6 +26,11 @@ export default function GetList() {
   if (!MyLists.length) {
     return <p>There are no lists.</p>;
   }
+
+  const handleSeeDetails = (id) => {
+    setSelectedMyListId(id);
+    navigate(`/MyList/${id}`);
+  };
 
   return (
     <>
@@ -47,6 +53,9 @@ export default function GetList() {
                     <p>{m.name}</p>
                     <p>{m.description}</p>
                   </h2>
+                  <button onClick={() => handleSeeDetails(m.id)}>
+                    See Details
+                  </button>
                 </li>
               ))}
             </th>
