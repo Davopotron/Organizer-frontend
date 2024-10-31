@@ -1,22 +1,36 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useGetMyListQuery } from "./myListsSlice";
-import ListItems from "../listItems/ListItems";
+import React from 'react';
+import {Link, useParams} from 'react-router-dom';
+import {useGetMyListQuery} from './myListsSlice';
+import ListItems from '../listItems/ListItems';
+import {useSelector} from 'react-redux';
 // import {useGetProfessorQuery} from '../../store/facultySlice';
 
 // export default function Professor() {
 export default function ListDetails() {
-  const { id } = useParams();
-  const { data: myList, isLoading } = useGetMyListQuery(id);
+  const {id} = useParams();
+  const {data: myList, isLoading} = useGetMyListQuery(id);
+
+  // const token = useSelector(selectToken);
+  // const navigate = useNavigate();
+
   //console.log(list);
   if (isLoading) return <p>Loading...</p>;
 
   const handleEdit = () => {
-    console.log("Edit clicked");
+    console.log('Edit clicked');
+    const newName = ('Enter new list details:', myList.itemName);
+    const newDetail = ('Enter new detail:', myList.detail);
+    if (newName !== null && newDetail !== null) {
+      myList.itemName = newName;
+      myList.detail = newDetail;
+    }
   };
 
   const handleDelete = () => {
-    console.log("Delete clicked");
+    console.log('Delete clicked');
+    {
+      console.log(`Deleting item: ${myList.itemName}`);
+    }
   };
 
   return (
@@ -39,6 +53,7 @@ export default function ListDetails() {
             </li>
           ))}
           <div>
+            <button onClick={() => handleSeeDetails()}>Details</button>
             <button onClick={() => handleEdit()}>Edit List</button>
             <button onClick={() => handleDelete()}>Delete</button>
           </div>
