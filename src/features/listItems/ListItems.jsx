@@ -10,7 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function RenderItem() {
     const { data: listItem = [], isLoading, error } = useGetListItemsQuery();
     const token = useSelector(selectToken);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     if (isLoading) return <h2>Loading Item</h2>;
 
@@ -18,20 +18,21 @@ export default function RenderItem() {
         return <p>{error.message}</p>;
     }
 
-    if (!)
+    if (!listItem.length) {
+        return <p>There are no items.</p>;
+    }
 
         return (
             <>
-              <h1>List Details</h1>
+              <h1>List Item</h1>
               <ul>
                 <li>
                   <h2>{list.name}</h2>
                   <p>
-                    <b>Description:</b> {list.details}
                   </p>
                   <p>
                     <b>Owner: </b>
-                    {username}
+                    {MyListId}
                   </p>
                   <p>
                     <b>Items: </b>
