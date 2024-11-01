@@ -1,9 +1,8 @@
 import MyLists from "../features/myLists/MyLists";
 import MapComponent from "./map/GoogleMap";
 import "../css/NearMe.css";
-const GOOGLE_API_KEY = "AIzaSyAvWbZNQYen7dVRqVFPMvphhJY2FRYdP1E";
 
-function NearMe() {
+function Shopping() {
   return (
     <>
       <h1>Near Me</h1>
@@ -21,4 +20,4 @@ function NearMe() {
   );
 }
 
-export default NearMe;
+export default Shopping;
