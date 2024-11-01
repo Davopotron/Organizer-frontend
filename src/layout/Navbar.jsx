@@ -23,7 +23,7 @@ function Navbar() {
           <NavLink to="/MyList">My Lists</NavLink>
         </li>
         <li>
-          <NavLink to="#">Near Me</NavLink>
+          <NavLink to="/nearMe">Near Me</NavLink>
         </li>
         <li>
           <NavLink to="#">Shopping</NavLink>

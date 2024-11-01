@@ -21,6 +21,10 @@ export default function GetList() {
   const [deleteMyList] = useDeleteMyListMutation();
   const [editMode, setEditMode] = useState(null);
   const [newName, setNewName] = useState("");
+  const [newDescription, setNewDescription] = useState("");
+  {
+    /* Added newDescription line 24*/
+  }
   const [updateMyList] = useUpdateMyListMutation();
 
   if (isLoading) {
@@ -45,9 +49,13 @@ export default function GetList() {
     }
   };
 
-  const handleEditClick = (id, currentName) => {
+  {
+    /*added currentDescription in line below and on line 58*/
+  }
+  const handleEditClick = (id, currentName, currentDescription) => {
     setEditMode(id);
     setNewName(currentName);
+    setNewDescription(currentDescription);
   };
 
   const handleUpdate = async (id) => {
@@ -55,6 +63,11 @@ export default function GetList() {
       await updateMyList({ id, name: newName });
       setEditMode(null);
       setNewName("");
+    }
+    if (newDescription.trim()) {
+      await updateMyList({ id, description: newDescription });
+      setEditMode(null);
+      setNewDescription("");
     }
   };
   const handleSeeDetails = (id) => {
@@ -86,6 +99,11 @@ export default function GetList() {
                         value={newName}
                         onChange={(e) => setNewName(e.target.value)}
                       />
+                      <input
+                        type="text"
+                        value={newDescription}
+                        onChange={(e) => setNewDescription(e.target.value)}
+                      />
                       <button onClick={() => handleUpdate(m.id)}>Save</button>
                       <button onClick={() => setEditMode(null)}>Cancel</button>
                     </>
@@ -98,8 +116,12 @@ export default function GetList() {
                       <button onClick={() => handleSeeDetails(m.id)}>
                         See Details
                       </button>
-                      <button onClick={() => handleEditClick(m.id, m.name)}>
-                        Edit Name
+                      <button
+                        onClick={() =>
+                          handleEditClick(m.id, m.name, m.description)
+                        }
+                      >
+                        Edit
                       </button>
                       <button onClick={() => handleDelete(m.id)}>Delete</button>
                     </>
