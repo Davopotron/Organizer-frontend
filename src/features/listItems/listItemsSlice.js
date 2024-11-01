@@ -6,7 +6,7 @@ const ListItemsApi = api.injectEndpoints({
     getListItems: build.query({
       query: () => "/listItems",
       transformResponse: (response) => response,
-      providesTags: ["listItem"],
+      providesTags: ["listItem", "MyList"],
     }),
     // getListItems: build.query({
     //   query: (id) => "/ListItems/" + id,
@@ -19,7 +19,7 @@ const ListItemsApi = api.injectEndpoints({
         method: "PATCH",
         body: ListItems,
       }),
-      invalidatesTags: ["listItem"],
+      invalidatesTags: ["listItem", "MyList"],
     }),
     addListItems: build.mutation({
       query: (ListItems) => ({
@@ -28,14 +28,14 @@ const ListItemsApi = api.injectEndpoints({
         body: ListItems,
       }),
       transformResponse: (response) => response,
-      invalidatesTags: ["listItem"],
+      invalidatesTags: ["listItem", "MyList"],
     }),
     deleteListItems: build.mutation({
       query: (id) => ({
         url: "listItems/" + id,
         method: "DELETE",
       }),
-      invalidatesTags: ["listItem"],
+      invalidatesTags: ["listItem", "MyList"],
     }),
   }),
 });

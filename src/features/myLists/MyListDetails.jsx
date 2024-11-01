@@ -58,13 +58,14 @@ export default function ListDetails() {
             <b>Owner: </b>
             {myList.ownerId}
           </p>
+          <ul>
           {/* <ListItems /> */}
-          {listItems.map((listItem) => (
+          {myList.listItems.map((listItem) => (
             <li key={listItem.id}>
               <h2>{listItem.itemName}</h2>
               <button onClick={() => handleDelete(listItem.id)}>Delete</button>
             </li>
-          ))}
+          ))}</ul>
           <div>
             {/* <button onClick={() => handleSeeDetails()}>Details</button> */}
             <button onClick={() => handleEdit()}>Edit List Items</button>
