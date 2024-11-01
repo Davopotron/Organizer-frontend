@@ -22,10 +22,10 @@ const ListItemsApi = api.injectEndpoints({
       invalidatesTags: ["listItem", "MyList"],
     }),
     addListItems: build.mutation({
-      query: (ListItems) => ({
+      query: (listItem) => ({
         url: "/listItems",
         method: "POST",
-        body: ListItems,
+        body: listItem,
       }),
       transformResponse: (response) => response,
       invalidatesTags: ["listItem", "MyList"],

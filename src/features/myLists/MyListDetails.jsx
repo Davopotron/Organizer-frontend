@@ -6,6 +6,7 @@ import { useUpdateListItemsMutation, useAddListItemsMutation, useDeleteListItems
 import ListItems from '../listItems/ListItems';
 import {useSelector} from 'react-redux';
 import AddListForm from './AddMyListForm';
+import AddListItemForm from '../listItems/AddListItemForm';
 // import {useGetProfessorQuery} from '../../store/facultySlice';
 
 // export default function Professor() {
@@ -36,6 +37,14 @@ export default function ListDetails() {
     // }
   };
 
+  // const handleAdd = async (id) => {
+  //   if (newName.trim()) {
+  //     await addListItem
+  //   }
+  // }
+
+
+
   const handleUpdate = async (id) => {
     if (newName.trim()) {
       await updateListItem({ id, itemName: newName });
@@ -45,11 +54,6 @@ export default function ListDetails() {
   };
 
   const handleDelete = async (listItemId) => {
-  //   console.log('Delete clicked');
-  //   console.log(itemName);
-  //   {
-  //     console.log(`Deleting item: ${myList.itemName}`);
-  //   }
   if (window.confirm("Are you sure you want to delete this list item?")){
     try {
       await deleteListItem(listItemId).unwrap();
@@ -67,6 +71,10 @@ export default function ListDetails() {
           <th>
            <h1>List Details</h1>
           <h2>{myList.name}</h2>
+          {/* <button onClick={() => handleAdd(listItem.id)}>Add Item</button> */}
+          <div className="addForm">
+            <AddListItemForm />
+          </div>
           {myList.listItems.map((listItem) => (
             <li key={listItem.id}>
               <h2>{listItem.itemName}</h2>
