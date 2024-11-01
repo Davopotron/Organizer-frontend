@@ -23,6 +23,7 @@ function AuthForm() {
 
     const authMethod = isLogin ? login : register;
     const credentials = { username, password };
+    console.log(isLogin)
 
     try {
       await authMethod(credentials).unwrap();

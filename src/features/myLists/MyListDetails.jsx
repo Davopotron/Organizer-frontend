@@ -1,36 +1,48 @@
 import React from 'react';
 import {Link, useParams} from 'react-router-dom';
 import {useGetMyListQuery} from './myListsSlice';
+import { useGetListItemsQuery } from '../listItems/listItemsSlice';
+import { useUpdateListItemsMutation, useAddListItemsMutation, useDeleteListItemsMutation } from '../listItems/listItemsSlice';
 import ListItems from '../listItems/ListItems';
 import {useSelector} from 'react-redux';
+import AddListForm from './AddMyListForm';
 // import {useGetProfessorQuery} from '../../store/facultySlice';
 
 // export default function Professor() {
 export default function ListDetails() {
   const {id} = useParams();
   const {data: myList, isLoading} = useGetMyListQuery(id);
-
+  const {data: listItems, isLoadingListItem} = useGetListItemsQuery()
+  const [deleteListItem] = useDeleteListItemsMutation();
   // const token = useSelector(selectToken);
   // const navigate = useNavigate();
 
   //console.log(list);
   if (isLoading) return <p>Loading...</p>;
 
-  const handleEdit = () => {
-    console.log('Edit clicked');
-    const newName = ('Enter new list details:', myList.itemName);
-    const newDetail = ('Enter new detail:', myList.detail);
-    if (newName !== null && newDetail !== null) {
-      myList.itemName = newName;
-      myList.detail = newDetail;
-    }
-  };
+  // const handleEdit = () => {
+  //   console.log('Edit clicked');
+  //   const newName = ('Enter new list details:', myList.itemName);
+  //   const newDetail = ('Enter new detail:', myList.detail);
+  //   if (newName !== null && newDetail !== null) {
+  //     // myList.itemName = newName;
+  //     myList.detail = newDetail;
+  //   }
+  // };
 
-  const handleDelete = () => {
-    console.log('Delete clicked');
-    {
-      console.log(`Deleting item: ${myList.itemName}`);
+  const handleDelete = async (listItemId) => {
+  //   console.log('Delete clicked');
+  //   console.log(itemName);
+  //   {
+  //     console.log(`Deleting item: ${myList.itemName}`);
+  //   }
+  if (window.confirm("Are you sure you want to delete this list item?")){
+    try {
+      await deleteListItem(listItemId).unwrap();
+    } catch (error) {
+      console.error("failed to delete list item:", error);
     }
+  }
   };
 
   return (
@@ -46,16 +58,17 @@ export default function ListDetails() {
             <b>Owner: </b>
             {myList.ownerId}
           </p>
+          <ul>
           {/* <ListItems /> */}
           {myList.listItems.map((listItem) => (
             <li key={listItem.id}>
               <h2>{listItem.itemName}</h2>
+              <button onClick={() => handleDelete(listItem.id)}>Delete</button>
             </li>
-          ))}
+          ))}</ul>
           <div>
-            <button onClick={() => handleSeeDetails()}>Details</button>
-            <button onClick={() => handleEdit()}>Edit List</button>
-            <button onClick={() => handleDelete()}>Delete</button>
+            {/* <button onClick={() => handleSeeDetails()}>Details</button> */}
+            <button onClick={() => handleEdit()}>Edit List Items</button>
           </div>
         </li>
       </ul>
