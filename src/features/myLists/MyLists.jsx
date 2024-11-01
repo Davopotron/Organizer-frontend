@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import AddListForm from "./AddMyListForm";
+import "../../css/MyLists.css";
 //import AddListForm from "./AddListForm";
 
 // Function that renders a list of all lists
@@ -26,6 +27,7 @@ export default function GetList() {
     /* Added newDescription line 24*/
   }
   const [updateMyList] = useUpdateMyListMutation();
+  const [dropdownOpen, setDropdownOpen] = useState(null);
 
   if (isLoading) {
     return <h2>Loading List...</h2>;
@@ -56,23 +58,31 @@ export default function GetList() {
     setEditMode(id);
     setNewName(currentName);
     setNewDescription(currentDescription);
+    setDropdownOpen(null);
   };
 
   const handleUpdate = async (id) => {
     if (newName.trim()) {
       await updateMyList({ id, name: newName });
-      setEditMode(null);
-      setNewName("");
+      //setNewName("");
     }
     if (newDescription.trim()) {
       await updateMyList({ id, description: newDescription });
-      setEditMode(null);
-      setNewDescription("");
+      //setNewDescription("");
     }
+    setEditMode(null);
+    setNewName("");
+    setNewDescription("");
   };
+
   const handleSeeDetails = (id) => {
     setSelectedMyListId(id);
     navigate(`/MyList/${id}`);
+    setDropdownOpen(null);
+  };
+
+  const dropdown = (id) => {
+    setDropdownOpen(dropdownOpen === id ? null : id);
   };
 
   return (
@@ -82,17 +92,37 @@ export default function GetList() {
           <tr>
             <th scope="col">
               <h1> My Lists</h1>
-              <form>
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  onChange={(e) => setFilter(e.target.value)}
-                />
-              </form>
-              <ul>
+              <ul className="listItems">
                 {MyLists.map((m) => (
                   <li key={m.id} className="mainList">
-                    {editMode === m.id ? (
+                    <div className="listHeader">
+                      <h2>{m.name}</h2>
+                      <button
+                        className="dotsButton"
+                        onClick={() => dropdown(m.id)}
+                      >
+                        ⋮
+                      </button>
+                      {dropdownOpen === m.id && (
+                        <div className="dropdownMenu">
+                          <button onClick={() => handleSeeDetails(m.id)}>
+                            See Details
+                          </button>
+                          <button
+                            onClick={() =>
+                              handleEditClick(m.id, m.name, m.description)
+                            }
+                          >
+                            Edit
+                          </button>
+                          <button onClick={() => handleDelete(m.id)}>
+                            Delete
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                    <p>{m.description}</p>
+                    {editMode === m.id && (
                       <>
                         <input
                           type="text"
@@ -107,26 +137,6 @@ export default function GetList() {
                         <button onClick={() => handleUpdate(m.id)}>Save</button>
                         <button onClick={() => setEditMode(null)}>
                           Cancel
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <h2>
-                          <p>{m.name}</p>
-                          <p>{m.description}</p>
-                        </h2>
-                        <button onClick={() => handleSeeDetails(m.id)}>
-                          See Details
-                        </button>
-                        <button
-                          onClick={() =>
-                            handleEditClick(m.id, m.name, m.description)
-                          }
-                        >
-                          Edit
-                        </button>
-                        <button onClick={() => handleDelete(m.id)}>
-                          Delete
                         </button>
                       </>
                     )}
