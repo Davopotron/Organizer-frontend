@@ -15,7 +15,7 @@ export default function ListDetails() {
   const {data: listItems, isLoadingListItem} = useGetListItemsQuery()
   const [deleteListItem] = useDeleteListItemsMutation();
   const [updateListItem] = useUpdateListItemsMutation(id);
-  const [editMode, setEditMode] = useState(null);
+  const [editMode, setEditMode] = useState('');
   const [newName, setNewName] = useState("");
   // const token = useSelector(selectToken);
   // const navigate = useNavigate();
@@ -38,7 +38,7 @@ export default function ListDetails() {
 
   const handleUpdate = async (id) => {
     if (newName.trim()) {
-      await updateListItem({ id, name: newName});
+      await updateListItem({ id, itemName: newName });
       setEditMode(null);
       // setListItemId("");
     };
@@ -66,13 +66,7 @@ export default function ListDetails() {
         <tr>
           <th>
            <h1>List Details</h1>
-      {/* <ul> */}
-        {/* <li> */}
           <h2>{myList.name}</h2>
-          {/* <p>
-            <b>Description:</b> {myList.details}
-          </p> */}
-          {/* <ListItems /> */}
           {myList.listItems.map((listItem) => (
             <li key={listItem.id}>
               <h2>{listItem.itemName}</h2>
@@ -80,7 +74,7 @@ export default function ListDetails() {
                     <>
                       <input
                         type="text"
-                        value={newName}
+                        value={newName || ""}
                         onChange={(e) => setNewName(e.target.value)}
                       />
                       <button onClick={() => handleUpdate(listItem.id)}>Save</button>

@@ -15,15 +15,15 @@ const ListItemsApi = api.injectEndpoints({
     // }),
     updateListItems: build.mutation({
       query: ({ id, ...listItem }) => ({
-        url: "/listItem/" + id,
+        url: "/listItems/" + id,
         method: "PATCH",
-        body: ListItems,
+        body: listItem,
       }),
       invalidatesTags: ["listItem", "MyList"],
     }),
     addListItems: build.mutation({
       query: (ListItems) => ({
-        url: "/listItem",
+        url: "/listItems",
         method: "POST",
         body: ListItems,
       }),
