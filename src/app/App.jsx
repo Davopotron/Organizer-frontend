@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import AuthForm from "../features/auth/AuthForm";
+import {useState} from 'react';
+import {useSelector} from 'react-redux';
+import AuthForm from '../features/auth/AuthForm';
 
 export default function App() {
   const [token, setToken] = useState(null);
@@ -10,21 +10,19 @@ export default function App() {
       <h1>Recipe Organizer</h1>
       <p>The planner for all your recipe needs.</p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem,
-        inventore et, doloribus molestiae dicta recusandae odit debitis natus,
-        ad nisi ipsum officia fugit maxime dolores ea tenetur! Maiores,
-        dignissimos. Asperiores.
+        Introducing Recipe List, the ultimate app for organizing all your
+        favorite recipes in one place! With Recipe List, you can easily create a
+        personalized collection of recipes and view a detailed list of
+        ingredients with just a tap.
       </p>
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur
-        dolorem dolores inventore perferendis soluta minus, laudantium, officia
-        explicabo itaque molestias ullam maiores, laborum asperiores aliquid?
-        Incidunt quasi provident beatae. Id.
+        Simply add the names of your recipes to the list, and whenever you are
+        ready, click on any recipe name to add all the ingredients you will
+        need.
       </p>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, nihil
-        enim ab dicta non qui laborum, sunt expedita molestiae voluptas eius sed
-        alias, veniam pariatur! Velit culpa doloribus id earum?
+        Perfect for meal planning, grocery shopping, or cooking up something
+        new, Recipe List makes finding and preparing delicious dishes a breeze.
       </p>
     </>
   );
