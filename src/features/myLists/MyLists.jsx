@@ -17,7 +17,7 @@ export default function GetList() {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
   const { data: MyLists = [], isLoading, error } = useGetMyListsQuery();
-  // const [selectedMyListId, setSelectedMyListId] = useState(null);
+  const [selectedMyListId, setSelectedMyListId] = useState(null);
   const [deleteMyList] = useDeleteMyListMutation();
   const [editMode, setEditMode] = useState(null);
   const [newName, setNewName] = useState("");

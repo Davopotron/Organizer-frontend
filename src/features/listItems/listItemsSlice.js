@@ -4,7 +4,7 @@ import ListItems from "./ListItems";
 const ListItemsApi = api.injectEndpoints({
   endpoints: (build) => ({
     getListItems: build.query({
-      query: () => "/listItem",
+      query: () => "/listItems",
       transformResponse: (response) => response,
       providesTags: ["listItem"],
     }),
@@ -22,7 +22,7 @@ const ListItemsApi = api.injectEndpoints({
       invalidatesTags: ["listItem"],
     }),
     addListItems: build.mutation({
-      query: (listItem) => ({
+      query: (ListItems) => ({
         url: "/listItem",
         method: "POST",
         body: ListItems,
@@ -32,7 +32,7 @@ const ListItemsApi = api.injectEndpoints({
     }),
     deleteListItems: build.mutation({
       query: (id) => ({
-        url: "listItem/" + id,
+        url: "listItems/" + id,
         method: "DELETE",
       }),
       invalidatesTags: ["listItem"],
