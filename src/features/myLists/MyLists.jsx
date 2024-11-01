@@ -96,7 +96,8 @@ export default function GetList() {
                 {MyLists.map((m) => (
                   <li key={m.id} className="mainList">
                     <div className="listHeader">
-                      <h2>{m.name}</h2>
+                      <h2 className="listName">{m.name}</h2>
+                      <div className="dropdownContainer"></div>
                       <button
                         className="dotsButton"
                         onClick={() => dropdown(m.id)}
