@@ -11,6 +11,7 @@ import AddListItemForm from "./features/listItems/AddListItemForm";
 import ListItems from "./features/listItems/ListItems";
 import UpdateListItemForm from "./features/listItems/UpdateListItemForm";
 import NearMe from "./features/NearMe";
+import Shopping from "./features/Shopping";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: "/listItem/:id", element: <UpdateListItemForm /> },
       { path: "/listItem", element: <AddListItemForm /> },
       { path: "/nearMe", element: <NearMe /> },
+      { path: "/shopping", element: <Shopping /> },
     ],
   },
 ]);
