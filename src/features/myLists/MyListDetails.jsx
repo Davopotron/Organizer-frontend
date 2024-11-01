@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link, useParams} from 'react-router-dom';
 import {useGetMyListQuery} from './myListsSlice';
 import { useGetListItemsQuery } from '../listItems/listItemsSlice';
@@ -14,21 +14,35 @@ export default function ListDetails() {
   const {data: myList, isLoading} = useGetMyListQuery(id);
   const {data: listItems, isLoadingListItem} = useGetListItemsQuery()
   const [deleteListItem] = useDeleteListItemsMutation();
+  const [updateListItem] = useUpdateListItemsMutation(id);
+  const [editMode, setEditMode] = useState(null);
+  const [newName, setNewName] = useState("");
   // const token = useSelector(selectToken);
   // const navigate = useNavigate();
 
   //console.log(list);
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p>Loading Item...</p>;
 
-  // const handleEdit = () => {
+  const handleEdit = async (id, currentName) => {
+    setEditMode(id);
+    setNewName(currentName);
+    
   //   console.log('Edit clicked');
-  //   const newName = ('Enter new list details:', myList.itemName);
-  //   const newDetail = ('Enter new detail:', myList.detail);
-  //   if (newName !== null && newDetail !== null) {
-  //     // myList.itemName = newName;
-  //     myList.detail = newDetail;
-  //   }
-  // };
+    // const newName = ('Enter new list details:', myList.itemName);
+    // const newDetail = ('Enter new detail:', myList.detail);
+    // if (newName !== null && newDetail !== null) {
+    //   // myList.itemName = newName;
+    //   myList.detail = newDetail;
+    // }
+  };
+
+  const handleUpdate = async (id) => {
+    if (newName.trim()) {
+      await updateListItem({ id, name: newName});
+      setEditMode(null);
+      // setListItemId("");
+    };
+  };
 
   const handleDelete = async (listItemId) => {
   //   console.log('Delete clicked');
@@ -47,33 +61,49 @@ export default function ListDetails() {
 
   return (
     <>
-      <h1>List Details</h1>
-      <ul>
-        <li>
+    <table>
+      <tbody>
+        <tr>
+          <th>
+           <h1>List Details</h1>
+      {/* <ul> */}
+        {/* <li> */}
           <h2>{myList.name}</h2>
-          <p>
+          {/* <p>
             <b>Description:</b> {myList.details}
-          </p>
-          <p>
-            <b>Owner: </b>
-            {myList.ownerId}
-          </p>
-          <ul>
+          </p> */}
           {/* <ListItems /> */}
           {myList.listItems.map((listItem) => (
             <li key={listItem.id}>
               <h2>{listItem.itemName}</h2>
-              <button onClick={() => handleDelete(listItem.id)}>Delete</button>
+              {editMode === listItem.id ? (
+                    <>
+                      <input
+                        type="text"
+                        value={newName}
+                        onChange={(e) => setNewName(e.target.value)}
+                      />
+                      <button onClick={() => handleUpdate(listItem.id)}>Save</button>
+                      <button onClick={() => setEditMode(null)}>Cancel</button>
+                    </>
+                  ) : (
+                    <>
+                      <button onClick={() => handleEdit (listItem.id, listItem.name)}
+                      >Edit</button>
+                      <button onClick={() => handleDelete(listItem.id)}>Delete</button>
+                    </>
+                  )}
             </li>
-          ))}</ul>
-          <div>
-            {/* <button onClick={() => handleSeeDetails()}>Details</button> */}
-            <button onClick={() => handleEdit()}>Edit List Items</button>
-          </div>
-        </li>
-      </ul>
+          ))}
+        {/* </li>
+      </ul> */}
+      </th>
+      </tr>
+      </tbody>
+      </table>
     </>
   );
+};
 
   //   return (
   //     <>
@@ -107,4 +137,3 @@ export default function ListDetails() {
   //       </ul>
   //     </>
   //   );
-}
