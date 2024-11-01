@@ -1,4 +1,4 @@
-import MyLists from "../features/lists/MyLists";
+import MyLists from "../features/myLists/MyLists";
 import MapComponent from "./map/GoogleMap";
 import "../css/NearMe.css";
 //import ListItems from "../features/listItems/ListItems";
