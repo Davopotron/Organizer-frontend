@@ -30,6 +30,7 @@ ul {
 }
 
 .dropdownMenu {
+  display: none;
   position: absolute;
   background-color: white;
   border: 1px solid gray;
@@ -41,6 +42,10 @@ ul {
   top: 50%;
   min-width: 60px;
 }
+
+.dropdownContainer:hover .dropdownMenu {
+  display: block;
+}
 .dropdownMenu button {
   display: block;
   cursor: pointer;
@@ -50,4 +55,8 @@ ul {
   margin-left: 2em;
   margin-right: 1em;
   margin-bottom: 0;
+}
+
+.dropdownContainer {
+  position: relative;
 }

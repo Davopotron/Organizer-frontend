@@ -97,14 +97,14 @@ export default function GetList() {
                   <li key={m.id} className="mainList">
                     <div className="listHeader">
                       <h2 className="listName">{m.name}</h2>
-                      <div className="dropdownContainer"></div>
-                      <button
-                        className="dotsButton"
-                        onClick={() => dropdown(m.id)}
-                      >
-                        ⋮
-                      </button>
-                      {dropdownOpen === m.id && (
+                      <div className="dropdownContainer">
+                        <button
+                          className="dotsButton"
+                          // onClick={() => dropdown(m.id)}
+                        >
+                          ⋮
+                        </button>
+                        {/* {dropdownOpen === m.id && ( */}
                         <div className="dropdownMenu">
                           <button onClick={() => handleSeeDetails(m.id)}>
                             See Details
@@ -120,7 +120,7 @@ export default function GetList() {
                             Delete
                           </button>
                         </div>
-                      )}
+                      </div>
                     </div>
                     <p>{m.description}</p>
                     {editMode === m.id && (
