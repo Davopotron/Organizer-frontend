@@ -1,10 +1,5 @@
-import React from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
-
-const containerStyle = {
-  width: "400px",
-  height: "400px",
-};
 
 const center = {
   lat: 40.76,
@@ -17,25 +12,50 @@ function MyComponent() {
     googleMapsApiKey: "AIzaSyAvWbZNQYen7dVRqVFPMvphhJY2FRYdP1E",
   });
 
-  const [map, setMap] = React.useState(null);
+  const [map, setMap] = useState(null);
+  const [center, setCenter] = useState({ lat: 40.24, lng: -96.491 });
+  const [loading, setLoading] = useState(true);
 
-  const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-
-    setMap(map);
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setCenter({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+          setLoading(false);
+        },
+        () => {
+          console.error("Error getting the user's location.");
+          setLoading(false);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+      setLoading(false);
+    }
   }, []);
 
-  const onUnmount = React.useCallback(function callback(map) {
+  const onLoad = useCallback(
+    (map) => {
+      const zoom = 13;
+      const bounds = new window.google.maps.LatLngBounds(center);
+      map.setZoom(zoom);
+      setMap(map);
+    },
+    [center]
+  );
+
+  const onUnmount = useCallback((map) => {
     setMap(null);
   }, []);
 
-  return isLoaded ? (
+  return isLoaded && !loading ? (
     <GoogleMap
-      mapContainerStyle={containerStyle}
+      mapContainerClassName={"map"}
       center={center}
-      zoom={10}
+      zoom={13}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
@@ -43,74 +63,8 @@ function MyComponent() {
       <></>
     </GoogleMap>
   ) : (
-    <></>
+    <p>Loading map...</p>
   );
 }
 
 export default React.memo(MyComponent);
-
-/*
-import react from "@vitejs/plugin-react-swc";
-import { GoogleMap, LoadScript, Marker, useJsApiLoader } from "@react-google-maps/api";
-
-
-const MapComponent = () => {
-  const defaultCenter = {
-    lat: 40.76,
-    lng: -111.891,
-  };
-
-  const locations = [
-    {
-      name: "Location 1",
-      location: {
-        lat: 40.712776,
-        lng: -74.005974,
-      },
-    },
-    {
-      name: "Location 2",
-      location: {
-        lat: 40.73061,
-        lng: -73.935242,
-      },
-    },
-  ];
-
-  const onMapClick = (event) => {
-    console.log(
-      "Clicked coordinates: ",
-      event.latLng.lat(),
-      event.latLng.lng()
-    );
-  };
-
-  const mapStyles = [
-    {
-      elementType: "geometry",
-      stylers: [{ color: "#ebe3cd" }],
-    },
-    {
-      elementType: "labels.text.fill",
-      stylers: [{ color: "#523735" }],
-    },
-
-    // Add more styles as needed
-  ];
-
-  return (
-    <LoadScript googleMapsApiKey="AIzaSyAvWbZNQYen7dVRqVFPMvphhJY2FRYdP1E">
-      <GoogleMap
-        mapContainerStyle={mapStyles}
-        zoom={10}
-        center={defaultCenter}
-        onClick={onMapClick}
-      />
-      {locations.map((item, index) => (
-        <Marker key={index} position={item.location} />
-      ))}
-    </LoadScript>
-  );
-};
-export default MapComponent;
-*/

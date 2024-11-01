@@ -26,7 +26,7 @@ function Navbar() {
           <NavLink to="/nearMe">Near Me</NavLink>
         </li>
         <li>
-          <NavLink to="#">Shopping</NavLink>
+          <NavLink to="/shopping">Shopping</NavLink>
         </li>
         {token ? (
           <>
