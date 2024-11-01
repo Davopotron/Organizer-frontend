@@ -89,45 +89,50 @@ export default function GetList() {
                   onChange={(e) => setFilter(e.target.value)}
                 />
               </form>
-
-              {MyLists.map((m) => (
-                <li key={m.id} className="mainList">
-                  {editMode === m.id ? (
-                    <>
-                      <input
-                        type="text"
-                        value={newName}
-                        onChange={(e) => setNewName(e.target.value)}
-                      />
-                      <input
-                        type="text"
-                        value={newDescription}
-                        onChange={(e) => setNewDescription(e.target.value)}
-                      />
-                      <button onClick={() => handleUpdate(m.id)}>Save</button>
-                      <button onClick={() => setEditMode(null)}>Cancel</button>
-                    </>
-                  ) : (
-                    <>
-                      <h2>
-                        <p>{m.name}</p>
-                        <p>{m.description}</p>
-                      </h2>
-                      <button onClick={() => handleSeeDetails(m.id)}>
-                        See Details
-                      </button>
-                      <button
-                        onClick={() =>
-                          handleEditClick(m.id, m.name, m.description)
-                        }
-                      >
-                        Edit
-                      </button>
-                      <button onClick={() => handleDelete(m.id)}>Delete</button>
-                    </>
-                  )}
-                </li>
-              ))}
+              <ul>
+                {MyLists.map((m) => (
+                  <li key={m.id} className="mainList">
+                    {editMode === m.id ? (
+                      <>
+                        <input
+                          type="text"
+                          value={newName}
+                          onChange={(e) => setNewName(e.target.value)}
+                        />
+                        <input
+                          type="text"
+                          value={newDescription}
+                          onChange={(e) => setNewDescription(e.target.value)}
+                        />
+                        <button onClick={() => handleUpdate(m.id)}>Save</button>
+                        <button onClick={() => setEditMode(null)}>
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <h2>
+                          <p>{m.name}</p>
+                          <p>{m.description}</p>
+                        </h2>
+                        <button onClick={() => handleSeeDetails(m.id)}>
+                          See Details
+                        </button>
+                        <button
+                          onClick={() =>
+                            handleEditClick(m.id, m.name, m.description)
+                          }
+                        >
+                          Edit
+                        </button>
+                        <button onClick={() => handleDelete(m.id)}>
+                          Delete
+                        </button>
+                      </>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </th>
           </tr>
         </tbody>
