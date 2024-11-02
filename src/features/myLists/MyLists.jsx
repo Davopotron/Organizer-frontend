@@ -15,7 +15,6 @@ export default function GetList() {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
   const { data: MyLists = [], isLoading, error } = useGetMyListsQuery();
-  console.log(MyLists);
   const [selectedMyListId, setSelectedMyListId] = useState(null);
   const [deleteMyList] = useDeleteMyListMutation();
   const [editMode, setEditMode] = useState(null);
@@ -47,9 +46,6 @@ export default function GetList() {
     }
   };
 
-  {
-    /*added currentDescription in line below and on line 58*/
-  }
   const handleEditClick = (id, currentName, currentDescription) => {
     setEditMode(id);
     setNewName(currentName);
@@ -77,6 +73,8 @@ export default function GetList() {
     setFilteredResults(results);
   };
 
+  const listsToRender = filteredResults.length > 0 ? filteredResults : MyLists;
+
   return (
     <>
       <table>
@@ -85,8 +83,8 @@ export default function GetList() {
             <th scope="col">
               <h1> My Lists</h1>
               <SearchBar names={MyLists} onSearch={handleFilteredResults} />
-              {(filteredResults.length > 0 ? filteredResults : MyLists).map(
-                (m) => (
+              {listsToRender.length > 0 ? (
+                listsToRender.map((m) => (
                   <li key={m.id} className="mainList">
                     {editMode === m.id ? (
                       <>
@@ -127,7 +125,9 @@ export default function GetList() {
                       </>
                     )}
                   </li>
-                )
+                ))
+              ) : (
+                <p> Use the search bar to find lists</p>
               )}
             </th>
           </tr>

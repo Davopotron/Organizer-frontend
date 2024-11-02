@@ -2,15 +2,24 @@ import { useState } from "react";
 
 function SearchBar({ names = [], onSearch }) {
   const [filter, setFilter] = useState("");
-  const [filteredResults, setFilteredResults] = useState([]);
 
   const handleSearch = () => {
     const results =
       names?.filter((name) =>
         name.name.toLowerCase().includes(filter.trim().toLowerCase())
       ) || [];
-    setFilteredResults(results);
-    onSearch(results);
+    onSearch(results); // Pass results to the parent
+  };
+
+  // Trigger search on input change
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setFilter(value);
+    if (value.trim() === "") {
+      onSearch([]); // Clear the filtered results if input is empty
+    } else {
+      handleSearch();
+    }
   };
 
   return (
@@ -20,24 +29,12 @@ function SearchBar({ names = [], onSearch }) {
           type="text"
           placeholder="Search..."
           value={filter}
-          onChange={(e) => setFilter(e.target.value)}
+          onChange={handleInputChange} // Call search on every input change
         />
         <button type="button" onClick={handleSearch}>
           Search
         </button>
       </form>
-
-      <div>
-        {filteredResults.length > 0 ? (
-          <ul>
-            {filteredResults.map((item, index) => (
-              <li key={index}>{item.name}</li>
-            ))}
-          </ul>
-        ) : (
-          filter && <p>No results found</p>
-        )}
-      </div>
     </div>
   );
 }
