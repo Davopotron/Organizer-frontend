@@ -1,30 +1,28 @@
-import { useState } from "react";
-// import ListDetails from "./MyListDetails";
+import React, { useState } from "react";
 import {
   useDeleteMyListMutation,
   useGetMyListsQuery,
   useUpdateMyListMutation,
 } from "./myListsSlice";
-// import { useGetMyListQuery } from "./myListsSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import AddListForm from "./AddMyListForm";
-//import AddListForm from "./AddListForm";
+import SearchBar from "./Searchbar";
 
 // Function that renders a list of all lists
 export default function GetList() {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
   const { data: MyLists = [], isLoading, error } = useGetMyListsQuery();
+  console.log(MyLists);
   const [selectedMyListId, setSelectedMyListId] = useState(null);
   const [deleteMyList] = useDeleteMyListMutation();
   const [editMode, setEditMode] = useState(null);
   const [newName, setNewName] = useState("");
   const [newDescription, setNewDescription] = useState("");
-  {
-    /* Added newDescription line 24*/
-  }
+  const [filteredResults, setFilteredResults] = useState([]);
+
   const [updateMyList] = useUpdateMyListMutation();
 
   if (isLoading) {
@@ -75,6 +73,10 @@ export default function GetList() {
     navigate(`/MyList/${id}`);
   };
 
+  const handleFilteredResults = (results) => {
+    setFilteredResults(results);
+  };
+
   return (
     <>
       <table>
@@ -82,52 +84,51 @@ export default function GetList() {
           <tr>
             <th scope="col">
               <h1> My Lists</h1>
-              <form>
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  onChange={(e) => setFilter(e.target.value)}
-                />
-              </form>
-
-              {MyLists.map((m) => (
-                <li key={m.id} className="mainList">
-                  {editMode === m.id ? (
-                    <>
-                      <input
-                        type="text"
-                        value={newName}
-                        onChange={(e) => setNewName(e.target.value)}
-                      />
-                      <input
-                        type="text"
-                        value={newDescription}
-                        onChange={(e) => setNewDescription(e.target.value)}
-                      />
-                      <button onClick={() => handleUpdate(m.id)}>Save</button>
-                      <button onClick={() => setEditMode(null)}>Cancel</button>
-                    </>
-                  ) : (
-                    <>
-                      <h2>
-                        <p>{m.name}</p>
-                        <p>{m.description}</p>
-                      </h2>
-                      <button onClick={() => handleSeeDetails(m.id)}>
-                        See Details
-                      </button>
-                      <button
-                        onClick={() =>
-                          handleEditClick(m.id, m.name, m.description)
-                        }
-                      >
-                        Edit
-                      </button>
-                      <button onClick={() => handleDelete(m.id)}>Delete</button>
-                    </>
-                  )}
-                </li>
-              ))}
+              <SearchBar names={MyLists} onSearch={handleFilteredResults} />
+              {(filteredResults.length > 0 ? filteredResults : MyLists).map(
+                (m) => (
+                  <li key={m.id} className="mainList">
+                    {editMode === m.id ? (
+                      <>
+                        <input
+                          type="text"
+                          value={newName}
+                          onChange={(e) => setNewName(e.target.value)}
+                        />
+                        <input
+                          type="text"
+                          value={newDescription}
+                          onChange={(e) => setNewDescription(e.target.value)}
+                        />
+                        <button onClick={() => handleUpdate(m.id)}>Save</button>
+                        <button onClick={() => setEditMode(null)}>
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <h2>
+                          <p>{m.name}</p>
+                          <p>{m.description}</p>
+                        </h2>
+                        <button onClick={() => handleSeeDetails(m.id)}>
+                          See Details
+                        </button>
+                        <button
+                          onClick={() =>
+                            handleEditClick(m.id, m.name, m.description)
+                          }
+                        >
+                          Edit
+                        </button>
+                        <button onClick={() => handleDelete(m.id)}>
+                          Delete
+                        </button>
+                      </>
+                    )}
+                  </li>
+                )
+              )}
             </th>
           </tr>
         </tbody>
