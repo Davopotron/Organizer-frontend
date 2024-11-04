@@ -91,7 +91,7 @@ export default function GetList() {
         <tbody>
           <tr>
             <th scope="col">
-              <h1> My Lists</h1>
+              <h1 className="myListsName"> My Lists</h1>
               <ul className="listItems">
                 {MyLists.map((m) => (
                   <li key={m.id} className="mainList">
