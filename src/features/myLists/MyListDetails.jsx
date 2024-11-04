@@ -11,6 +11,7 @@ import ListItems from "../listItems/ListItems";
 import { useSelector } from "react-redux";
 import AddListForm from "./AddMyListForm";
 import AddListItemForm from "../listItems/AddListItemForm";
+import "../../css/ListDetails.css";
 
 export default function ListDetails() {
   const { id } = useParams();

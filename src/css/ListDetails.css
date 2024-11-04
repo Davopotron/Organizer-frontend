@@ -1,0 +1,97 @@
+.list-details-container {
+  font-family: "Arial", sans-serif;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.list-details-title,
+.list-details-name {
+  color: #333;
+  text-align: center;
+}
+
+.add-form {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.list-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.list-item:nth-child(odd) {
+  background-color: #f4f4f4;
+}
+
+.list-item-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.edit-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button-group button,
+.update-button,
+.cancel-button,
+.edit-button,
+.delete-button {
+  margin: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-button,
+.delete-button {
+  background-color: #008cba;
+  color: #fff;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #005f75;
+}
+
+.update-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.update-button:hover {
+  background-color: #218838;
+}
+
+.cancel-button {
+  background-color: #d9534f;
+  color: #fff;
+}
+
+.cancel-button:hover {
+  background-color: #c9302c;
+}
+
+.edit-input {
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
