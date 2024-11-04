@@ -72,6 +72,7 @@ export default function GetList() {
   };
 
   const listsToRender = filteredResults.length > 0 ? filteredResults : MyLists;
+
   return (
     <>
       <div className="listForm">
