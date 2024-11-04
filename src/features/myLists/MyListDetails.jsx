@@ -76,7 +76,7 @@ export default function ListDetails() {
               <h2>{myList.name}</h2>
               {/* <button onClick={() => handleAdd(listItem.id)}>Add Item</button> */}
               <div className="addForm">
-                <AddListItemForm myListId={listId} myListId={listId} />
+                <AddListItemForm myListId={listId} />
               </div>
               {myList.listItems.map((listItem) => (
                 <li key={listItem.id}>
