@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAddListItemsMutation } from "./listItemsSlice";
 
-export default function AddListItemForm() {
+export default function AddListItemForm({ myListId }) {
 //   const [listItemData, setListItemData] = useState(""); -comment
 const [ itemName, setItemName ] = useState("");
-const [myListId, setMyListId] = useState(1);
+// const [myListId, setMyListId] = useState();
 
   //const navigate = useNavigate(); -comment
   const [addListItem, { isLoading: isAdding, error: addingError }] = useAddListItemsMutation();
@@ -24,6 +24,11 @@ const [myListId, setMyListId] = useState(1);
 
 const postList = async (event) => {
     event.preventDefault();
+
+    // if (!myListId) {
+    //     console.error("myListId is undefined");
+    //     return;
+    // }
     const listData = {
       itemName,
       myListId,
@@ -55,19 +60,19 @@ const postList = async (event) => {
             name="itemName"
             value={itemName}
             onChange={(e) =>
-              setItemName(e.target.value )
+              setItemName(e.target.value)
             }
           />
         </label>
-        {/* <label>  -comment
-          ListId  -comment
-          <input -comment
-            name="myListId"  -comment
-            value={listItemData.myListId}  -comment
-            onChange={(e) =>  -comment
-              setListItemData({ ...listItemData, myListId: e.target.value })   -comment
-            } -comment
-          /> -comment
+        {/* <label> 
+          ListId 
+          <input 
+            name="myListId"  
+            value={myListId}  
+            onChange={(e) => 
+              setMyListId({ ...listItemData, myListId: e.target.value })  
+            } 
+          />
         </label> */}
       </div>
       <button type="submit">Confirm Save</button>
@@ -77,3 +82,6 @@ const postList = async (event) => {
     </>
   );
 }
+
+
+// listItemData. <---this was in the ListId label in the value={} next to myListId
