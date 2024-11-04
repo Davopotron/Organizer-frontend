@@ -26,7 +26,6 @@ export default function ListDetails() {
   // const navigate = useNavigate();
 
   //console.log(list);
-
   const listId = parseInt(id, 10);
   if (isLoading) return <p>Loading Item...</p>;
 
@@ -77,7 +76,7 @@ export default function ListDetails() {
               <h2>{myList.name}</h2>
               {/* <button onClick={() => handleAdd(listItem.id)}>Add Item</button> */}
               <div className="addForm">
-                <AddListItemForm myListId={listId} />
+                <AddListItemForm myListId={listId} myListId={listId} />
               </div>
               {myList.listItems.map((listItem) => (
                 <li key={listItem.id}>

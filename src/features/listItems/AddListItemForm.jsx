@@ -5,7 +5,7 @@ import { useAddListItemsMutation } from "./listItemsSlice";
 export default function AddListItemForm({ myListId }) {
   //   const [listItemData, setListItemData] = useState(""); -comment
   const [itemName, setItemName] = useState("");
-  // const [myListId, setMyListId] = useState(null);
+  // const [myListId, setMyListId] = useState();
 
   //const navigate = useNavigate(); -comment
   const [addListItem, { isLoading: isAdding, error: addingError }] =
@@ -24,6 +24,11 @@ export default function AddListItemForm({ myListId }) {
 
   const postList = async (event) => {
     event.preventDefault();
+
+    // if (!myListId) {
+    //     console.error("myListId is undefined");
+    //     return;
+    // }
     const listData = {
       itemName,
       myListId,
@@ -57,15 +62,15 @@ export default function AddListItemForm({ myListId }) {
               onChange={(e) => setItemName(e.target.value)}
             />
           </label>
-          {/* <label>  -comment
-          ListId  -comment
-          <input -comment
-            name="myListId"  -comment
-            value={listItemData.myListId}  -comment
-            onChange={(e) =>  -comment
-              setListItemData({ ...listItemData, myListId: e.target.value })   -comment
-            } -comment
-          /> -comment
+          {/* <label> 
+          ListId 
+          <input 
+            name="myListId"  
+            value={myListId}  
+            onChange={(e) => 
+              setMyListId({ ...listItemData, myListId: e.target.value })  
+            } 
+          />
         </label> */}
         </div>
         <button type="submit">Confirm Save</button>
@@ -75,3 +80,5 @@ export default function AddListItemForm({ myListId }) {
     </>
   );
 }
+
+// listItemData. <---this was in the ListId label in the value={} next to myListId
