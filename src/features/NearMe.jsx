@@ -1,9 +1,12 @@
 import MyLists from "../features/myLists/MyLists";
 import MapComponent from "./map/GoogleMap";
 import "../css/NearMe.css";
+import { useState } from "react";
 const GOOGLE_API_KEY = "AIzaSyAvWbZNQYen7dVRqVFPMvphhJY2FRYdP1E";
 
 function NearMe() {
+  const [searchInput, setSearchInput] = useState("");
+
   return (
     <>
       <h1>Near Me</h1>
@@ -13,8 +16,14 @@ function NearMe() {
           <MyLists />
         </div>
         <div className="map">
-          <input type="text" name="myListSearch" className="myListSearch" />
-          <MapComponent />
+          <input
+            type="text"
+            name="myListSearch"
+            className="myListSearch"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+          />
+          <MapComponent searchInput={searchInput} />
         </div>
       </div>
     </>
