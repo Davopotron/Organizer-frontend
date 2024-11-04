@@ -1,17 +1,15 @@
-import { useState } from "react";
-// import ListDetails from "./MyListDetails";
+import React, { useState } from "react";
 import {
   useDeleteMyListMutation,
   useGetMyListsQuery,
   useUpdateMyListMutation,
 } from "./myListsSlice";
-// import { useGetMyListQuery } from "./myListsSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import AddListForm from "./AddMyListForm";
 import "../../css/MyLists.css";
-//import AddListForm from "./AddListForm";
+import SearchBar from "./Searchbar";
 
 // Function that renders a list of all lists
 export default function GetList() {
@@ -23,9 +21,8 @@ export default function GetList() {
   const [editMode, setEditMode] = useState(null);
   const [newName, setNewName] = useState("");
   const [newDescription, setNewDescription] = useState("");
-  {
-    /* Added newDescription line 24*/
-  }
+  const [filteredResults, setFilteredResults] = useState([]);
+
   const [updateMyList] = useUpdateMyListMutation();
   const [dropdownOpen, setDropdownOpen] = useState(null);
 
@@ -51,9 +48,6 @@ export default function GetList() {
     }
   };
 
-  {
-    /*added currentDescription in line below and on line 58*/
-  }
   const handleEditClick = (id, currentName, currentDescription) => {
     setEditMode(id);
     setNewName(currentName);
@@ -85,12 +79,66 @@ export default function GetList() {
     setDropdownOpen(dropdownOpen === id ? null : id);
   };
 
+  const handleFilteredResults = (results) => {
+    setFilteredResults(results);
+  };
+
+  const listsToRender = filteredResults.length > 0 ? filteredResults : MyLists;
+
   return (
     <>
       <table>
         <tbody>
           <tr>
             <th scope="col">
+              <h1> My Lists</h1>
+              <SearchBar names={MyLists} onSearch={handleFilteredResults} />
+              {listsToRender.length > 0 ? (
+                listsToRender.map((m) => (
+                  <li key={m.id} className="mainList">
+                    {editMode === m.id ? (
+                      <>
+                        <input
+                          type="text"
+                          value={newName}
+                          onChange={(e) => setNewName(e.target.value)}
+                        />
+                        <input
+                          type="text"
+                          value={newDescription}
+                          onChange={(e) => setNewDescription(e.target.value)}
+                        />
+                        <button onClick={() => handleUpdate(m.id)}>Save</button>
+                        <button onClick={() => setEditMode(null)}>
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <h2>
+                          <p>{m.name}</p>
+                          <p>{m.description}</p>
+                        </h2>
+                        <button onClick={() => handleSeeDetails(m.id)}>
+                          See Details
+                        </button>
+                        <button
+                          onClick={() =>
+                            handleEditClick(m.id, m.name, m.description)
+                          }
+                        >
+                          Edit
+                        </button>
+                        <button onClick={() => handleDelete(m.id)}>
+                          Delete
+                        </button>
+                      </>
+                    )}
+                  </li>
+                ))
+              ) : (
+                <p> Use the search bar to find lists</p>
+              )}
               <h1 className="myListsName"> My Lists</h1>
               <ul className="listItems">
                 {MyLists.map((m) => (
