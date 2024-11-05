@@ -15,7 +15,7 @@ export default function GetList() {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
   const { data: MyLists = [], isLoading, error } = useGetMyListsQuery();
-  // const [selectedMyListId, setSelectedMyListId] = useState(null);
+  const [selectedMyListId, setSelectedMyListId] = useState(null);
   const [deleteMyList] = useDeleteMyListMutation();
   const [editMode, setEditMode] = useState(null);
   const [newName, setNewName] = useState("");
@@ -70,13 +70,18 @@ export default function GetList() {
   const dropdown = (id) => {
     setDropDownOpen(dropdownOpen === id ? null : id);
   };
+
   const listsToRender = filteredResults.length > 0 ? filteredResults : MyLists;
+
   return (
     <>
+      <div className="listForm">
+        <AddListForm />
+      </div>
       <table>
         <tbody>
           <tr>
-            <th scope="col">
+            <th scope="col" className="listContainer">
               <h1 className="myListsName"> My Lists</h1>
               <SearchBar names={MyLists} onSearch={handleFilteredResults} />
               <ul className="listItems">
@@ -84,7 +89,18 @@ export default function GetList() {
                   listsToRender.map((m) => (
                     <li key={m.id} className="mainList">
                       <div className="listHeader">
-                        <h2 className="listName">{m.name}</h2>
+                        <h2 className="listName">
+                          {editMode === m.id ? (
+                            <input
+                              type="text"
+                              value={newName}
+                              onChange={(e) => setNewName(e.target.value)}
+                              className="editField"
+                            />
+                          ) : (
+                            m.name
+                          )}
+                        </h2>
                         <div className="dropdownContainer">
                           <button
                             className="dotsButton"
@@ -111,25 +127,33 @@ export default function GetList() {
                           )}
                         </div>
                       </div>
-                      <p>{m.description}</p>
-                      {editMode === m.id && (
-                        <>
-                          <input
-                            type="text"
-                            value={newName}
-                            onChange={(e) => setNewName(e.target.value)}
-                          />
-                          <input
-                            type="text"
+                      <p className="listDescription">
+                        {editMode === m.id ? (
+                          <textarea
                             value={newDescription}
                             onChange={(e) => setNewDescription(e.target.value)}
+                            className="editField"
                           />
-                          <button onClick={() => handleUpdate(m.id)}>
-                            Save
-                          </button>
-                          <button onClick={() => setEditMode(null)}>
-                            Cancel
-                          </button>
+                        ) : (
+                          m.description
+                        )}
+                      </p>
+                      {editMode === m.id && (
+                        <>
+                          <div className="buttonContainer">
+                            <button
+                              className="SaveButton"
+                              onClick={() => handleUpdate(m.id)}
+                            >
+                              Save
+                            </button>
+                            <button
+                              className="CancelButton"
+                              onClick={() => setEditMode(null)}
+                            >
+                              Cancel
+                            </button>
+                          </div>
                         </>
                       )}
                     </li>
@@ -139,9 +163,6 @@ export default function GetList() {
           </tr>
         </tbody>
       </table>
-      <div className="listForm">
-        <AddListForm />
-      </div>
     </>
   );
 }
