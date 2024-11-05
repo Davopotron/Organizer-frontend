@@ -29,17 +29,17 @@ export default function ListDetails() {
     setShowDropdown(null); // Close dropdown when entering edit mode
   };
 
-  // const handleUpdate = async (id) => {
-  //   if (newName.trim()) {
-  //     try {
-  //       await updateListItem({ id, itemName: newName });
-  //       setEditMode(null); // Exit edit mode after updating
-  //       setNewName(""); // Clear the input field
-  //     } catch (error) {
-  //       console.error("Failed to update list item:", error);
-  //     }
-  //   }
-  // };
+  const handleUpdate = async (id) => {
+    if (newName.trim()) {
+      try {
+        await updateListItem({ id, itemName: newName });
+        setEditMode(null); // Exit edit mode after updating
+        setNewName(""); // Clear the input field
+      } catch (error) {
+        console.error("Failed to update list item:", error);
+      }
+    }
+  };
 
   const handleDelete = async (listItemId) => {
     if (window.confirm("Are you sure you want to delete this list item?")) {
@@ -81,8 +81,20 @@ export default function ListDetails() {
               <ul className="list-items">
                 {myList.listItems.map((listItem) => (
                   <li key={listItem.id} className="list-item">
-                    <h2 className="list-item-name">{listItem.itemName}</h2>
-                    <button
+                    {editMode === listItem.id ? (
+                    <div className="edit-mode">
+                      <input
+                        type="text"
+                        value={newName || ""}
+                        onChange={(e) => setNewName(e.target.value)}
+                      />
+                      <button onClick={() => handleUpdate(listItem.id)}>Save</button>
+                      <button onClick={() => setEditMode(null)}>Cancel</button>
+                    </div>
+                  ) : (
+                    <div className="list-item-content">
+                      <h2 className="list-item-name">{listItem.itemName}</h2>
+                      <button
                       className="dropdown-toggle"
                       onClick={() =>
                         setShowDropdown(
@@ -102,13 +114,10 @@ export default function ListDetails() {
                         >
                           Edit
                         </button>
-                        <button
-                          onClick={() => handleDelete(listItem.id)}
-                          className="dropdown-item"
-                        >
-                          Delete
-                        </button>
-                      </div>
+                      <button onClick={() => handleDelete(listItem.id)}>Delete</button>
+                    </div>
+                  )}     
+                  </div>            
                     )}
                   </li>
                 ))}
