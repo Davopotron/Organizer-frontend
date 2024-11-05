@@ -9,6 +9,7 @@ import { useGetListItemsQuery } from "../listItems/listItemsSlice";
 
 const libraries = ["places", "marker"];
 const markerFields = [
+  "place_id",
   "name",
   "geometry",
   "formatted_address",
@@ -71,14 +72,6 @@ function MapComponent({ searchInput }) {
       service.textSearch(request, (results, status) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
           console.log("Places API results:", results);
-          /*
-          setMarkers(
-            results.slice(0, 20).map((place) => ({
-              position: place.geometry.location,
-              name: place.name,
-            }))
-          );
-          */
           const newMarkers = results.slice(0, 15).map((place) => {
             const marker = new markerLib.AdvancedMarkerElement({
               map: map,
@@ -86,15 +79,32 @@ function MapComponent({ searchInput }) {
               title: place.name,
             });
 
-            marker.addListener("click", () => {
-              setSelectedMarker({
-                position: place.geometry.location,
-                name: place.name,
-                address: place.formatted_address,
-                phone:
-                  place.formatted_phone_number || "Phone number not available",
-              });
-            });
+            //Request detailed information for each place
+            const detailsRequest = {
+              placeId: place.place_id,
+              fields: markerFields,
+            };
+
+            service.getDetails(
+              detailsRequest,
+              (placeDetails, detailsStatus) => {
+                if (
+                  detailsStatus ===
+                  window.google.maps.places.PlacesServiceStatus.OK
+                ) {
+                  marker.addListener("click", () => {
+                    setSelectedMarker({
+                      position: placeDetails.geometry.location,
+                      name: placeDetails.name,
+                      address: placeDetails.formatted_address,
+                      phone:
+                        placeDetails.formatted_phone_number ||
+                        "Phone number not available",
+                    });
+                  });
+                }
+              }
+            );
 
             return marker;
           });
@@ -140,14 +150,6 @@ function MapComponent({ searchInput }) {
         mapId: mapId,
       }}
     >
-      {/*markers.map((marker, index) => (
-        <Marker
-          key={index}
-          position={marker.position}
-          title={marker.name}
-          onClick={() => setSelectedMarker(marker)}
-        />
-      ))*/}
       {selectedMarker && (
         <InfoWindow
           position={selectedMarker.position}
