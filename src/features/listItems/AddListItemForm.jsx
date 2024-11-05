@@ -1,84 +1,47 @@
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useAddListItemsMutation } from "./listItemsSlice";
+import React, { useState } from "react";
+import { useAddListItemsMutation } from "../listItems/listItemsSlice";
 
-export default function AddListItemForm({ myListId }) {
-  //   const [listItemData, setListItemData] = useState(""); -comment
-  const [itemName, setItemName] = useState("");
-  // const [myListId, setMyListId] = useState();
+function AddListItemForm({ myListId }) {
+  const [inputValue, setInputValue] = useState("");
+  const [addListItem] = useAddListItemsMutation();
 
-  //const navigate = useNavigate(); -comment
-  const [addListItem, { isLoading: isAdding, error: addingError }] =
-    useAddListItemsMutation();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  //   const postListItem = async (event) => { -comment
-  //     event.preventDefault(); -comment
-  //     try { -comment
-  //       /*const listItem = */ await addListItem({ -comment
-  //         ...listItemData, -comment
-  //       }).unwrap(); -comment
-  //     } catch (e) { -comment
-  //       console.error(e); -comment
-  //     }
-  //   };
+    // Split the input by commas and remove any whitespace
+    const items = inputValue
+      .split(",")
+      .map((item) => item.trim())
+      .filter((item) => item);
 
-  const postList = async (event) => {
-    event.preventDefault();
-
-    // if (!myListId) {
-    //     console.error("myListId is undefined");
-    //     return;
-    // }
-    const listData = {
-      itemName,
-      myListId,
-    };
-    console.log("Posting list data:", listData);
     try {
-      const response = await addListItem(listData).unwrap();
-      console.log("List added:", response);
-    } catch (e) {
-      console.error("Failed to add list:", e);
+      // Add each item separately
+      for (const item of items) {
+        await addListItem({ myListId, itemName: item });
+      }
+      setInputValue(""); // Clear the input after click
+      alert("Items added successfully");
+    } catch (error) {
+      console.error("Failed to add items:", error);
+      alert("An error occurred while adding items");
     }
   };
 
   return (
-    <>
-      <h2>Add a List Item</h2>
-      <form onSubmit={postList}>
-        <div className="addListItem">
-          <label>
-            Item Name
-            {/* <input   -comment 
-            name="itemName"   -comment
-            value={listItemData.item}  -comment
-            onChange={(e) => -comment
-              setListItemData({ ...listItemData, item: e.target.value }) -comment
-            } */}
-            <input
-              id="itemName"
-              name="itemName"
-              value={itemName}
-              onChange={(e) => setItemName(e.target.value)}
-            />
-          </label>
-          {/* <label> 
-          ListId 
-          <input 
-            name="myListId"  
-            value={myListId}  
-            onChange={(e) => 
-              setMyListId({ ...listItemData, myListId: e.target.value })  
-            } 
-          />
-        </label> */}
-        </div>
-        <button type="submit">Confirm Save</button>
-        {isAdding && <output>Uploading list item</output>}
-        {addingError && <output>{addingError.message}</output>}
-      </form>
-    </>
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="listItemInput">Add Items (comma separated):</label>
+      <input
+        type="text"
+        id="listItemInput"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        placeholder="Enter items separated by commas"
+      />
+      <button type="submit" className="add-items-button">
+        Add Items
+      </button>
+    </form>
   );
 }
 
-// listItemData. <---this was in the ListId label in the value={} next to myListId
+export default AddListItemForm;
