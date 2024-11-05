@@ -9,7 +9,7 @@ import { selectToken } from "../auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import AddListForm from "./AddMyListForm";
 import SearchBar from "./Searchbar";
-
+import "../../css/MyLists.css";
 // Function that renders a list of all lists
 export default function GetList() {
   const token = useSelector(selectToken);
@@ -21,21 +21,17 @@ export default function GetList() {
   const [newName, setNewName] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
-
   const [updateMyList] = useUpdateMyListMutation();
-
+  const [dropdownOpen, setDropDownOpen] = useState(null);
   if (isLoading) {
     return <h2>Loading List...</h2>;
   }
-
   if (error) {
     return <p>{error.message}</p>;
   }
-
   if (!MyLists.length) {
     return <p>There are no lists.</p>;
   }
-
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this list?")) {
       try {
@@ -45,13 +41,12 @@ export default function GetList() {
       }
     }
   };
-
   const handleEditClick = (id, currentName, currentDescription) => {
     setEditMode(id);
     setNewName(currentName);
     setNewDescription(currentDescription);
+    setDropDownOpen(null);
   };
-
   const handleUpdate = async (id) => {
     if (newName.trim()) {
       await updateMyList({ id, name: newName });
@@ -67,75 +62,107 @@ export default function GetList() {
   const handleSeeDetails = (id) => {
     setSelectedMyListId(id);
     navigate(`/MyList/${id}`);
+    setDropDownOpen(null);
   };
-
   const handleFilteredResults = (results) => {
     setFilteredResults(results);
+  };
+  const dropdown = (id) => {
+    setDropDownOpen(dropdownOpen === id ? null : id);
   };
 
   const listsToRender = filteredResults.length > 0 ? filteredResults : MyLists;
 
   return (
     <>
+      <div className="listForm">
+        <AddListForm />
+      </div>
       <table>
         <tbody>
           <tr>
-            <th scope="col">
-              <h1> My Lists</h1>
+            <th scope="col" className="listContainer">
+              <h1 className="myListsName"> My Lists</h1>
               <SearchBar names={MyLists} onSearch={handleFilteredResults} />
-              {listsToRender.length > 0 ? (
-                listsToRender.map((m) => (
-                  <li key={m.id} className="mainList">
-                    {editMode === m.id ? (
-                      <>
-                        <input
-                          type="text"
-                          value={newName}
-                          onChange={(e) => setNewName(e.target.value)}
-                        />
-                        <input
-                          type="text"
-                          value={newDescription}
-                          onChange={(e) => setNewDescription(e.target.value)}
-                        />
-                        <button onClick={() => handleUpdate(m.id)}>Save</button>
-                        <button onClick={() => setEditMode(null)}>
-                          Cancel
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <h2>
-                          <p>{m.name}</p>
-                          <p>{m.description}</p>
+              <ul className="listItems">
+                {listsToRender.length > 0 &&
+                  listsToRender.map((m) => (
+                    <li key={m.id} className="mainList">
+                      <div className="listHeader">
+                        <h2 className="listName">
+                          {editMode === m.id ? (
+                            <input
+                              type="text"
+                              value={newName}
+                              onChange={(e) => setNewName(e.target.value)}
+                              className="editField"
+                            />
+                          ) : (
+                            m.name
+                          )}
                         </h2>
-                        <button onClick={() => handleSeeDetails(m.id)}>
-                          See Details
-                        </button>
-                        <button
-                          onClick={() =>
-                            handleEditClick(m.id, m.name, m.description)
-                          }
-                        >
-                          Edit
-                        </button>
-                        <button onClick={() => handleDelete(m.id)}>
-                          Delete
-                        </button>
-                      </>
-                    )}
-                  </li>
-                ))
-              ) : (
-                <p> Use the search bar to find lists</p>
-              )}
+                        <div className="dropdownContainer">
+                          <button
+                            className="dotsButton"
+                            onClick={() => dropdown(m.id)}
+                          >
+                            ⋮
+                          </button>
+                          {dropdownOpen === m.id && (
+                            <div className="dropdownMenu">
+                              <button onClick={() => handleSeeDetails(m.id)}>
+                                See Details
+                              </button>
+                              <button
+                                onClick={() =>
+                                  handleEditClick(m.id, m.name, m.description)
+                                }
+                              >
+                                Edit
+                              </button>
+                              <button onClick={() => handleDelete(m.id)}>
+                                Delete
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <p className="listDescription">
+                        {editMode === m.id ? (
+                          <textarea
+                            value={newDescription}
+                            onChange={(e) => setNewDescription(e.target.value)}
+                            className="editField"
+                          />
+                        ) : (
+                          m.description
+                        )}
+                      </p>
+                      {editMode === m.id && (
+                        <>
+                          <div className="buttonContainer">
+                            <button
+                              className="SaveButton"
+                              onClick={() => handleUpdate(m.id)}
+                            >
+                              Save
+                            </button>
+                            <button
+                              className="CancelButton"
+                              onClick={() => setEditMode(null)}
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </>
+                      )}
+                    </li>
+                  ))}
+              </ul>
             </th>
           </tr>
         </tbody>
       </table>
-      <div className="listForm">
-        <AddListForm />
-      </div>
     </>
   );
 }

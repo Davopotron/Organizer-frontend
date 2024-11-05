@@ -1,22 +1,26 @@
+import "../css/HomePage.css";
+
 function HomePage() {
   return (
     <>
-      <h1>Organizer</h1>
-      <p>
+    <div className="container">
+      <h1 className="htitle">Organizer</h1>
+      <p className="hpara">
         Introducing Recipe List, the ultimate app for organizing all your
         favorite recipes in one place! With Recipe List, you can easily create a
         personalized collection of recipes and view a detailed list of
         ingredients with just a tap.
       </p>
-      <p>
+      <p className="hpara">
         Simply add the names of your recipes to the list, and whenever you are
         ready, click on any recipe name to add all the ingredients you will
         need.
       </p>
-      <p>
-        Perfect for meal planning, grocery shopping, or cooking up something
+      <p className="hpara">
+        Perfect for meal planning/prepping, grocery shopping, or cooking up something
         new, Recipe List makes finding and preparing delicious dishes a breeze.
       </p>
+      </div>
     </>
   );
 }
