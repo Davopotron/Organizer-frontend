@@ -20,7 +20,7 @@ ul {
   border: 2px solid rgb(82, 82, 82);
   position: relative;
   border-radius: 15px;
-  height: 250px;
+  height: 100px;
   width: 250px;
   display: flex;
   flex-direction: column;

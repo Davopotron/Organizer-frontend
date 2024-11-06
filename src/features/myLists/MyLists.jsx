@@ -11,7 +11,11 @@ import AddListForm from "./AddMyListForm";
 import SearchBar from "./Searchbar";
 import "../../css/MyLists.css";
 // Function that renders a list of all lists
-export default function GetList({ className, showAddForm = true }) {
+export default function GetList({
+  className,
+  showAddForm = true,
+  showDescription = true,
+}) {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
   const { data: MyLists = [], isLoading, error } = useGetMyListsQuery();
@@ -126,15 +130,18 @@ export default function GetList({ className, showAddForm = true }) {
                         </div>
                       </div>
                       <p className="listDescription">
-                        {editMode === m.id ? (
-                          <textarea
-                            value={newDescription}
-                            onChange={(e) => setNewDescription(e.target.value)}
-                            className="editField"
-                          />
-                        ) : (
-                          m.description
-                        )}
+                        {showDescription &&
+                          (editMode === m.id ? (
+                            <textarea
+                              value={newDescription}
+                              onChange={(e) =>
+                                setNewDescription(e.target.value)
+                              }
+                              className="editField"
+                            />
+                          ) : (
+                            m.description
+                          ))}
                       </p>
                       {editMode === m.id && (
                         <>
