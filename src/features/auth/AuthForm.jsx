@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLoginMutation, useRegisterMutation } from "./authSlice";
 import { useNavigate } from "react-router-dom";
+import "../../css/auth.css";
 
 /** AuthForm allows a user to either login or register for an account. */
 function AuthForm() {
@@ -23,7 +24,7 @@ function AuthForm() {
 
     const authMethod = isLogin ? login : register;
     const credentials = { username, password };
-    console.log(isLogin)
+    console.log(isLogin);
 
     try {
       await authMethod(credentials).unwrap();
@@ -35,32 +36,48 @@ function AuthForm() {
 
   return (
     <>
-      <h1>{authAction}</h1>
-      <form onSubmit={attemptAuth}>
-        <label>
-          Username
-          <input
-            name="username"
-            value={username}
-            onChange={(evt) => setUsername(evt.target.value)}
-          />
-        </label>
-        <label>
-          Password
-          <input
-            name="password"
-            type="password"
-            value={password}
-            onChange={(evt) => setPassword(evt.target.value)}
-          />
-        </label>
-        <button>{authAction}</button>
-      </form>
-      <a href="#" onClick={() => setIsLogin(!isLogin)}>
-        {altCopy}
-      </a>
-      {isLogin && loginError && <p role="alert">{loginError.message}</p>}
-      {!isLogin && registerError && <p role="alert">{registerError.message}</p>}
+      <div className="authContainer">
+        <div className="auth">
+          <h1>{authAction}</h1>
+          <form onSubmit={attemptAuth}>
+            <div className="usernameContainer">
+              <label className="username">
+                Username
+                <input
+                  name="username"
+                  value={username}
+                  className="usernameText"
+                  onChange={(evt) => setUsername(evt.target.value)}
+                />
+              </label>
+            </div>
+            <div className="passwordContainer">
+              <label className="password">
+                Password
+                <input
+                  name="password"
+                  type="password"
+                  className="passwordText"
+                  value={password}
+                  onChange={(evt) => setPassword(evt.target.value)}
+                />
+              </label>
+            </div>
+            <button className="loginButton">{authAction}</button>
+          </form>
+          <a
+            href="#"
+            className="loginNote"
+            onClick={() => setIsLogin(!isLogin)}
+          >
+            {altCopy}
+          </a>
+          {isLogin && loginError && <p role="alert">{loginError.message}</p>}
+          {!isLogin && registerError && (
+            <p role="alert">{registerError.message}</p>
+          )}
+        </div>
+      </div>
     </>
   );
 }

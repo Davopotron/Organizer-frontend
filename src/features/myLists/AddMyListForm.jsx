@@ -23,6 +23,8 @@ export default function AddListForm() {
     try {
       const response = await addList(listData).unwrap();
       console.log("List added:", response);
+      setName("");
+      setDescription("");
     } catch (e) {
       console.error("Failed to add list:", e);
     }
