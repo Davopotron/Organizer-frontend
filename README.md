@@ -1,25 +1,28 @@
 # Organizer-Frontend
 
 ## Overview:
-Organize and tackle your todo's in life with Organizer, which will show you where all your needs are for your convenience! This app will find the location of where your organized listed items are, so you can plan out exactly where to go to accomplish your todo's efficiently.
+Organize and tackle your todos in life with Organizer, which will show you where all your needs are for your convenience! This app will find the location of where your organized listed items are, so you can plan out exactly where to go to accomplish your todos efficiently.
 
 
 # Organizer
 
+## Organizer-Frontend
+1. Have a landing homepage where clients can learn about the app and navigate website (once they're registered and logged-in)
+2. Register/login to use app's features
+3. Create organized, helpful lists with specifying descriptions to accomplish needs/todos to a "My List" page
+4. Use "Near Me" map feature to locate list items
+
 
 ## MVP:
-- Can create an account in order to:
-- Users can create organized, helpful lists to accomplish needs/todo's to a "My List" page
-- Users can edit their "My Lists'" names as needed
-- Users can delete their lists
-- Users can add/remove items from their list
-- Users can edit their list items
-- Users can use the "Near Me"'s search bar to access lists, so that that list's items may appear on the map, at the location(s) where those items can be found
-
-## Technical Challenges:
-- Third party integration
-- Store rendering on "Near Me" map feature, based on list items
-
+- Can create an account so that:
+  - Users can create lists in the "My Lists" page
+  - Users can edit their list names as needed
+  - Users can delete their lists 
+  - Users can add/edit descriptions to their lists
+  - Users can go into a specific list and add comma-delimited items
+  - Users can edit their list items from those lists
+  - Users can remove items from a specific list
+  - Users can use the "Near Me"'s search bar to access lists, so that that list's items may appear on the map, at the location(s) where those items can be found with pertinent info
 
 ## Stretch Goals:
 - List sharing among users
@@ -29,9 +32,21 @@ Organize and tackle your todo's in life with Organizer, which will show you wher
 - Follow up reminders, either in-app or through some third-party service, where neglected lists send follow up reminders
 - Integration with google calendar
 - Chat functionality to discuss lists among users
-- Social aspect where users can have add friends and view their friends’ past lists for ideas
+- Social aspect where users can add friends and view their friends’ past lists for ideas
 
 
+## Technical Challenges:
+- Third party and API integration for frontend features
+- Store(s) rendering on "Near Me" map feature, based on list items
+- Storing lists and their items for users
+- Having cohesive design and function amongst features of app
+- Creating intuitive UI 
+- Real-time updating
+
+## Suggested Stack:
+- React
+- Redux Toolkit
+- Babelrc
 
 
 
