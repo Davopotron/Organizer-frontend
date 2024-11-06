@@ -1,0 +1,47 @@
+.nameContainer {
+  display: inline-block;
+  margin-bottom: 1em;
+}
+
+.descriptionContainer {
+  display: inline-block;
+  margin-bottom: 1em;
+}
+
+.name {
+  font-weight: bold;
+  margin-right: 2em;
+}
+
+.description {
+  font-weight: bold;
+}
+
+.listNameText {
+  margin-left: 1em;
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: 1px 1px 1px 1px;
+}
+
+.listDescriptionText {
+  margin-left: 1em;
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: 1px 1px 1px 1px;
+  margin-right: 1em;
+}
+
+.AddListButton {
+  background-color: #faf3e0;
+  border-radius: 1em;
+  border: 1.5px solid gray;
+  font-size: 0.9em;
+  margin: 0.75em 0.2em 0.5em 0.7em;
+  padding: 0.2em 0.3em 0.2em 0.3em;
+  cursor: pointer;
+}
+
+.AddListButton:hover {
+  box-shadow: 1px 1px 1px 1px;
+}

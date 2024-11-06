@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../../css/MyLists.css";
 
 function SearchBar({ names = [], onSearch }) {
   const [filter, setFilter] = useState("");
@@ -29,9 +30,10 @@ function SearchBar({ names = [], onSearch }) {
           type="text"
           placeholder="Search..."
           value={filter}
+          className="searchBar"
           onChange={handleInputChange} // Call search on every input change
         />
-        <button type="button" onClick={handleSearch}>
+        <button className="searchButton" type="button" onClick={handleSearch}>
           Search
         </button>
       </form>
