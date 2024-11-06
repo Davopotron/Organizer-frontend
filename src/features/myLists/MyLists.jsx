@@ -11,7 +11,7 @@ import AddListForm from "./AddMyListForm";
 import SearchBar from "./Searchbar";
 import "../../css/MyLists.css";
 // Function that renders a list of all lists
-export default function GetList() {
+export default function GetList({ className, showAddForm = true }) {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
   const { data: MyLists = [], isLoading, error } = useGetMyListsQuery();
@@ -32,7 +32,6 @@ export default function GetList() {
   if (!MyLists.length) {
     return <p>There are no lists.</p>;
   }
-
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this list?")) {
       try {
@@ -49,10 +48,14 @@ export default function GetList() {
     setDropDownOpen(null);
   };
   const handleUpdate = async (id) => {
-    if (newName.trim() || newDescription.trim()) {
-      await updateMyList({ id, name: newName, description: newDescription });
+    if (newName.trim()) {
+      await updateMyList({ id, name: newName });
       setEditMode(null);
       setNewName("");
+    }
+    if (newDescription.trim()) {
+      await updateMyList({ id, description: newDescription });
+      setEditMode(null);
       setNewDescription("");
     }
   };
@@ -72,13 +75,11 @@ export default function GetList() {
 
   return (
     <>
-      <div className="listForm">
-        <AddListForm />
-      </div>
+      <div className="listForm">{showAddForm && <AddListForm />}</div>
       <table>
         <tbody>
           <tr>
-            <th scope="col" className="listContainer">
+            <th scope="col" className={`${className} listContainer`}>
               <h1 className="myListsName"> My Lists</h1>
               <SearchBar names={MyLists} onSearch={handleFilteredResults} />
               <ul className="listItems">
