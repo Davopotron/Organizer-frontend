@@ -1,7 +1,7 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../features/auth/authSlice";
-import "./navbar.css";
+import {NavLink, useNavigate} from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux';
+import {logout} from '../features/auth/authSlice';
+import './navbar.css';
 
 function Navbar() {
   const navigate = useNavigate();
@@ -11,35 +11,43 @@ function Navbar() {
 
   const attemptLogout = async () => {
     await dispatch(logout());
-    navigate("/");
+    navigate('/');
   };
 
   return (
     <nav>
       <menu>
+        <div class='logo'>
+          <span class='logo'>
+            <a href='#'>TasteTrack</a>
+          </span>
+        </div>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to='/'>Home</NavLink>
         </li>
         <li>
-          <NavLink to="/MyList">My Lists</NavLink>
+          <NavLink to='/MyList'>My Lists</NavLink>
         </li>
         <li>
-          <NavLink to="/nearMe">Near Me</NavLink>
+          <NavLink to='/nearMe'>Near Me</NavLink>
         </li>
         <li>
-          <NavLink to="/shopping">Shopping</NavLink>
+          <NavLink to='/shopping'>Shopping</NavLink>
         </li>
         {token ? (
           <>
             <li>
-              <a href="#" onClick={attemptLogout}>
+              <a
+                href='#'
+                onClick={attemptLogout}
+              >
                 Log Out
               </a>
             </li>
           </>
         ) : (
           <li>
-            <NavLink to="/users/login">Log In</NavLink>
+            <NavLink to='/users/login'>Log In</NavLink>
           </li>
         )}
       </menu>

@@ -1,11 +1,22 @@
+import '../css/footer.css';
 //import React from "react";
 
 function Footer() {
   return (
     <>
       <div>
-        <p>Email: totallyReal@bar.com</p>
-        <p>GitHub: https://github.com/alexissushko1/Organizer-frontend</p>
+        <h4>
+          <p>Join The #TasteTrack</p>
+          <p>Sign up and enjoy starting your organization on point!</p>
+          <div className='footer'>
+            <span className='logo'>
+              <a href='#'>TasteTrack</a>
+            </span>
+            <div>
+              <p>Contact: totallyreal@food.com</p>
+            </div>
+          </div>
+        </h4>
       </div>
     </>
   );
