@@ -1,4 +1,4 @@
-# Organizer-frontend
+# Organizer-Frontend
 
 ## Overview:
 Organize and tackle your todo's in life with Organizer, which will show you where all your needs are for your convenience! This app will find the location of where your organized listed items are, so you can plan out exactly where to go to accomplish your todo's efficiently.
@@ -28,7 +28,7 @@ Organize and tackle your todo's in life with Organizer, which will show you wher
 ## Tentative Stretch Goals:
 - Follow up reminders, either in-app or through some third-party service, where neglected lists send follow up reminders
 - Integration with google calendar
-- Chat functionality to discuss plans
+- Chat functionality to discuss lists among users
 - Social aspect where users can have add friends and view their friends’ past lists for ideas
 
 
