@@ -26,20 +26,20 @@ export default function ListDetails() {
   const handleEdit = (id, currentName) => {
     setEditMode(id);
     setNewName(currentName);
-    setShowDropdown(null); // Close dropdown when entering edit mode
+    setShowDropdown(null); // Close dropdown if in edit mode
   };
 
-  // const handleUpdate = async (id) => {
-  //   if (newName.trim()) {
-  //     try {
-  //       await updateListItem({ id, itemName: newName });
-  //       setEditMode(null); // Exit edit mode after updating
-  //       setNewName(""); // Clear the input field
-  //     } catch (error) {
-  //       console.error("Failed to update list item:", error);
-  //     }
-  //   }
-  // };
+  const handleUpdate = async (id) => {
+    if (newName.trim()) {
+      try {
+        await updateListItem({ id, itemName: newName });
+        setEditMode(null); // Exit edit mode after updating
+        setNewName(""); // Clear the input field
+      } catch (error) {
+        console.error("Failed to update list item:", error);
+      }
+    }
+  };
 
   const handleDelete = async (listItemId) => {
     if (window.confirm("Are you sure you want to delete this list item?")) {
@@ -66,7 +66,7 @@ export default function ListDetails() {
                 Add List Item
               </button>
               {showAddForm && (
-                <div className="add-form-overlay">
+                <div>
                   <div className="add-form-container">
                     <button
                       className="close-add-form-button"
@@ -81,33 +81,61 @@ export default function ListDetails() {
               <ul className="list-items">
                 {myList.listItems.map((listItem) => (
                   <li key={listItem.id} className="list-item">
-                    <h2 className="list-item-name">{listItem.itemName}</h2>
-                    <button
-                      className="dropdown-toggle"
-                      onClick={() =>
-                        setShowDropdown(
-                          showDropdown === listItem.id ? null : listItem.id
-                        )
-                      }
-                    >
-                      ⋮
-                    </button>
-                    {showDropdown === listItem.id && (
-                      <div>
+                    {editMode === listItem.id ? (
+                      <div className="edit-mode">
+                        <input
+                          type="text"
+                          value={newName || ""}
+                          onChange={(e) => setNewName(e.target.value)}
+                        />
                         <button
-                          onClick={() =>
-                            handleEdit(listItem.id, listItem.itemName)
-                          }
-                          className="dropdown-item"
+                          onClick={() => handleUpdate(listItem.id)}
+                          className="editbuttons"
                         >
-                          Edit
+                          Save
                         </button>
                         <button
-                          onClick={() => handleDelete(listItem.id)}
-                          className="dropdown-item"
+                          onClick={() => setEditMode(null)}
+                          className="editbuttons"
                         >
-                          Delete
+                          Cancel
                         </button>
+                      </div>
+                    ) : (
+                      <div className="list-item-content">
+                        <h2 className="list-item-name">{listItem.itemName}</h2>
+                        <div className="dropdownContainer">
+                          <button
+                            className="dropdown-toggle"
+                            onClick={() =>
+                              setShowDropdown(
+                                showDropdown === listItem.id
+                                  ? null
+                                  : listItem.id
+                              )
+                            }
+                          >
+                            ⋮
+                          </button>
+                          {showDropdown === listItem.id && (
+                            <div className="dropdownMenu">
+                              <button
+                                onClick={() =>
+                                  handleEdit(listItem.id, listItem.itemName)
+                                }
+                                className="dropdown-item"
+                              >
+                                Edit
+                              </button>
+                              <button
+                                onClick={() => handleDelete(listItem.id)}
+                                className="dropdown-item"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     )}
                   </li>
