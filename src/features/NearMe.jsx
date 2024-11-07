@@ -36,10 +36,12 @@ import MyLists from "../features/myLists/MyLists";
 import MapComponent from "./map/GoogleMap";
 import "../css/NearMe.css";
 import { useState } from "react";
+import { useGetListItemsQuery } from "./listItems/listItemsSlice";
 const GOOGLE_API_KEY = "AIzaSyAvWbZNQYen7dVRqVFPMvphhJY2FRYdP1E";
 
 function NearMe() {
   const [searchInput, setSearchInput] = useState("");
+  const { data: fetchListItems = [], isLoading } = useGetListItemsQuery();
 
   return (
     <>
@@ -51,6 +53,8 @@ function NearMe() {
             className="nearMeMyLists"
             showAddForm={false}
             showDescription={false}
+            isNearMe={true}
+            fetchListItems={fetchListItems}
           />
         </div>
         <div className="map">

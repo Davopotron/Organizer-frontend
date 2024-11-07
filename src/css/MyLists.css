@@ -20,7 +20,7 @@ ul {
   border: 2px solid rgb(82, 82, 82);
   position: relative;
   border-radius: 15px;
-  height: 100px;
+  height: 50px;
   width: 250px;
   display: flex;
   flex-direction: column;
@@ -28,6 +28,7 @@ ul {
   background-color: #d2c6b6;
   margin: 2em;
   padding-bottom: 1em;
+  margin: 1px 0 1px 0;
 }
 
 .mainList:hover {
@@ -46,6 +47,8 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 1em;
+  border-radius: 1em;
 }
 
 .dotsButton {
@@ -90,6 +93,12 @@ ul {
   margin-top: 2em;
   text-align: center;
   flex: 2;
+}
+
+.nearMeMyLists .listName {
+  text-align: center;
+  font-size: 1em;
+  margin-top: 0.8em;
 }
 
 .dropdownContainer {
@@ -140,12 +149,16 @@ ul {
   background-color: #d2c6b6;
 }
 
+.nearMeMyLists .listForm {
+  background-color: white;
+}
+
 .listDescription {
   margin: 1em 1em 1em 1em;
 }
 
 .listContainer {
-  background-color: #faf3e0;
+  background-color: white;
   width: 100%;
 }
 
@@ -209,4 +222,8 @@ textarea.editField {
 .searchButton:hover {
   cursor: pointer;
   box-shadow: 1px 1px 1px 1px rgb(197, 196, 196);
+}
+
+.nearMe {
+  background-color: white;
 }
