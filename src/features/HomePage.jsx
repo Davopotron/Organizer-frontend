@@ -1,13 +1,14 @@
 import '../css/HomePage.css';
+import { NavLink } from 'react-router-dom';
 
 function HomePage() {
   return (
     <>
       <div className='container'>
-        <h1 className='htitle'>TasteTrack</h1>
+        <h1 className='htitle'>TasteTracker</h1>
         <p className='hpara'>
-          Introducing #TasteTrack, the ultimate app for organizing all your
-          favorite recipes in one place! With Recipe List, you can easily create
+          Introducing #TasteTracker, the ultimate app for organizing all your
+          favorite recipes in one place! With TasteTracker, you can easily create
           a personalized collection of recipes and view a detailed list of
           ingredients with just a tap.
         </p>
@@ -18,9 +19,13 @@ function HomePage() {
         </p>
         <p className='hpara'>
           Perfect for meal planning/prepping, grocery shopping, or cooking up
-          something new, Recipe List makes finding and preparing delicious
+          something new, TasteTracker makes finding and preparing delicious
           dishes a breeze.
         </p>
+        <p className='hpara'>
+        Sign up <NavLink className="here-SU" to="/users/login">here</NavLink> today so
+        you can start easily locating all of your ingredients in one convenient place!
+      </p>
       </div>
     </>
   );
