@@ -8,11 +8,6 @@ const ListItemsApi = api.injectEndpoints({
       transformResponse: (response) => response,
       providesTags: ["listItem", "MyList"],
     }),
-    // getListItems: build.query({
-    //   query: (id) => "/ListItems/" + id,
-    //   transformResponse: (response) => response.ListItems,
-    //   providesTags: ["ListItems"],
-    // }),
     updateListItems: build.mutation({
       query: ({ id, ...listItem }) => ({
         url: "/listItems/" + id,

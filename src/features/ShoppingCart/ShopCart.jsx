@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { selectToken } from "../auth/authSlice";
+import { useSelector } from "react-redux";
+import "../../css/Shopping.css";
 
 const ShoppingCart = () => {
   const [items, setItems] = useState([]); // Store fetched items
   const [selectedItems, setSelectedItems] = useState([]); // Store selected item IDs
   const [total, setTotal] = useState(0); // Store cart total
+  const token = useSelector(selectToken);
 
   // Fetch items from the backend
   useEffect(() => {

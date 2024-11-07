@@ -1,4 +1,4 @@
-.nearMe {
+.shoppingPage {
   display: flex;
 }
 
@@ -30,4 +30,88 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   justify-self: center;
   margin-bottom: 20px;
+}
+
+/* MY LISTsection */
+
+.listContainer {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 0 auto;
+  font-family: "Arial", sans-serif;
+  border: solid slategray;
+}
+
+/* Title styling */
+.myListsTitle {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* main list items */
+.lists {
+  list-style-type: none;
+  padding: 0;
+}
+
+.listItem {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.listHeader {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Styling for the items in the selected list */
+.listItems {
+  list-style-type: none;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+}
+
+.item input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Shopping.css */
+
+.details-layout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-details {
+  width: 60%; /* Adjust this value as needed */
+  padding: 20px;
+}
+
+.shopcart-container {
+  width: 35%; /* Adjust this value as needed */
+  padding: 20px;
+  position: sticky;
+  top: 0;
+}
+
+.shopcart-container .shopCart {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
 }

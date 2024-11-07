@@ -1,4 +1,4 @@
-import MyLists from "../features/myLists/MyLists";
+import MyListsShop from "../features/ShoppingCart/MyListsShop";
 import MapComponent from "./map/GoogleMap";
 import "../css/Shopping.css";
 import ShoppingCart from "./ShoppingCart/ShopCart";
@@ -6,12 +6,12 @@ import ShoppingCart from "./ShoppingCart/ShopCart";
 function Shopping() {
   return (
     <>
-      <div className="nearMe">
+      <div className="shoppingPage">
         <div className="myLists">
-          <MyLists />
+          <MyListsShop />
         </div>
         <div className="rightColumn">
-          <div classname="shopcart">
+          <div className="shopcart">
             <ShoppingCart />
           </div>
           <div className="map">
