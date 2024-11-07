@@ -5,7 +5,7 @@ const ShoppingCart = () => {
   const [selectedItems, setSelectedItems] = useState([]); // Store selected item IDs
   const [total, setTotal] = useState(0); // Store cart total
 
-  // Fetch items from the backend when the component mounts
+  // Fetch items from the backend
   useEffect(() => {
     const fetchItems = async () => {
       try {
@@ -39,23 +39,15 @@ const ShoppingCart = () => {
   // Calculate total when selectedItems changes
   useEffect(() => {
     const calculateTotal = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/shopping/cart", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ selectedItems }),
-        });
-        const data = await response.json();
-        setTotal(data.total);
-      } catch (error) {
-        console.error("Error calculating total:", error);
-      }
+      const newTotal = selectedItems.reduce((sum, itemId) => {
+        const item = items.find((i) => i.id === itemId);
+        return item && item.inStock ? sum + item.price : sum;
+      }, 0);
+      setTotal(newTotal);
     };
+
     calculateTotal();
-  }, [selectedItems]);
+  }, [selectedItems, items]);
 
   return (
     <div>
