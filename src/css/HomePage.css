@@ -1,54 +1,53 @@
 /* HomePage.css */
 
-/* body {
+body {
     margin: 0;
-    font-family: 'Arial', sans-serif; 
     background-color: #f8f9fa; 
     color: #333; 
-  } */
+  }
 
   .homepage-background {
-    background-color: #004AAD; /* Blue background */
-    color: #333333; /* White text for contrast */
-    width: 100vw; /* Full width of the viewport */
-  min-height: 100vh; /* Full height of the viewport */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-x: hidden; /* Prevent horizontal scroll */
-  margin: 0; /* Remove default margin */
+    background-color: #004AAD; 
+    color: #333333; 
+    width: 100%;
+    min-height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    box-sizing: border-box;
+    overflow-x: hidden; 
+    margin: 0; 
   }
 
-  body {
+  /* body {
     background-color: white; 
     color: #333333; 
-  }
+  } */
   
   .htitle {
     font-family: Verdana, sans-serif;
     text-align: center;
-    font-size: 2.5em; /* Larger font size for the title */
-    color: #2c3e50; /* Dark blue color for a sophisticated look */
+    font-size: 2.5em; 
+    color: #2c3e50; 
     margin-top: 20px;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
   }
   
   .hpara {
-    max-width: 800px; /* Limit width for better readability */
-    margin: 10px auto; /* Center align paragraphs with auto margins */
-    padding: 10px 20px; /* Add padding for breathing room */
-    line-height: 1.6; /* Increase line height for better legibility */
-    font-size: 1.1em; /* Slightly larger font for paragraphs */
+    max-width: 800px; 
+    margin: 10px auto; 
+    padding: 10px 20px; 
+    line-height: 1.6; 
+    font-size: 1.1em; 
     font-family: Tahoma, sans-serif;
     /* background-color:#FAF3E0; */
   }
 
   .container {
-    padding: 20px; /* Add padding around the content */
+    padding: 20px; 
       background-color: #FAF3E0;
-      border-radius: 16px; /* Rounded corners for a softer look */
+      border-radius: 16px; 
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       max-width: 90%;
       margin: 10px auto;
