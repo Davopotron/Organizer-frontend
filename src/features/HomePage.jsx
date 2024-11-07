@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 function HomePage() {
   return (
     <>
+    <div className="homepage-background">
       <div className='container'>
         <h1 className='htitle'>TasteTracker</h1>
         <p className='hpara'>
@@ -26,6 +27,7 @@ function HomePage() {
         Sign up <NavLink className="here-SU" to="/users/login">here</NavLink> today so
         you can start easily locating all of your ingredients in one convenient place!
       </p>
+      </div>
       </div>
     </>
   );

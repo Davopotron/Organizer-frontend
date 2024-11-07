@@ -7,6 +7,13 @@
     color: #333; 
   } */
 
+  .homepage-background {
+    background-color: #004AAD; /* Blue background */
+    color: #333333; /* White text for contrast */
+    min-height: 100vh; /* Ensures it covers the full viewport height */
+    padding: 20px;
+  }
+
   body {
     background-color: white; 
     color: #333333; 
@@ -39,3 +46,15 @@
       max-width: 90%;
       margin: 10px auto;
   }
+
+  .here-SU {
+    color:skyblue;
+    text-decoration: none;
+    transition: color 0.3s; transform: 0.3s;
+    font-family: Tahoma, sans-serif;
+  }
+
+  .here-SU:hover {
+    color: #2980b9; 
+    transform: translateX(3px);
+}
