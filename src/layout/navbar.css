@@ -49,6 +49,7 @@ menu {
 .navbar-left-logo {
   color: rgb(255, 255, 255);
   list-style: none;
+  text-decoration: none;
 }
 .navbar a:hover {
   text-decoration: none; /* Prevent underline on hover */

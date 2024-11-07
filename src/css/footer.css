@@ -1,36 +1,126 @@
-html {
-  height: 100%;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-
-  box-sizing: border-box;
-  font-family: 'Poppins, sans-serif';
-}
-
-:root {
-  --body-color: #e4e9f7;
-  --nav-color: #142247;
-  --side-nav: #010718;
-  --text-color: #fff;
-  --search-bar: #f2f2f2;
-  --search-text: #010718;
-}
-
-footer {
-  margin-top: auto;
-}
-.footer {
-  position: sticky;
-  bottom: 0;
-  left: 0;
+.footer-container {
+  background-color: #004aad;
+  padding: 40px 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  padding: 20px 10%;
-  background: #004aad;
+  color: white;
+  font-family: tahoma, sans-serif;
+}
+
+.footer-content {
+  text-align: center;
+  color: white;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+h4 {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.email-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.input-email,
+.input-message {
+  padding: 12px;
+  margin: 8px 0;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  background-color: #f2f2f2;
+}
+
+.input-message {
+  background-color: #f2f2f2;
+  height: 120px;
+  resize: vertical;
+  font-family: tahoma, sans-serif;
+}
+
+.submit-button {
+  background-color: #0064c9;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #004b8d;
+}
+
+.footer-links {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
-  z-index: 100;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Company Logo and Contact */
+.footer-links .logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.footer-links .logo a:hover {
+  color: #b3d4fc;
+}
+
+.footer-links p {
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .footer-content {
+    padding: 20px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .input-email,
+  .input-message {
+    max-width: 100%;
+  }
 }
