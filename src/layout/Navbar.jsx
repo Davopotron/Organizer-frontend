@@ -15,23 +15,28 @@ function Navbar() {
   };
 
   return (
-    <nav>
-      <menu>
-        <li>
+    <nav className="navbar">
+      <div className="navbar-left">
+        <li className="navbar-left-logo">
+          <NavLink to="/">TasteTracker</NavLink>
+        </li>
+      </div>
+      <menu className="navbar-right">
+        <li className="navbar-line">
           <NavLink to="/">Home</NavLink>
         </li>
-        <li>
+        <li className="navbar-line">
           <NavLink to="/MyList">My Lists</NavLink>
         </li>
-        <li>
+        <li className="navbar-line">
           <NavLink to="/nearMe">Near Me</NavLink>
         </li>
-        <li>
+        <li className="navbar-line">
           <NavLink to="/shopping">Shopping</NavLink>
         </li>
         {token ? (
           <>
-            <li>
+            <li className="navbar-line">
               <a href="#" onClick={attemptLogout}>
                 Log Out
               </a>
