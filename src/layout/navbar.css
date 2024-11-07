@@ -1,23 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-* {
-  font-family: 'Poppins';
-}
-
-div .logo {
-  font-size: larger;
-}
-
-header {
-  padding: 15px;
-
-  font-size: 1.1rem;
-}
-nav {
+.navbar {
+  padding: 10px 20px;
   width: 100%;
-  background-color: rgb(174, 214, 255);
+  background-color: rgb(30, 101, 173);
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  color: var(--text-color); /* Sets link color to white as defined in :root */
+  text-decoration: none;
+  font-family: Tahoma, sans-serif;
+}
+
+.navbar a:visited {
+  color: var(--text-color); /* Ensures visited links are also white */
+  text-decoration: none;
 }
 
 menu {
@@ -27,15 +23,33 @@ menu {
   gap: 10px;
 }
 
-li,
-a {
+.navbar-line {
   list-style: none;
-  text-decoration: none;
-  color: rgb(0, 0, 0);
 }
 
-.navlink:hover {
-  cursor: pointer;
-  scale: 1.1;
-  color: #0e17b6; /* Darker color on hover */
+.navbar-line a {
+  list-style: none;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.navbar-left {
+  color: white;
+  font-size: 1.5rem; /* Increase the font size */
+  font-weight: bold; /* Make the text bold */
+  color: var(--text-color); /* Ensure the text color is white */
+  text-decoration: none; /* Remove underline */
+  font-family: Tahoma, sans-serif;
+}
+
+.navbar {
+  color: white;
+}
+
+.navbar-left-logo {
+  color: rgb(255, 255, 255);
+  list-style: none;
+}
+.navbar a:hover {
+  text-decoration: none; /* Prevent underline on hover */
 }

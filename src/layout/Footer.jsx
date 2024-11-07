@@ -10,7 +10,7 @@ function Footer() {
           <p>Sign up and enjoy starting your organization on point!</p>
           <div className='footer'>
             <span className='logo'>
-              <a href='#'>TasteTrack</a>
+              <a href='#'>TasteTracker</a>
             </span>
             <div>
               <p>Contact: totallyreal@food.com</p>
