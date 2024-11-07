@@ -10,8 +10,15 @@
   .homepage-background {
     background-color: #004AAD; /* Blue background */
     color: #333333; /* White text for contrast */
-    min-height: 100vh; /* Ensures it covers the full viewport height */
-    padding: 20px;
+    width: 100vw; /* Full width of the viewport */
+  min-height: 100vh; /* Full height of the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  margin: 0; /* Remove default margin */
   }
 
   body {
