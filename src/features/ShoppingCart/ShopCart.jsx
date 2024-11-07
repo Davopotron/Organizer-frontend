@@ -50,7 +50,7 @@ const ShoppingCart = () => {
   }, [selectedItems, items]);
 
   return (
-    <div>
+    <div className="shopping-container">
       <h2>Shopping Cart</h2>
       <ul>
         {items.map((item) => (
