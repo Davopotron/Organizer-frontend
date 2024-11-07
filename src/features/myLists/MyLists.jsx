@@ -32,6 +32,7 @@ export default function GetList() {
   if (!MyLists.length) {
     return <p>There are no lists.</p>;
   }
+
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this list?")) {
       try {
@@ -48,14 +49,10 @@ export default function GetList() {
     setDropDownOpen(null);
   };
   const handleUpdate = async (id) => {
-    if (newName.trim()) {
-      await updateMyList({ id, name: newName });
+    if (newName.trim() || newDescription.trim()) {
+      await updateMyList({ id, name: newName, description: newDescription });
       setEditMode(null);
       setNewName("");
-    }
-    if (newDescription.trim()) {
-      await updateMyList({ id, description: newDescription });
-      setEditMode(null);
       setNewDescription("");
     }
   };
