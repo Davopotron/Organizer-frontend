@@ -1,12 +1,19 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 .list-details-container {
+  display: flex;
+  justify-content: center;
   font-family: "Arial", sans-serif;
   margin: 20px;
   padding: 20px;
+  padding-bottom: 50px;
   background-color: #f9f9f9;
   border: solid slategray;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
 }
 
 .list-details-name {
@@ -16,99 +23,26 @@
   font-size: 50px;
 }
 
-.add-form {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.list-items {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.list-item {
-  margin: 15px 0;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  background-color: #f9f9f9;
-  position: relative;
-}
-
-.list-item:nth-child(odd) {
-  background-color: #f4f4f4;
-}
-
-.list-item-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 5px;
-  flex-grow: 1;
-  margin-right: 10px;
-}
-
-.edit-mode {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.dropdown-item {
-  background-color: #008cba;
-  color: #fff;
-}
-
-.dropdown-item:hover {
-  background-color: #005f75;
-}
-
-.dropdown-toggle {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.edit-input {
-  padding: 5px;
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-.add-form-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
 .add-form-container {
-  background-color: white;
+  background-color: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
   width: 400px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  justify-self: center;
+  margin-bottom: 20px;
 }
 
 .open-add-form-button {
-  background-color: #008cba;
-  color: #fff;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  width: 150px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  justify-self: center;
+  margin-bottom: 20px;
+  border: #ccc;
 }
 
 .close-add-form-button {
@@ -120,6 +54,137 @@
 }
 
 .add-items-button {
-  background-color: #008cba;
-  color: #fff;
+  background: transparent;
+  border: 1px solid rgb(241, 226, 226);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 13px;
+  cursor: pointer;
+  margin-left: 10px;
+  padding-bottom: 3px;
+}
+
+.mainList {
+  border: 2px solid #525252;
+  border-radius: 15px;
+  height: 250px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f8efef;
+  margin: 2em;
+  padding-bottom: 1em;
+}
+
+.mainList:hover {
+  box-shadow: 0.5em 0.5em 0.5em 0.5em gray;
+}
+
+.list-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fafafa;
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+.list-item-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.list-item-name {
+  flex: 1;
+  margin: 0;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.dropdownContainer {
+  position: relative;
+}
+
+.dropdownMenu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid gray;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 10px;
+  right: 0;
+  top: 100%;
+  min-width: 100px;
+  border-radius: 6px;
+}
+
+.dropdownContainer:hover .dropdownMenu,
+.dropdown-toggle:focus + .dropdownMenu {
+  display: block;
+}
+
+.dropdownMenu .dropdown-item {
+  display: block;
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+.dropdownMenu .dropdown-item:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.edit-mode {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.editbuttons {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  justify-self: center;
+  border: #ccc;
+}
+.edit-mode input {
+  border: 1px solid #ccc;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.edit-mode button {
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+@media (max-width: 600px) {
+  .list-items {
+    gap: 10px;
+  }
 }

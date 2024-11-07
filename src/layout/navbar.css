@@ -1,31 +1,56 @@
-header {
-  padding: 15px;
-
-  font-size: 1.1rem;
-}
-nav {
+.navbar {
+  padding: 10px 20px;
   width: 100%;
+  background-color: rgb(30, 101, 173);
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  color: white;
+  color: var(--text-color); /* Sets link color to white as defined in :root */
+  text-decoration: none;
+  font-family: Tahoma, sans-serif;
+}
+
+.navbar a:visited {
+  color: var(--text-color); /* Ensures visited links are also white */
+  text-decoration: none;
 }
 
 menu {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
-
   gap: 10px;
 }
 
-li,
-a {
+.navbar-line {
   list-style: none;
-  text-decoration: none;
-  color: black;
 }
 
-.navlink:hover {
-  cursor: pointer;
-  scale: 1.1;
-  color: #0056b3; /* Darker color on hover */
+.navbar-line a {
+  list-style: none;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.navbar-left {
+  color: white;
+  font-size: 1.5rem; /* Increase the font size */
+  font-weight: bold; /* Make the text bold */
+  color: var(--text-color); /* Ensure the text color is white */
+  text-decoration: none; /* Remove underline */
+  font-family: Tahoma, sans-serif;
+}
+
+.navbar {
+  color: white;
+}
+
+.navbar-left-logo {
+  color: rgb(255, 255, 255);
+  list-style: none;
+  text-decoration: none;
+}
+.navbar a:hover {
+  text-decoration: none; /* Prevent underline on hover */
 }
