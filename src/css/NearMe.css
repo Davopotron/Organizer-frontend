@@ -16,3 +16,15 @@
   height: 3%;
   width: 100%;
 }
+
+.NMTitle {
+  text-align: center;
+  margin-top: 20px;
+  font-family: Verdana, sans-serif;
+}
+
+.NMBackground {
+  background-color: #004AAD;
+  min-height: 100vh;
+  color: #FFFFFF
+}

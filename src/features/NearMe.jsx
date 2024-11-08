@@ -45,7 +45,8 @@ function NearMe() {
 
   return (
     <>
-      <h1>Near Me</h1>
+    <div className="NMBackground">
+      <h1 className="NMTitle">Near Me</h1>
       <div className="nearMe">
         <div className="myLists">
           <MyLists
@@ -66,6 +67,7 @@ function NearMe() {
           />
           <MapComponent searchInput={searchInput} />
         </div>
+      </div>
       </div>
     </>
   );
