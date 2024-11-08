@@ -1,38 +1,28 @@
-/* HomePage.css */
+body {
+  background-color: #fafafa;
+  color: #333333;
+}
 
-/* body {
-    margin: 0;
-    font-family: 'Arial', sans-serif; 
-    background-color: #f8f9fa; 
-    color: #333; 
-  } */
+.htitle {
+  font-family: Verdana, sans-serif;
+  text-align: center;
+  font-size: 2.5em; /* Larger font size for the title */
+  color: #2c3e50; /* Dark blue color for a sophisticated look */
+  margin-top: 20px;
+}
 
-  body {
-    background-color: #FAFAFA; 
-    color: #333333; 
-  }
-  
-  .htitle {
-    font-family: Verdana, sans-serif;
-    text-align: center;
-    font-size: 2.5em; /* Larger font size for the title */
-    color: #2c3e50; /* Dark blue color for a sophisticated look */
-    margin-top: 20px;
-  }
-  
-  .hpara {
-    max-width: 800px; /* Limit width for better readability */
-    margin: 10px auto; /* Center align paragraphs with auto margins */
-    padding: 10px 20px; /* Add padding for breathing room */
-    line-height: 1.6; /* Increase line height for better legibility */
-    font-size: 1.1em; /* Slightly larger font for paragraphs */
-    font-family: Tahoma, sans-serif;
-    /* background-color:#FAF3E0; */
-  }
+.hpara {
+  max-width: 800px; /* Limit width for better readability */
+  margin: 10px auto; /* Center align paragraphs with auto margins */
+  padding: 10px 20px; /* Add padding for breathing room */
+  line-height: 1.6; /* Increase line height for better legibility */
+  font-size: 1.1em; /* Slightly larger font for paragraphs */
+  font-family: Tahoma, sans-serif;
+}
 
-  .container {
-    padding: 20px; /* Add padding around the content */
-    background-color: #FAF3E0; /* White background for the content area */
-    border-radius: 16px; /* Rounded corners for a softer look */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  }
+.container {
+  padding: 20px; /* Add padding around the content */
+  background-color: #faf3e0; /* White background for the content area */
+  border-radius: 16px; /* Rounded corners for a softer look */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
