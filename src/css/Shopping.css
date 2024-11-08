@@ -98,12 +98,12 @@
 }
 
 .list-details {
-  width: 60%; /* Adjust this value as needed */
+  width: 60%;
   padding: 20px;
 }
 
 .shopcart-container {
-  width: 35%; /* Adjust this value as needed */
+  width: 35%;
   padding: 20px;
   position: sticky;
   top: 0;

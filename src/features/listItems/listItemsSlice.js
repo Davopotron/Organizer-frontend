@@ -1,5 +1,4 @@
 import api from "../../app/api";
-import ListItems from "./ListItems";
 
 const ListItemsApi = api.injectEndpoints({
   endpoints: (build) => ({
@@ -46,5 +45,3 @@ export const {
   useUpdateListItemsMutation,
   useGetListItemsIdQuery,
 } = ListItemsApi;
-
-//for queries, it may need ListItems, but may also be listItem
