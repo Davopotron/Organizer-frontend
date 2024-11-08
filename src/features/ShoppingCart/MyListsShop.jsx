@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useGetMyListsQuery } from "../../features/myLists/myListsSlice";
-import { useGetListItemsQuery } from "../listItems/listItemsSlice";
+import { useGetListItemsIdQuery } from "../listItems/listItemsSlice";
 import { useDeleteListItemsMutation } from "../listItems/listItemsSlice";
 import SearchBar from "../../features/myLists/Searchbar";
 import "../../css/Shopping.css";
@@ -14,10 +14,12 @@ export default function MyListsShop() {
   const [deleteListItem] = useDeleteListItemsMutation();
 
   // Fetch list items for the selected list
-  const { data: selectedListItems = [] } = useGetListItemsQuery(
+  const { data: selectedListItems = [] } = useGetListItemsIdQuery(
     selectedList?.id
   );
-
+  {
+    console.log(selectedListItems);
+  }
   if (isLoading) return <h2>Loading List...</h2>;
   if (error) return <p>{error.message}</p>;
   if (!MyLists.length) return <p>There are no lists.</p>;
@@ -59,8 +61,8 @@ export default function MyListsShop() {
           <h1 className="list-details-name">{selectedList.name}</h1>
           <button onClick={handleBackToList}>Back to All Lists</button>
           <ul className="listItems">
-            {selectedListItems.length > 0 ? (
-              selectedListItems.map((item) => (
+            {selectedListItems?.listItems?.length > 0 ? (
+              selectedListItems.listItems.map((item) => (
                 <li key={item.id} className="item">
                   <input
                     type="checkbox"
