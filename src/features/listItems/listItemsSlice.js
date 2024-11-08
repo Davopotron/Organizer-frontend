@@ -1,5 +1,4 @@
 import api from "../../app/api";
-import ListItems from "./ListItems";
 
 const ListItemsApi = api.injectEndpoints({
   endpoints: (build) => ({
@@ -8,11 +7,11 @@ const ListItemsApi = api.injectEndpoints({
       transformResponse: (response) => response,
       providesTags: ["listItem", "MyList"],
     }),
-    // getListItems: build.query({
-    //   query: (id) => "/ListItems/" + id,
-    //   transformResponse: (response) => response.ListItems,
-    //   providesTags: ["ListItems"],
-    // }),
+    getListItemsId: build.query({
+      query: (id) => `/myLists/${id}`,
+      transformResponse: (response) => response,
+      providesTags: ["listItem", "MyList"],
+    }),
     updateListItems: build.mutation({
       query: ({ id, ...listItem }) => ({
         url: "/listItems/" + id,
@@ -44,6 +43,5 @@ export const {
   useAddListItemsMutation,
   useDeleteListItemsMutation,
   useUpdateListItemsMutation,
+  useGetListItemsIdQuery,
 } = ListItemsApi;
-
-//for queries, it may need ListItems, but may also be listItem

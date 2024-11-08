@@ -16,11 +16,8 @@ function Footer() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const senderEmail = 'totallyreal@food.com';
-    console.log('Email:', email);
-    console.log('Message:', message);
     setEmail('');
-    setMessage('Thank you for your message!');
+    setMessage('');
   };
 
   return (

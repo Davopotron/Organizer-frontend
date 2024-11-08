@@ -11,8 +11,8 @@ function About() {
         everyone, whether you’re a seasoned chef or just starting on your
         culinary journey.
       </p>
+      <h3>How It Works</h3>
       <p>
-        <h3>How It Works</h3>
         Our Recipe List feature is designed to make meal prep and grocery
         shopping easier than ever: Effortless Organization: Add your favorite
         recipes to your personal Recipe List. Organize everything just the way
@@ -22,8 +22,8 @@ function About() {
         the ingredients you need to your shopping list. It’s perfect for
         planning your meals in advance or making a quick grocery run.
       </p>
+      <h3>Our Mission</h3>
       <p>
-        <h3>Our Mission</h3>
         Our mission is to connect people with amazing food experiences by making
         cooking and meal planning easier, more organized, and more enjoyable. We
         want to inspire you to create delicious meals and help you keep track of
