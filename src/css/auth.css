@@ -1,5 +1,5 @@
 .authContainer {
-  background-color: rgb(248, 239, 239);
+  background-color: #FAF3E0; /*rgb(248, 239, 239) was the color before this one*/
   height: 35em;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
