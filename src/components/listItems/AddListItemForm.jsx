@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAddListItemsMutation } from "../listItems/listItemsSlice";
+import { useAddListItemsMutation } from "../../slices/listItemsSlice";
 
 function AddListItemForm({ myListId }) {
   const [inputValue, setInputValue] = useState("");

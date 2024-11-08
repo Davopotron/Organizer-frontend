@@ -1,4 +1,4 @@
-import api from "../../app/api";
+import api from "./api";
 const MyListApi = api.injectEndpoints({
   endpoints: (build) => ({
     getMyLists: build.query({

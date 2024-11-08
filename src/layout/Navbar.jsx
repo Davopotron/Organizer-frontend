@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../features/auth/authSlice";
-import "./navbar.css";
+import { logout } from "../slices/authSlice";
+import "../css/navbar.css";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -26,10 +26,10 @@ function Navbar() {
           <NavLink to="/">Home</NavLink>
         </li>
         <li className="navbar-line">
-          <NavLink to="/MyList">My Lists</NavLink>
+          <NavLink to="/myLists">My Lists</NavLink>
         </li>
         <li className="navbar-line">
-          <NavLink to="/nearMe">Near Me</NavLink>
+          <NavLink to="/near-me">Near Me</NavLink>
         </li>
         <li className="navbar-line">
           <NavLink to="/shopping">Shopping</NavLink>

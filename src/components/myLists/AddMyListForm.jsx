@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useAddMyListMutation } from "./myListsSlice";
-import "../../css/AddMyList.css";
+import { useAddMyListMutation } from "../../slices/myListsSlice";
+import "../../css/addMyListForm.css";
 
 export default function AddListForm() {
   const [name, setName] = useState("");

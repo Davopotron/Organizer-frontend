@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { selectToken } from "../auth/authSlice";
+import { selectToken } from "../../slices/authSlice";
 import { useSelector } from "react-redux";
-import "../../css/Shopping.css";
+import "../../css/shopping.css";
 
 const ShoppingCart = () => {
   const [items, setItems] = useState([]); // Store fetched items

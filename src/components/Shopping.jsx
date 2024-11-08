@@ -1,7 +1,7 @@
-import MyListsShop from "../features/ShoppingCart/MyListsShop";
+import MyListsShop from "../components/ShoppingCart/MyListsShop";
 import MapComponent from "./map/GoogleMap";
-import "../css/Shopping.css";
 import ShoppingCart from "./ShoppingCart/ShopCart";
+import "../css/shopping.css";
 
 function Shopping() {
   return (

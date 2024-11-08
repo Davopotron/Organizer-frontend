@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useGetMyListsQuery } from "../../features/myLists/myListsSlice";
-import { useGetListItemsIdQuery } from "../listItems/listItemsSlice";
-import { useDeleteListItemsMutation } from "../listItems/listItemsSlice";
-import SearchBar from "../../features/myLists/Searchbar";
-import "../../css/Shopping.css";
+import { useGetMyListsQuery } from "../../slices/myListsSlice";
+import { useGetListItemsIdQuery } from "../../slices/listItemsSlice";
+import { useDeleteListItemsMutation } from "../../slices/listItemsSlice";
+import SearchBar from "../../components/myLists/Searchbar";
 import ShopCart from "./ShopCart";
+import "../../css/shopping.css";
 
 export default function MyListsShop({ className }) {
   const { data: MyLists = [], isLoading, error } = useGetMyListsQuery();

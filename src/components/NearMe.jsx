@@ -1,8 +1,8 @@
-import MyLists from "../features/myLists/MyLists";
+import MyLists from "../components/myLists/MyLists";
 import MapComponent from "./map/GoogleMap";
-import "../css/NearMe.css";
 import { useState } from "react";
-import { useGetListItemsQuery } from "./listItems/listItemsSlice";
+import { useGetListItemsQuery } from "../slices/listItemsSlice";
+import "../css/nearMe.css";
 
 function NearMe() {
   const [searchInput, setSearchInput] = useState("");

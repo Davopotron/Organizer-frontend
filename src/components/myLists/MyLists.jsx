@@ -3,14 +3,14 @@ import {
   useDeleteMyListMutation,
   useGetMyListsQuery,
   useUpdateMyListMutation,
-} from "./myListsSlice";
+} from "../../slices/myListsSlice";
 import { useSelector } from "react-redux";
-import { selectToken } from "../auth/authSlice";
+import { selectToken } from "../../slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import AddListForm from "./AddMyListForm";
 import SearchBar from "./Searchbar";
-import "../../css/MyLists.css";
-import { useGetListItemsQuery } from "../listItems/listItemsSlice";
+import "../../css/myLists.css";
+import { useGetListItemsQuery } from "../../slices/listItemsSlice";
 
 // Function that renders a list of all lists
 export default function GetList({
@@ -66,7 +66,7 @@ export default function GetList({
 
   const handleSeeDetails = (id) => {
     setSelectedMyListId(id);
-    navigate(`/MyList/${id}`);
+    navigate(`/myLists/${id}`);
     setDropDownOpen(null);
   };
 
@@ -108,7 +108,7 @@ export default function GetList({
                         <div className="listHeader">
                           <h2
                             className="listName"
-                            onClick={() => onListClick(m.name)}
+                            onClick={() => onListClick && onListClick(m.name)}
                           >
                             {editMode === m.id ? (
                               <input
