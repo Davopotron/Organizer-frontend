@@ -66,7 +66,7 @@ export default function MyListsShop({ className }) {
                     checked={!!selectedItems[item.id]}
                     onChange={() => handleItemSelection(item.id)}
                   />
-                  {item.itemName} - ${item.price?.toFixed(2) || "0.00"}
+                  {item.itemName}
                   <button
                     className="delete-button"
                     onClick={() => handleDeleteItem(item.id)}
