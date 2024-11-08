@@ -225,6 +225,7 @@ export default function GetList({
   showAddForm = true,
   showDescription = true,
   isNearMe = false,
+  onListClick,
 }) {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
@@ -312,7 +313,10 @@ export default function GetList({
                     return (
                       <li key={m.id} className="mainList">
                         <div className="listHeader">
-                          <h2 className="listName">
+                          <h2
+                            className="listName"
+                            onClick={() => onListClick(m.name)}
+                          >
                             {editMode === m.id ? (
                               <input
                                 type="text"
@@ -340,6 +344,9 @@ export default function GetList({
                                         <li
                                           key={item.id}
                                           className="dropdownItem"
+                                          onClick={() =>
+                                            onListClick(item.itemName)
+                                          }
                                         >
                                           {item.itemName}
                                         </li>
