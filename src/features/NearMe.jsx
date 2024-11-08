@@ -48,7 +48,6 @@ function NearMe() {
       <h1>Near Me</h1>
       <div className="nearMe">
         <div className="myLists">
-          <h2>My Lists</h2>
           <MyLists
             className="nearMeMyLists"
             showAddForm={false}
