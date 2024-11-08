@@ -17,9 +17,6 @@ export default function MyListsShop({ className }) {
   const { data: selectedListItems = [] } = useGetListItemsIdQuery(
     selectedList?.id
   );
-  {
-    console.log(selectedListItems);
-  }
   if (isLoading) return <h2>Loading List...</h2>;
   if (error) return <p>{error.message}</p>;
   if (!MyLists.length) return <p>There are no lists.</p>;

@@ -13,12 +13,12 @@ function HomePage() {
           a personalized collection of recipes and view a detailed list of
           ingredients with just a tap.
         </p>
-        <p className='hpara'>
+        <p className="hpara">
           Simply add the names of your recipes to the list, and whenever you are
           ready, click on any recipe name to add all the ingredients you will
           need.
         </p>
-        <p className='hpara'>
+        <p className="hpara">
           Perfect for meal planning/prepping, grocery shopping, or cooking up
           something new, TasteTracker makes finding and preparing delicious
           dishes a breeze.

@@ -5,7 +5,6 @@ import "../../css/AddMyList.css";
 export default function AddListForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  //const [listIds, setListIds] = useState("");
   const [ownerId, setOwnerId] = useState(1);
 
   const [addList, { isLoading: isAdding, error: addingError }] =
@@ -20,10 +19,8 @@ export default function AddListForm() {
       listIds: [],
     };
 
-    console.log("Posting list data:", listData);
     try {
       const response = await addList(listData).unwrap();
-      console.log("List added:", response);
       setName("");
       setDescription("");
     } catch (e) {
