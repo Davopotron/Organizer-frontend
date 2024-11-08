@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import '../css/footer.css';
+import {Link} from 'react-router-dom';
 
 function Footer() {
   const [email, setEmail] = useState('');
@@ -15,11 +16,11 @@ function Footer() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your email sending logic here (e.g., using an API or service)
+    const senderEmail = 'totallyreal@food.com';
     console.log('Email:', email);
     console.log('Message:', message);
     setEmail('');
-    setMessage('');
+    setMessage('Thank you for your message!');
   };
 
   return (
@@ -55,7 +56,7 @@ function Footer() {
           </button>
         </form>
         <div className='footer-links'>
-          <a href='#'>About Us</a>
+          <Link to='/about'>About Us</Link>
           <a href='#'>Contact</a>
           <a href='#'>Privacy Policy</a>
           <a href='#'>Terms of Service</a>
@@ -66,7 +67,10 @@ function Footer() {
             <a href='#'>TasteTracker</a>
           </span>
           <div>
-            <p>Contact: totallyreal@food.com</p>
+            <p>
+              Contact:{' '}
+              <a href='mailto:totallyreal@food.com'>totallyreal@food.com</a>
+            </p>
           </div>
         </div>
       </div>
