@@ -1,4 +1,4 @@
-/* ln 161, */
+/* changes made ln 161, ln 152 */
 
 ul {
   list-style-type: none;
@@ -149,6 +149,7 @@ ul {
   font-family: Arial, Helvetica, sans-serif;
   padding: 1em 0 2em 0;
   background-color: #d2c6b6;
+  border-radius: 8px; /* added border radius */
 }
 
 .nearMeMyLists .listForm {
