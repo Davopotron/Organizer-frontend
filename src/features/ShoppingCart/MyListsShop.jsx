@@ -6,7 +6,7 @@ import SearchBar from "../../features/myLists/Searchbar";
 import "../../css/Shopping.css";
 import ShopCart from "./ShopCart";
 
-export default function MyListsShop() {
+export default function MyListsShop({ className }) {
   const { data: MyLists = [], isLoading, error } = useGetMyListsQuery();
   const [selectedList, setSelectedList] = useState(null);
   const [showListDetails, setShowListDetails] = useState(false);
@@ -55,7 +55,7 @@ export default function MyListsShop() {
   };
 
   return (
-    <div className="listContainer">
+    <div className={className}>
       {showListDetails ? (
         <div>
           <h1 className="list-details-name">{selectedList.name}</h1>
