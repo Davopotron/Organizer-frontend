@@ -65,6 +65,10 @@ function MapComponent({ searchInput }) {
   // Performs a text search based on the users input
   useEffect(() => {
     if (searchInput && map && markerLib) {
+      // Clear existing markers
+      markers.forEach((marker) => marker.setMap(null));
+      setMarkers([]);
+
       const service = new window.google.maps.places.PlacesService(map);
       const request = {
         query: searchInput,
