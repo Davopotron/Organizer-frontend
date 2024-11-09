@@ -3,9 +3,7 @@
 ## Overview
 Organize and tackle your activities, events, plans, projects, todos and more with Organizer, which will show you where all your needs are for your convenience! Create lists of things you need either for everyday life or elaborate projects; then the search integrated map feature will locate all your listed items, so you can plan out exactly where to go to accomplish your todos efficiently. No need to search all over the internet for various items' locations, when you can just create a list and let Organizer's integrated map feature conveniently find them for you.
 
-# Organizer
-
-## Organizer-Frontend
+## Frontend Expectations
 1. Have a landing homepage where clients can learn about the app and navigate website (once they're registered and logged-in)
 2. Register/login to use app's features
 3. Create organized, helpful lists with specifying descriptions to a "My List" page
@@ -24,6 +22,7 @@ Organize and tackle your activities, events, plans, projects, todos and more wit
   - Users can remove items from those lists
   - Users can use the "Near Me"'s search bar to access lists, so that that list's items may appear on the map, at the location(s) where those items can be found with pertinent info
   - Users can use the "Shopping" feature to show where items are alongside their prices and totals
+
 
 ## Stretch Goals:
 - List sharing among users
@@ -45,10 +44,11 @@ Organize and tackle your activities, events, plans, projects, todos and more wit
 - Integrating shopping feature to show price of all list items
 - Real-time updating
 
-## Suggested Stack:
-- React
-- Redux Toolkit
-- Babelrc
+## Stack:
+- React: the component-based structure, libraries, and tool pool from which React has to pull from, lends itself well to creating a seamless yet dynamic UI, especially evident when using the "Near Me"'s map function.
+- Redux Toolkit: the steadfast state mgmt system centralized in the RTK store provides globally accessible state throughout the app, which is needed for the various functions and processes in Organizer. The list item search-to-map locating functionality heavily relies on RTK's interaction with React to render accurate results. 
+- Vite: Useful as a exceptionally fast build tool in development. The server is instantly rendered and updates likewise, so there's no buffering when testing out various aspects in app development. This transcends into the UX, who can instantly see the results of the list-to-map locations.
+
 
 
 
