@@ -3,7 +3,8 @@ import { useLoginMutation, useRegisterMutation } from "./authSlice";
 import { useNavigate } from "react-router-dom";
 import "../../css/auth.css";
 import toastr from "toastr";
-import "../toasts";
+import "../toasts"; /* May not need */
+import "../../css/toast.css"; /* May not need */
 
 /** AuthForm allows a user to either login or register for an account. */
 function AuthForm() {
@@ -31,14 +32,17 @@ function AuthForm() {
     try {
       await authMethod(credentials).unwrap();
       toastr.success(`${authAction} successful!`);
+      toastr.options.extendedTimeOut = 30;
       navigate("/");
     } catch (error) {
       console.error(error);
 
       if (isLogin && loginError) {
         toastr.error(`${JSON.stringify(loginError.data)}`);
+        toastr.options.extendedTimeOut = 30;
       } else if (!isLogin && registerError) {
         toastr.error(`${JSON.stringify(registerError.data.error)}`);
+        toastr.options.extendedTimeOut = 30;
       }
     }
   };

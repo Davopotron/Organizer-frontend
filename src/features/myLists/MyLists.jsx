@@ -11,6 +11,9 @@ import AddListForm from "./AddMyListForm";
 import SearchBar from "./Searchbar";
 import "../../css/MyLists.css";
 import { useGetListItemsQuery } from "../listItems/listItemsSlice";
+import toastr from "toastr";
+import "../toasts"; /* May not need */
+import "../../css/toast.css"; /* May not need */
 
 // Function that renders a list of all lists
 export default function GetList({
@@ -35,12 +38,20 @@ export default function GetList({
     useGetListItemsQuery();
 
   const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete this list?")) {
-      try {
-        await deleteMyList(id).unwrap();
-      } catch (error) {
-        console.error("Failed to delete list: ", error);
-      }
+    toastr.info(
+      `Are you sure you want to delete this list? <button id="delete-list-button" class id=delete-list-button>Confirm</button>`
+    );
+    const confirmButton = document.getElementById("delete-list-button");
+    if (confirmButton) {
+      confirmButton.onclick = async () => {
+        try {
+          await deleteMyList(id).unwrap();
+          toastr.success("Deleted list");
+        } catch (error) {
+          console.error("Failed to delete list: ", error);
+        }
+        toastr.clear();
+      };
     }
   };
 
@@ -62,6 +73,7 @@ export default function GetList({
       setEditMode(null);
       setNewDescription("");
     }
+    toastr.success("List updated.");
   };
 
   const handleSeeDetails = (id) => {

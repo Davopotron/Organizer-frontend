@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useAddMyListMutation } from "./myListsSlice";
 import "../../css/AddMyList.css";
+import toastr from "toastr";
+import "../toasts"; /* May not need */
+import "../../css/toast.css"; /* May not need */
 
 export default function AddListForm() {
   const [name, setName] = useState("");
@@ -23,6 +26,7 @@ export default function AddListForm() {
       const response = await addList(listData).unwrap();
       setName("");
       setDescription("");
+      toastr.success("List added.");
     } catch (e) {
       console.error("Failed to add list:", e);
     }
