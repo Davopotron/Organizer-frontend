@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useLoginMutation, useRegisterMutation } from "./authSlice";
 import { useNavigate } from "react-router-dom";
 import "../../css/auth.css";
+import toastr from "toastr";
+import "../toasts";
 
 /** AuthForm allows a user to either login or register for an account. */
 function AuthForm() {
@@ -28,9 +30,38 @@ function AuthForm() {
 
     try {
       await authMethod(credentials).unwrap();
+      toastr.success(`${authAction} successful!`);
       navigate("/");
     } catch (error) {
       console.error(error);
+
+      if (isLogin && loginError) {
+        toastr.error(`${JSON.stringify(loginError.data)}`);
+        // console.log(
+        //   `This is the login error: ${JSON.stringify(loginError, null, 2)}`
+        // );
+      } else if (!isLogin && registerError) {
+        toastr.error(registerError.message, "error");
+      }
+    }
+  };
+
+  const showToast = (message, type) => {
+    switch (type) {
+      case "error":
+        toastr.error(message);
+        break;
+      case "info":
+        toastr.info(message);
+        break;
+      case "success":
+        toastr.success(message);
+        break;
+      case "warning":
+        toastr.warning(message);
+        break;
+      default:
+        toastr.info(message);
     }
   };
 
@@ -72,12 +103,20 @@ function AuthForm() {
           >
             {altCopy}
           </a>
-          {isLogin && loginError && <p role="alert">{loginError.message}</p>}
-          {!isLogin && registerError && (
-            <p role="alert">{registerError.message}</p>
-          )}
         </div>
       </div>
+      {/* {isLogin && loginError && (
+        <div id="toast-container-login" role="alert">
+          {loginError.message}
+          {showToast(loginError.message, "error")}
+        </div>
+      )}
+      {!isLogin && registerError && (
+        <div id="toast-container-register" role="alert">
+          {registerError.message}
+          {showToast(registerError.message, "error")}
+        </div>
+      )} */}
     </>
   );
 }
