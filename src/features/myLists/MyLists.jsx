@@ -81,6 +81,7 @@ export default function GetList({
   const listsToRender = filteredResults.length > 0 ? filteredResults : MyLists;
 
   // Render the content conditionally
+  //added classname=trim to <table>
   let content;
 
   if (isLoading) {
@@ -91,7 +92,8 @@ export default function GetList({
     content = <p>There are no lists.</p>;
   } else {
     content = (
-      <table>
+      <body className="myListBody">
+      <table className="trim">
         <tbody>
           <tr>
             <th scope="col" className={`${className} listContainer`}>
@@ -216,6 +218,7 @@ export default function GetList({
           </tr>
         </tbody>
       </table>
+      </body>
     );
   }
 
