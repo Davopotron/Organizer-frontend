@@ -18,7 +18,9 @@
   width: 100%;
   flex: 4;
   overflow: hidden;
-}
+  border: 3px solid #f5f2ef;
+  border-radius: 4px;
+} /* added border and b-radius */
 
 .myListSearch {
   height: 3%;
@@ -29,6 +31,7 @@
   display: flex;
   justify-content: left;
   width: 100%; /* added .searchcontainer to move search bar on near me, jsx too */
+  background-color: #f5f2ef;
 }
 
 .nearMeTitle {
