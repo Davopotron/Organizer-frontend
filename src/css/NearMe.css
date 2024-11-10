@@ -21,14 +21,14 @@
 }
 
 .myListSearch {
-  height: 15%;
+  height: 3%;
   width: 40%; /* original h: 3% w: 100% */
 }
 
 .searchContainer {
   display: flex;
   justify-content: left;
-  width: 100%; /* added this to move search bar on near me, jsx too */
+  width: 100%; /* added .searchcontainer to move search bar on near me, jsx too */
 }
 
 .nearMeTitle {
