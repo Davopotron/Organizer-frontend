@@ -21,7 +21,7 @@
 }
 
 .myListSearch {
-  height: 3%;
+  height: 15%;
   width: 40%; /* original h: 3% w: 100% */
 }
 
@@ -56,4 +56,8 @@
 .nearMeBackground .listForm {
   border-top-left-radius: 8px;
   border-top-right-radius: 3px;
+}
+
+.nearMeBackground h2:hover {
+  cursor: pointer;
 }

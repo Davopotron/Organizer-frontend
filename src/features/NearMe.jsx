@@ -34,6 +34,7 @@ function NearMe() {
             name="myListSearch"
             className="myListSearch"
             value={searchInput}
+             placeholder="Search Map..."
             onChange={(e) => setSearchInput(e.target.value)}
           />
           </div>
