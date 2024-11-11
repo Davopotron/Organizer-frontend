@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useGetMyListsQuery } from "../../slices/myListsSlice";
-import { useGetListItemsIdQuery } from "../../slices/listItemsSlice";
-import { useDeleteListItemsMutation } from "../../slices/listItemsSlice";
+import {
+  useGetListItemsIdQuery,
+  useDeleteListItemsMutation,
+} from "../../slices/listItemsSlice";
 import SearchBar from "../../components/myLists/Searchbar";
 import ShopCart from "./ShopCart";
 import "../../css/shopping.css";
