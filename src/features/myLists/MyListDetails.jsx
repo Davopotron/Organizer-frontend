@@ -8,8 +8,6 @@ import {
 import AddListItemForm from "../listItems/AddListItemForm";
 import "../../css/ListDetails.css";
 import toastr from "toastr";
-import "../toasts"; /* May not need */
-import "../../css/toast.css"; /* May not need */
 
 export default function ListDetails() {
   const { id } = useParams();

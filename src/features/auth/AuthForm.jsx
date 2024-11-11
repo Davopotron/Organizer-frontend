@@ -3,8 +3,6 @@ import { useLoginMutation, useRegisterMutation } from "./authSlice";
 import { useNavigate } from "react-router-dom";
 import "../../css/auth.css";
 import toastr from "toastr";
-import "../toasts"; /* May not need */
-import "../../css/toast.css"; /* May not need */
 
 /** AuthForm allows a user to either login or register for an account. */
 function AuthForm() {

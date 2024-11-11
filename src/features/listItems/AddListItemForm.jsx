@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useAddListItemsMutation } from "../listItems/listItemsSlice";
 import toastr from "toastr";
-import "../toasts"; /* May not need */
-import "../../css/toast.css"; /* May not need */
 
 function AddListItemForm({ myListId }) {
   const [inputValue, setInputValue] = useState("");
