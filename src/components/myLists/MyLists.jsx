@@ -66,7 +66,7 @@ export default function GetList({
 
   const handleSeeDetails = (id) => {
     setSelectedMyListId(id);
-    navigate(`/myLists/${id}`);
+    navigate(`/my-lists/${id}`);
     setDropDownOpen(null);
   };
 

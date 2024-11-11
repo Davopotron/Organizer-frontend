@@ -26,7 +26,7 @@ function Navbar() {
           <NavLink to="/">Home</NavLink>
         </li>
         <li className="navbar-line">
-          <NavLink to="/myLists">My Lists</NavLink>
+          <NavLink to="/my-lists">My Lists</NavLink>
         </li>
         <li className="navbar-line">
           <NavLink to="/near-me">Near Me</NavLink>

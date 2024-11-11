@@ -3,18 +3,18 @@ import api from "./api";
 const ListItemsApi = api.injectEndpoints({
   endpoints: (build) => ({
     getListItems: build.query({
-      query: () => "/listItems",
+      query: () => "/list-items",
       transformResponse: (response) => response,
       providesTags: ["listItem", "MyList"],
     }),
     getListItemsId: build.query({
-      query: (id) => `/myLists/${id}`,
+      query: (id) => `/my-lists/${id}`,
       transformResponse: (response) => response,
       providesTags: ["listItem", "MyList"],
     }),
     updateListItems: build.mutation({
       query: ({ id, ...listItem }) => ({
-        url: "/listItems/" + id,
+        url: "/list-items/" + id,
         method: "PATCH",
         body: listItem,
       }),
@@ -22,7 +22,7 @@ const ListItemsApi = api.injectEndpoints({
     }),
     addListItems: build.mutation({
       query: (listItem) => ({
-        url: "/listItems",
+        url: "/list-items",
         method: "POST",
         body: listItem,
       }),
@@ -31,7 +31,7 @@ const ListItemsApi = api.injectEndpoints({
     }),
     deleteListItems: build.mutation({
       query: (id) => ({
-        url: "listItems/" + id,
+        url: "list-items/" + id,
         method: "DELETE",
       }),
       invalidatesTags: ["listItem", "MyList"],
