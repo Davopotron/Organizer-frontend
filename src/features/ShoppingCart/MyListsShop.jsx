@@ -47,7 +47,9 @@ export default function MyListsShop({ className }) {
       {showListDetails ? (
         <div>
           <h1 className="list-details-name">{selectedList.name}</h1>
-          <button onClick={handleBackToList}>Back to All Lists</button>
+          <button className="backbutton" onClick={handleBackToList}>
+            Back to All Lists
+          </button>
           <ul className="listItems">
             {selectedListItems?.listItems?.length > 0 ? (
               selectedListItems.listItems.map((item) => (
@@ -73,13 +75,12 @@ export default function MyListsShop({ className }) {
           <SearchBar names={MyLists} />
           <ul className="lists">
             {MyLists.map((list) => (
-              <li key={list.id} className="listItem">
-                <div
-                  className="listHeader"
-                  onClick={() => handleListSelection(list)}
-                >
-                  {list.name}
-                </div>
+              <li
+                key={list.id}
+                className="listItem"
+                onClick={() => handleListSelection(list)}
+              >
+                <div className="listHeader">{list.name}</div>
               </li>
             ))}
           </ul>
