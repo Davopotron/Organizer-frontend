@@ -33,6 +33,7 @@ function Footer() {
             placeholder="Your email"
             required
             className="input-email"
+            aria-label="email-input"
           />
           <textarea
             value={message}
@@ -40,6 +41,7 @@ function Footer() {
             placeholder="Your message"
             required
             className="input-message"
+            aria-label="message"
           />
           <button type="submit" className="submit-button">
             Send Email

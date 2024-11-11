@@ -40,6 +40,7 @@ function AddListItemForm({ myListId }) {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         placeholder="Enter items separated by commas"
+        aria-label="list-item-input-field"
       />
       <button type="submit" className="add-items-button">
         Add Items

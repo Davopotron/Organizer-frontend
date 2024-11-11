@@ -99,6 +99,7 @@ export default function ListDetails() {
                           type="text"
                           value={newName || ""}
                           onChange={(e) => setNewName(e.target.value)}
+                          aria-label="edit-mode-input"
                         />
                         <button
                           onClick={() => handleUpdate(listItem.id)}

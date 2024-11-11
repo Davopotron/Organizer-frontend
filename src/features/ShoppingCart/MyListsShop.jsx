@@ -65,6 +65,7 @@ export default function MyListsShop({ className }) {
                     type="checkbox"
                     checked={!!selectedItems[item.id]}
                     onChange={() => handleItemSelection(item.id)}
+                    aria-label="selected-items-input"
                   />
                   {item.itemName} - ${item.price?.toFixed(2) || "0.00"}
                   <button

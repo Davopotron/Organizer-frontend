@@ -64,6 +64,7 @@ const ShoppingCart = () => {
                 type="checkbox"
                 checked={selectedItems.includes(item.id)}
                 onChange={() => handleCheckboxChange(item.id)}
+                aria-label="shopping-input"
               />
               {item.name} - ${item.price.toFixed(2)}
             </label>

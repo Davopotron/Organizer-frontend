@@ -45,6 +45,7 @@ export default function AddListForm() {
               value={name}
               className="listNameText"
               onChange={(e) => setName(e.target.value)}
+              aria-label="list-name-input"
             />
           </label>
         </div>
@@ -57,6 +58,7 @@ export default function AddListForm() {
               value={description}
               className="listDescriptionText"
               onChange={(e) => setDescription(e.target.value)}
+              aria-label="description-input"
             />
           </label>
         </div>

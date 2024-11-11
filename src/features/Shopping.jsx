@@ -15,7 +15,12 @@ function Shopping() {
             <ShoppingCart />
           </div>
           <div className="map">
-            <input type="text" name="myListSearch" className="myListSearch" />
+            <input
+              type="text"
+              name="myListSearch"
+              className="myListSearch"
+              aria-label="map-input"
+            />
             <MapComponent />
           </div>
         </div>

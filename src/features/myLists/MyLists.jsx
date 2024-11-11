@@ -129,6 +129,7 @@ export default function GetList({
                                 value={newName}
                                 onChange={(e) => setNewName(e.target.value)}
                                 className="editField"
+                                aria-label="edit-mode-input"
                               />
                             ) : (
                               m.name

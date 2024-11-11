@@ -61,6 +61,7 @@ function AuthForm() {
                   value={username}
                   className="usernameText"
                   onChange={(evt) => setUsername(evt.target.value)}
+                  aria-label="username-input"
                 />
               </label>
             </div>
@@ -73,6 +74,7 @@ function AuthForm() {
                   className="passwordText"
                   value={password}
                   onChange={(evt) => setPassword(evt.target.value)}
+                  aria-label="password-input"
                 />
               </label>
             </div>
