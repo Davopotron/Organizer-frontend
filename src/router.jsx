@@ -1,29 +1,31 @@
-import { createBrowserRouter } from "react-router-dom";
-import AuthForm from "./features/auth/AuthForm";
-import Root from "./layout/Root";
-import HomePage from "./features/HomePage";
-import Login from "./features/auth/AuthForm";
-import ListDetails from "./features/myLists/MyListDetails";
-import MyLists from "./features/myLists/MyLists";
-import AddListItemForm from "./features/listItems/AddListItemForm";
-import ListItems from "./features/listItems/ListItems";
-import NearMe from "./features/NearMe";
-import Shopping from "./features/Shopping";
+import {createBrowserRouter} from 'react-router-dom';
+import AuthForm from './features/auth/AuthForm';
+import Root from './layout/Root';
+import HomePage from './features/HomePage';
+import Login from './features/auth/AuthForm';
+import ListDetails from './features/myLists/MyListDetails';
+import MyLists from './features/myLists/MyLists';
+import AddListItemForm from './features/listItems/AddListItemForm';
+import ListItems from './features/listItems/ListItems';
+import NearMe from './features/NearMe';
+import Shopping from './features/Shopping';
+import About from './features/about';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Root />,
     children: [
-      { index: true, element: <HomePage />, path: "/" },
-      { path: "/auth", element: <AuthForm /> },
-      { path: "/users/login", element: <Login /> },
-      { path: "/MyList", element: <MyLists /> },
-      { path: "/MyList/:id", element: <ListDetails /> },
-      { path: "/listItem", element: <ListItems /> },
-      { path: "/listItem", element: <AddListItemForm /> },
-      { path: "/nearMe", element: <NearMe /> },
-      { path: "/shopping", element: <Shopping /> },
+      {index: true, element: <HomePage />, path: '/'},
+      {path: '/auth', element: <AuthForm />},
+      {path: '/users/login', element: <Login />},
+      {path: '/MyList', element: <MyLists />},
+      {path: '/MyList/:id', element: <ListDetails />},
+      {path: '/listItem', element: <ListItems />},
+      {path: '/listItem', element: <AddListItemForm />},
+      {path: '/nearMe', element: <NearMe />},
+      {path: '/shopping', element: <Shopping />},
+      {path: '/About', element: <About />},
     ],
   },
 ]);
