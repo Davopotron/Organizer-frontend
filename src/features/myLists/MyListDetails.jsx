@@ -7,6 +7,9 @@ import {
 } from "../listItems/listItemsSlice";
 import AddListItemForm from "../listItems/AddListItemForm";
 import "../../css/ListDetails.css";
+import toastr from "toastr";
+import "../toasts"; /* May not need */
+import "../../css/toast.css"; /* May not need */
 
 export default function ListDetails() {
   const { id } = useParams();
@@ -37,16 +40,27 @@ export default function ListDetails() {
         console.error("Failed to update list item:", error);
       }
     }
+    toastr.success("Updated item.");
+    toastr.options.extendedTimeOut = 0;
   };
 
   const handleDelete = async (listItemId) => {
-    if (window.confirm("Are you sure you want to delete this list item?")) {
-      try {
-        await deleteListItem(listItemId).unwrap();
-        setShowDropdown(null); // Close dropdown after deletion
-      } catch (error) {
-        console.error("failed to delete list item:", error);
-      }
+    toastr.info(
+      `Are you sure you want to delete this list? <button id="delete-listItem-button" class id=delete-listItem-button>Confirm</button>`
+    );
+    const confirmButton = document.getElementById("delete-listItem-button");
+
+    if (confirmButton) {
+      confirmButton.onclick = async () => {
+        try {
+          await deleteListItem(listItemId).unwrap();
+          setShowDropdown(null); // Close dropdown after deletion
+          toastr.success("Item deleted.");
+        } catch (error) {
+          console.error("failed to delete list item:", error);
+        }
+        toastr.clear();
+      };
     }
   };
 

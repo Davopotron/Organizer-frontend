@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useAddListItemsMutation } from "../listItems/listItemsSlice";
+import toastr from "toastr";
+import "../toasts"; /* May not need */
+import "../../css/toast.css"; /* May not need */
 
 function AddListItemForm({ myListId }) {
   const [inputValue, setInputValue] = useState("");
@@ -20,7 +23,8 @@ function AddListItemForm({ myListId }) {
         await addListItem({ myListId, itemName: item });
       }
       setInputValue(""); // Clear the input after click
-      alert("Items added successfully");
+      toastr.success("Items added successfully");
+      toastr.options.extendedTimeOut = 30;
     } catch (error) {
       console.error("Failed to add items:", error);
       alert("An error occurred while adding items");

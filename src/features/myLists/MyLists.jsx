@@ -14,6 +14,7 @@ import { useGetListItemsQuery } from "../listItems/listItemsSlice";
 import toastr from "toastr";
 import "../toasts"; /* May not need */
 import "../../css/toast.css"; /* May not need */
+import Dropdown from "./DropDownMenu";
 
 // Function that renders a list of all lists
 export default function GetList({
@@ -141,49 +142,15 @@ export default function GetList({
                               ⋮
                             </button>
                             {dropdownOpen === m.id && (
-                              <div className="dropdownMenu">
-                                {isNearMe ? (
-                                  <ul className="dropdownItems">
-                                    {listItemsForThisList.length > 0 ? (
-                                      listItemsForThisList.map((item) => (
-                                        <li
-                                          key={item.id}
-                                          className="dropdownItem"
-                                          onClick={() =>
-                                            onListClick(item.itemName)
-                                          }
-                                        >
-                                          {item.itemName}
-                                        </li>
-                                      ))
-                                    ) : (
-                                      <li>No ingredients</li>
-                                    )}
-                                  </ul>
-                                ) : (
-                                  <div className="dropdownItems">
-                                    <button
-                                      onClick={() => handleSeeDetails(m.id)}
-                                    >
-                                      See Details
-                                    </button>
-                                    <button
-                                      onClick={() =>
-                                        handleEditClick(
-                                          m.id,
-                                          m.name,
-                                          m.description
-                                        )
-                                      }
-                                    >
-                                      Edit
-                                    </button>
-                                    <button onClick={() => handleDelete(m.id)}>
-                                      Delete
-                                    </button>
-                                  </div>
-                                )}
-                              </div>
+                              <Dropdown
+                                isNearMe={isNearMe}
+                                listItemsForThisList={listItemsForThisList}
+                                onListClick={onListClick}
+                                handleSeeDetails={handleSeeDetails}
+                                handleEditClick={handleEditClick}
+                                handleDelete={handleDelete}
+                                m={m}
+                              />
                             )}
                           </div>
                         </div>
