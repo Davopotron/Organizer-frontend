@@ -6,6 +6,7 @@ import {
 } from "../listItems/listItemsSlice";
 import { useAddToCartMutation } from "../../features/ShoppingCart/shopCartSlice";
 import SearchBar from "../../features/myLists/Searchbar";
+import ShopCart from "./ShopCart";
 import "../../css/Shopping.css";
 
 export default function MyListsShop({ className }) {
@@ -64,6 +65,7 @@ export default function MyListsShop({ className }) {
               <p>No items in this list.</p>
             )}
           </ul>
+          <ShopCart selectedList={selectedList} />
         </div>
       ) : (
         <div>
