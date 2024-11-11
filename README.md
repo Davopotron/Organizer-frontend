@@ -3,7 +3,7 @@
 ## Overview
 Organize and tackle your activities, events, plans, projects, todos and more with Organizer, which will show you where all your needs are for your convenience! Create lists of things you need either for everyday life or elaborate projects; then the search integrated map feature will locate all your listed items, so you can plan out exactly where to go to accomplish your todos efficiently. No need to search all over the internet for various items' locations, when you can just create a list and let Organizer's integrated map feature conveniently find them for you.
 
-## Frontend Expectations
+## Frontend Expectations:
 1. Have a landing homepage where clients can learn about the app and navigate website (once they're registered and logged-in)
 2. Register/login to use app's features
 3. Create organized, helpful lists with specifying descriptions to a "My List" page
@@ -45,9 +45,11 @@ Organize and tackle your activities, events, plans, projects, todos and more wit
 - Real-time updating
 
 ## Stack:
-- React: the component-based structure, libraries, and tool pool from which React has to pull from, lends itself well to creating a seamless yet dynamic UI, especially evident when using the "Near Me"'s map function.
-- Redux Toolkit: the steadfast state mgmt system centralized in the RTK store provides globally accessible state throughout the app, which is needed for the various functions and processes in Organizer. The list item search-to-map locating functionality heavily relies on RTK's interaction with React to render accurate results. 
-- Vite: Useful as a exceptionally fast build tool in development. The server is instantly rendered and updates likewise, so there's no buffering when testing out various aspects in app development. This transcends into the UX, who can instantly see the results of the list-to-map locations.
+- React
+- Redux Toolkit
+- Vite
+  - This stack build was chosen for this app as it has favorable attributes conducive to the list item-to-map feature; Redux Toolkit's robust data management capabilities integrally support React by allowing it to easily access the data it needs to provide a seamless UI. Combined with Vite's load speed, which is essential for web development changes being instantly discernible and general site rendering, the app is well structured to provide the user with an intuitive experience. 
+  
 
 
 
