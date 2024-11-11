@@ -1,7 +1,9 @@
 import React from 'react';
+import '../css/about.css'
 
 function About() {
   return (
+    <div className='about-container'>
     <div style={{padding: '20px', textAlign: 'center'}}>
       <h2>About Us</h2>
       <p>
@@ -30,6 +32,7 @@ function About() {
         all the ingredients and recipes you love.
       </p>
       <p>Let #TasteTracker be your companion in the kitchen – happy cooking!</p>
+    </div>
     </div>
   );
 }

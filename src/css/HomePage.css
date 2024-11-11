@@ -41,16 +41,15 @@ body {
     line-height: 1.6; 
     font-size: 1.1em; 
     font-family: Tahoma, sans-serif;
-  
   }
 
   .container {
     padding: 20px; 
-      background-color: #FAF3E0;
-      border-radius: 16px; 
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      max-width: 90%;
-      margin: 10px auto;
+    background-color: #FAF3E0;
+    border-radius: 16px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+    margin: 10px auto;
   }
 
   .here-SU {
