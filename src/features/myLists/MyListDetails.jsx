@@ -47,11 +47,13 @@ export default function ListDetails() {
     toastr.options.extendedTimeOut = 0;
   };
 
+  //Open Modal to delete
   const handleDelete = async (listItemId) => {
     setItemToDelete(listItemId);
     setShowModal(true);
   };
 
+  //Confirm delete, close modal
   const confirmDelete = async () => {
     if (itemToDelete) {
       try {

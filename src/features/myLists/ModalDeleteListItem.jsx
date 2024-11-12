@@ -3,6 +3,7 @@ import React from "react";
 
 const Modal = ({ handleClose, handleConfirm }) => {
   return (
+    //Handle deleting a list item
     <div className="modal-backdrop">
       <div className="modal">
         <h2>Are you sure you want to delete this item?</h2>
