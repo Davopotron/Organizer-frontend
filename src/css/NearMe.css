@@ -5,7 +5,7 @@
 }
 
 .nearMyLists {
-  flex: 1; 
+  flex: 2; 
   padding: 0;
   margin: 0;
   height: 100%;
@@ -16,7 +16,7 @@
 .map {
   height: 75vh;
   width: 100%;
-  flex: 4;
+  flex: 2;
   overflow: hidden;
   border: 3px solid #f5f2ef;
   border-radius: 4px;
