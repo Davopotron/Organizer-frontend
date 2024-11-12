@@ -12,7 +12,12 @@ function Shopping() {
         </div>
         <div className="rightColumn">
           <div className="map">
-            <input type="text" name="myListSearch" className="myListSearch" />
+            <input
+              type="text"
+              name="myListSearch"
+              className="myListSearch"
+              aria-label="map-input"
+            />
             <MapComponent />
           </div>
         </div>
