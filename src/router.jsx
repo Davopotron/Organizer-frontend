@@ -10,6 +10,9 @@ import ListItems from './features/listItems/ListItems';
 import NearMe from './features/NearMe';
 import Shopping from './features/Shopping';
 import About from './features/about';
+import Contact from './features/contact';
+import PrivacyPolicy from './features/PrivacyPolicy';
+import TermsOfService from './features/TermsOfService';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +29,9 @@ const router = createBrowserRouter([
       {path: '/nearMe', element: <NearMe />},
       {path: '/shopping', element: <Shopping />},
       {path: '/About', element: <About />},
+      {path: '/Contact', element: <Contact />},
+      {path: '/PrivacyPolicy', element: <PrivacyPolicy />},
+      {path: '/TermsOfService', element: <TermsOfService />},
     ],
   },
 ]);
