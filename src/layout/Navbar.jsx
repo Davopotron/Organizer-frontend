@@ -2,7 +2,7 @@ import {NavLink, useNavigate} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {logout} from '../features/auth/authSlice';
 import './navbar.css';
-import logo from '/public/logo.svg';
+import logo from '../logo.svg';
 
 function Navbar() {
   const navigate = useNavigate();
