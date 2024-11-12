@@ -74,6 +74,10 @@ ul {
   border-radius: 6px;
 }
 
+.dropdownMenu.show {
+  display: block;
+}
+
 .dropdownContainer {
   position: relative;
 }
