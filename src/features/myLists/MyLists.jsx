@@ -92,6 +92,7 @@ export default function GetList({
       setNewDescription("");
     }
     toastr.success("List updated.");
+    toastr.options = { positionClass: "toast-bottom-right" };
   };
 
   /** Navigate to details of specific list */
