@@ -3,7 +3,6 @@ import "../css/footer.css";
 import { Link } from "react-router-dom";
 
 function Footer() {
-<<<<<<< HEAD
   return (
     <div className='footer-container'>
       <div className='footer-content'>
@@ -12,7 +11,6 @@ function Footer() {
           <Link to='/contact'>Contact</Link>
           <Link to='/PrivacyPolicy'>Privacy Policy</Link>
           <Link to='/TermsOfService'>Terms of Service</Link>
-=======
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
