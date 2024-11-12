@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/footer.css";
+import { Link } from "react-router-dom";
 
 function Footer() {
   const [email, setEmail] = useState("");
@@ -48,10 +49,10 @@ function Footer() {
           </button>
         </form>
         <div className="footer-links">
-          <a href="#">About Us</a>
-          <a href="#">Contact</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <Link to="/about">About Us</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/PrivacyPolicy">Privacy Policy</Link>
+          <Link to="/TermsOfService">Terms of Service</Link>
         </div>
 
         <div className="footer-links">
@@ -59,7 +60,10 @@ function Footer() {
             <a href="#">TasteTracker</a>
           </span>
           <div>
-            <p>Contact: totallyreal@food.com</p>
+            <p>
+              Contact:{" "}
+              <a href="mailto:totallyreal@food.com">totallyreal@food.com</a>
+            </p>
           </div>
         </div>
       </div>

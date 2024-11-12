@@ -1,32 +1,21 @@
 import React, { useState } from "react";
 import { useGetMyListsQuery } from "../../features/myLists/myListsSlice";
-import { useGetListItemsIdQuery } from "../listItems/listItemsSlice";
-import { useDeleteListItemsMutation } from "../listItems/listItemsSlice";
+import {
+  useGetListItemsIdQuery,
+  useDeleteListItemsMutation,
+} from "../listItems/listItemsSlice";
+import { useAddToCartMutation } from "../../features/ShoppingCart/shopCartSlice";
 import SearchBar from "../../features/myLists/Searchbar";
-import "../../css/Shopping.css";
 import ShopCart from "./ShopCart";
+import "../../css/Shopping.css";
 
 export default function MyListsShop({ className }) {
-  const { data: MyLists = [], isLoading, error } = useGetMyListsQuery();
+  const { data: MyLists = [], isLoading, error } = useGetMyListsQuery(); // Fetch all lists
   const [selectedList, setSelectedList] = useState(null);
   const [showListDetails, setShowListDetails] = useState(false);
-  const [selectedItems, setSelectedItems] = useState({});
-  const [deleteListItem] = useDeleteListItemsMutation();
-
-  // Fetch list items for the selected list
-  const { data: selectedListItems = [] } = useGetListItemsIdQuery(
-    selectedList?.id
-  );
-  if (isLoading) return <h2>Loading List...</h2>;
-  if (error) return <p>{error.message}</p>;
-  if (!MyLists.length) return <p>There are no lists.</p>;
-
-  // Select a list and show details
-  const handleListSelection = (list) => {
-    setSelectedList(list);
-    setShowListDetails(true);
-    setSelectedItems({});
-  };
+  const { data: selectedListItems = { listItems: [] } } =
+    useGetListItemsIdQuery(selectedList?.id); // Fetch items for the selected list
+  const [deleteListItem] = useDeleteListItemsMutation(); // Mutation to delete list items
 
   // Go back to the main list view
   const handleBackToList = () => {
@@ -34,15 +23,13 @@ export default function MyListsShop({ className }) {
     setSelectedList(null);
   };
 
-  // Toggle item selection and update items
-  const handleItemSelection = (itemId) => {
-    setSelectedItems((prevSelectedItems) => ({
-      ...prevSelectedItems,
-      [itemId]: !prevSelectedItems[itemId],
-    }));
+  // Select a list and show its details
+  const handleListSelection = (list) => {
+    setSelectedList(list);
+    setShowListDetails(true);
   };
 
-  // Handle delete item
+  // Handle deleting an item
   const handleDeleteItem = async (itemId) => {
     try {
       await deleteListItem(itemId);
@@ -51,23 +38,23 @@ export default function MyListsShop({ className }) {
     }
   };
 
+  if (isLoading) return <h2>Loading List...</h2>;
+  if (error) return <p>Error: {error.message}</p>;
+  if (!MyLists || MyLists.length === 0) return <p>There are no lists.</p>;
+
   return (
     <div className={className}>
       {showListDetails ? (
         <div>
           <h1 className="list-details-name">{selectedList.name}</h1>
-          <button onClick={handleBackToList}>Back to All Lists</button>
+          <button className="backbutton" onClick={handleBackToList}>
+            Back to All Lists
+          </button>
           <ul className="listItems">
             {selectedListItems?.listItems?.length > 0 ? (
               selectedListItems.listItems.map((item) => (
                 <li key={item.id} className="item">
-                  <input
-                    type="checkbox"
-                    checked={!!selectedItems[item.id]}
-                    onChange={() => handleItemSelection(item.id)}
-                    aria-label="selected-items-input"
-                  />
-                  {item.itemName} - ${item.price?.toFixed(2) || "0.00"}
+                  {item.itemName}
                   <button
                     className="delete-button"
                     onClick={() => handleDeleteItem(item.id)}
@@ -80,7 +67,7 @@ export default function MyListsShop({ className }) {
               <p>No items in this list.</p>
             )}
           </ul>
-          <ShopCart items={selectedListItems} selectedItems={selectedItems} />
+          <ShopCart selectedList={selectedList} />
         </div>
       ) : (
         <div>
@@ -88,13 +75,12 @@ export default function MyListsShop({ className }) {
           <SearchBar names={MyLists} />
           <ul className="lists">
             {MyLists.map((list) => (
-              <li key={list.id} className="listItem">
-                <div
-                  className="listHeader"
-                  onClick={() => handleListSelection(list)}
-                >
-                  {list.name}
-                </div>
+              <li
+                key={list.id}
+                className="listItem"
+                onClick={() => handleListSelection(list)}
+              >
+                <div className="listHeader">{list.name}</div>
               </li>
             ))}
           </ul>
