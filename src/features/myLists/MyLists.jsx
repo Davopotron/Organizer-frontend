@@ -13,6 +13,8 @@ import "../../css/MyLists.css";
 import { useGetListItemsQuery } from "../listItems/listItemsSlice";
 import toastr from "toastr";
 import Dropdown from "./DropDownMenu";
+import Modal from "./ModalDeleteList";
+import "../../css/modal.css";
 
 // Function that renders a list of all lists
 export default function GetList({
@@ -35,35 +37,37 @@ export default function GetList({
   const [dropdownOpen, setDropDownOpen] = useState(null);
   const { data: listItemsData, isLoading: listItemsLoading } =
     useGetListItemsQuery();
-
+  const [showModal, setShowModal] = useState(false);
+  const [listToDelete, setListToDelete] = useState(null);
+  const { refetch } = useGetMyListsQuery();
   /**
    *
    * @param {number} id - ID of list to be deleted
    */
 
+  //Open Modal to delete
   const handleDelete = async (id) => {
-    //Toastr confirmation button for deleting
-    toastr.info(
-      `Are you sure you want to delete this list? <button id="delete-list-button" class id=delete-list-button>Confirm</button>`
-    );
+    setListToDelete(id);
+    setShowModal(true);
+  };
 
-    //Get element with id
-    const confirmButton = document.getElementById("delete-list-button");
-    if (confirmButton) {
-      //When clicked, proceed to delete
-      confirmButton.onclick = async () => {
-        try {
-          await deleteMyList(id).unwrap();
-          //Toastr message to confirm deleted
-          toastr.success("Deleted list");
-          //Catch errors
-        } catch (error) {
-          console.error("Failed to delete list: ", error);
-        }
-        //Clear toastr messages once action is done
-        toastr.clear();
-      };
+  //Confirm delete, close modal
+  const confirmDelete = async () => {
+    if (listToDelete) {
+      try {
+        await deleteMyList(listToDelete).unwrap();
+        setDropDownOpen(null);
+        toastr.success("Deleted list");
+        refetch();
+      } catch (error) {
+        console.error("Failed to delete list: ", error);
+      }
+      setShowModal(false);
     }
+  };
+
+  const cancelDelete = () => {
+    setShowModal(false);
   };
 
   /**
@@ -231,6 +235,9 @@ export default function GetList({
       {/* Render the Add List Form component*/}
       <div className="listForm">{showAddForm && <AddListForm />}</div>
       {content}
+      {showModal && (
+        <Modal handleClose={cancelDelete} handleConfirm={confirmDelete} />
+      )}
     </>
   );
 }
