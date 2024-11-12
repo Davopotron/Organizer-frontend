@@ -12,6 +12,11 @@
   font-family: Tahoma, sans-serif;
 }
 
+.logo-image {
+  width: 100px; /* Adjust the size of your logo */
+  height: auto;
+}
+
 .navbar a:visited {
   color: white; 
   text-decoration: none;

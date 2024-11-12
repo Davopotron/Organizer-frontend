@@ -11,11 +11,13 @@ function Shopping() {
           <MyListsShop />
         </div>
         <div className="rightColumn">
-          <div className="shopcart">
-            <ShoppingCart />
-          </div>
           <div className="map">
-            <input type="text" name="myListSearch" className="myListSearch" />
+            <input
+              type="text"
+              name="myListSearch"
+              className="myListSearch"
+              aria-label="map-input"
+            />
             <MapComponent />
           </div>
         </div>

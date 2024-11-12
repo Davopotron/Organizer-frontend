@@ -3,9 +3,7 @@
 ## Overview
 Organize and tackle your activities, events, plans, projects, todos and more with Organizer, which will show you where all your needs are for your convenience! Create lists of things you need either for everyday life or elaborate projects; then the search integrated map feature will locate all your listed items, so you can plan out exactly where to go to accomplish your todos efficiently. No need to search all over the internet for various items' locations, when you can just create a list and let Organizer's integrated map feature conveniently find them for you.
 
-# Organizer
-
-## Organizer-Frontend
+## Frontend Expectations:
 1. Have a landing homepage where clients can learn about the app and navigate website (once they're registered and logged-in)
 2. Register/login to use app's features
 3. Create organized, helpful lists with specifying descriptions to a "My List" page
@@ -24,6 +22,7 @@ Organize and tackle your activities, events, plans, projects, todos and more wit
   - Users can remove items from those lists
   - Users can use the "Near Me"'s search bar to access lists, so that that list's items may appear on the map, at the location(s) where those items can be found with pertinent info
   - Users can use the "Shopping" feature to show where items are alongside their prices and totals
+
 
 ## Stretch Goals:
 - List sharing among users
@@ -45,10 +44,13 @@ Organize and tackle your activities, events, plans, projects, todos and more wit
 - Integrating shopping feature to show price of all list items
 - Real-time updating
 
-## Suggested Stack:
+## Stack:
 - React
 - Redux Toolkit
-- Babelrc
+- Vite
+  - This stack build was chosen for this app as it has favorable attributes conducive to the list item-to-map feature; Redux Toolkit's robust data management capabilities integrally support React by allowing it to easily access the data it needs to provide a seamless UI. Combined with Vite's load speed, which is essential for web development changes being instantly discernible and general site rendering, the app is well structured to provide the user with an intuitive experience. 
+  
+
 
 
 

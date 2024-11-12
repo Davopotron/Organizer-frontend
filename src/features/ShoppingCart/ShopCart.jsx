@@ -1,78 +1,235 @@
 import React, { useState, useEffect } from "react";
-import { selectToken } from "../auth/authSlice";
 import { useSelector } from "react-redux";
+import {
+  useGetShoppingItemsQuery,
+  useAddToCartMutation,
+} from "../../features/ShoppingCart/shopCartSlice";
+import { selectToken } from "../auth/authSlice";
+import { useGetListItemsIdQuery } from "../listItems/listItemsSlice"; // To fetch list items
 import "../../css/Shopping.css";
 
-const ShoppingCart = () => {
-  const [items, setItems] = useState([]); // Store fetched items
-  const [selectedItems, setSelectedItems] = useState([]); // Store selected item IDs
-  const [total, setTotal] = useState(0); // Store cart total
-  const token = useSelector(selectToken);
+// export default function ShopCart({ selectedList }) {
+//   // Fetch the items from the shopping API
+//   const {
+//     data: shopItems = [],
+//     isLoading: shopLoading,
+//     error: shopError,
+//   } = useGetShoppingItemsQuery();
 
-  // Fetch items from the backend
+//   // Fetch the items in the selected list
+//   const {
+//     data: selectedListItems = { listItems: [] },
+//     isLoading: listLoading,
+//     error: listError,
+//   } = useGetListItemsIdQuery(selectedList?.id);
+
+//   // State to track selected items
+//   const [selectedItems, setSelectedItems] = useState([]);
+//   const [total, setTotal] = useState(0);
+
+//   // Set the default selected items to all in-stock items on mount
+//   useEffect(() => {
+//     if (shopItems.length) {
+//       const defaultSelected = shopItems
+//         .filter((item) => item.inStock)
+//         .map((item) => item.id);
+//       setSelectedItems(defaultSelected);
+//     }
+//   }, [shopItems]);
+
+//   // Calculate the total price based on selected items
+//   useEffect(() => {
+//     const calculateTotal = () => {
+//       const selectedPrices = shopItems
+//         .filter((item) => selectedItems.includes(item.id))
+//         .reduce((acc, item) => acc + item.price, 0);
+//       setTotal(selectedPrices);
+//     };
+//     calculateTotal();
+//   }, [selectedItems, shopItems]);
+
+//   // Toggle selection of an item
+//   const toggleSelection = (itemId) => {
+//     setSelectedItems(
+//       (prevSelected) =>
+//         prevSelected.includes(itemId)
+//           ? prevSelected.filter((id) => id !== itemId) // Deselect if already selected
+//           : [...prevSelected, itemId] // Add to selection
+//     );
+//   };
+
+//   if (shopLoading || listLoading) return <h2>Loading Items...</h2>;
+
+//   if (shopError || listError) {
+//     return <p>Error: {shopError?.message || listError?.message}</p>;
+//   }
+
+//   if (!selectedListItems.listItems.length) {
+//     return <p>There are no items in the selected list.</p>;
+//   }
+
+//   // Compare the selected list items with the shopping items
+//   const renderedItems = selectedListItems.listItems.map((listItem) => {
+//     const shopItem = shopItems.find(
+//       (shopItem) =>
+//         shopItem.name.toLowerCase() === listItem.itemName.toLowerCase()
+//     );
+
+//     if (shopItem) {
+//       const isSelected = selectedItems.includes(shopItem.id);
+
+//       return (
+//         <li
+//           key={listItem.id}
+//           className="shopping-item"
+//           onClick={() => toggleSelection(shopItem.id)} // Toggle selection on click
+//           style={{
+//             cursor: "pointer",
+//             backgroundColor: isSelected ? "#d4edda" : "#f8d7da", // Green if selected, red if not
+//           }}
+//         >
+//           {listItem.itemName} - ${shopItem.price}{" "}
+//           <span
+//             style={{
+//               color: shopItem.inStock ? "green" : "red",
+//               fontWeight: "bold",
+//             }}
+//           >
+//             {shopItem.inStock ? "✔" : "✘"}
+//           </span>
+//         </li>
+//       );
+//     }
+
+//     return (
+//       <li key={listItem.id} className="shopping-item">
+//         {listItem.itemName}{" "}
+//         <span style={{ color: "red", fontWeight: "bold" }}>✘</span>
+//       </li>
+//     );
+//   });
+
+//   return (
+//     <div className="shopping-container">
+//       <h1>Shopping Cart:</h1>
+//       <ul>{renderedItems}</ul>
+//       <h3>Total: ${total.toFixed(2)}</h3>
+//     </div>
+//   );
+// }
+
+export default function ShopCart({ selectedList }) {
+  // Fetch the items from the shopping API
+  const {
+    data: shopItems = [],
+    isLoading: shopLoading,
+    error: shopError,
+  } = useGetShoppingItemsQuery();
+
+  // Fetch the items in the selected list
+  const {
+    data: selectedListItems = { listItems: [] },
+    isLoading: listLoading,
+    error: listError,
+  } = useGetListItemsIdQuery(selectedList?.id);
+
+  // State to track selected items
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  // Set the default selected items to all in-stock items on mount
   useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/shopping/items", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
-        setItems(data);
-      } catch (error) {
-        console.error("Error fetching items:", error);
-      }
-    };
-    fetchItems();
-  }, []);
+    if (shopItems.length) {
+      const defaultSelected = shopItems
+        .filter((item) => item.inStock)
+        .map((item) => item.id);
+      setSelectedItems(defaultSelected);
+    }
+  }, [shopItems]);
 
-  // Handle checkbox changes
-  const handleCheckboxChange = (itemId) => {
-    setSelectedItems((prevSelected) => {
-      if (prevSelected.includes(itemId)) {
-        // Deselect item
-        return prevSelected.filter((id) => id !== itemId);
-      } else {
-        // Select item
-        return [...prevSelected, itemId];
-      }
-    });
+  // Calculate the total price based on selected items
+  useEffect(() => {
+    const calculateTotal = () => {
+      const selectedPrices = shopItems
+        .filter((item) => selectedItems.includes(item.id))
+        .reduce((acc, item) => acc + item.price, 0);
+      setTotal(selectedPrices);
+    };
+    calculateTotal();
+  }, [selectedItems, shopItems]);
+
+  // Toggle selection of an item
+  const toggleSelection = (itemId) => {
+    setSelectedItems(
+      (prevSelected) =>
+        prevSelected.includes(itemId)
+          ? prevSelected.filter((id) => id !== itemId) // Deselect if already selected
+          : [...prevSelected, itemId] // Add to selection
+    );
   };
 
-  // Calculate total when selectedItems changes
-  useEffect(() => {
-    const calculateTotal = async () => {
-      const newTotal = selectedItems.reduce((sum, itemId) => {
-        const item = items.find((i) => i.id === itemId);
-        return item && item.inStock ? sum + item.price : sum;
-      }, 0);
-      setTotal(newTotal);
-    };
+  if (shopLoading || listLoading) return <h2>Loading Items...</h2>;
 
-    calculateTotal();
-  }, [selectedItems, items]);
+  if (shopError || listError) {
+    return <p>Error: {shopError?.message || listError?.message}</p>;
+  }
+
+  if (!selectedListItems.listItems.length) {
+    return <p>There are no items in the selected list.</p>;
+  }
+
+  // Compare the selected list items with the shopping items
+  const renderedItems = selectedListItems.listItems.map((listItem) => {
+    const shopItem = shopItems.find(
+      (shopItem) =>
+        shopItem.name.toLowerCase() === listItem.itemName.toLowerCase()
+    );
+
+    if (shopItem) {
+      const isSelected = selectedItems.includes(shopItem.id);
+
+      return (
+        <li key={listItem.id} className="shopping-item">
+          <div className="item-content">
+            {listItem.itemName} - ${shopItem.price}{" "}
+            <span
+              className="status"
+              style={{
+                color: shopItem.inStock ? "green" : "red",
+                fontWeight: "bold",
+              }}
+            >
+              {shopItem.inStock ? "✔" : "✘"}
+            </span>
+          </div>
+          {shopItem.inStock && (
+            <button
+              className="toggle-selection"
+              onClick={() => toggleSelection(shopItem.id)}
+              aria-label={isSelected ? "Deselect item" : "Select item"}
+            >
+              {isSelected ? "➖" : "➕"}
+            </button>
+          )}
+        </li>
+      );
+    }
+
+    return (
+      <li key={listItem.id} className="shopping-item">
+        <div className="item-content">
+          {listItem.itemName}{" "}
+          <span style={{ color: "red", fontWeight: "bold" }}>✘</span>
+        </div>
+      </li>
+    );
+  });
 
   return (
     <div className="shopping-container">
-      <h2>Shopping Cart</h2>
-      <ul>
-        {items.map((item) => (
-          <li key={item.id}>
-            <label>
-              <input
-                type="checkbox"
-                checked={selectedItems.includes(item.id)}
-                onChange={() => handleCheckboxChange(item.id)}
-              />
-              {item.name} - ${item.price.toFixed(2)}
-            </label>
-          </li>
-        ))}
-      </ul>
+      <h1>Shopping Cart:</h1>
+      <ul>{renderedItems}</ul>
       <h3>Total: ${total.toFixed(2)}</h3>
     </div>
   );
-};
-
-export default ShoppingCart;
+}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAddMyListMutation } from "./myListsSlice";
 import "../../css/AddMyList.css";
-
+import toastr from "toastr";
 export default function AddListForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -23,6 +23,7 @@ export default function AddListForm() {
       const response = await addList(listData).unwrap();
       setName("");
       setDescription("");
+      toastr.success("List added.");
     } catch (e) {
       console.error("Failed to add list:", e);
     }
@@ -41,6 +42,7 @@ export default function AddListForm() {
               value={name}
               className="listNameText"
               onChange={(e) => setName(e.target.value)}
+              aria-label="list-name-input"
             />
           </label>
         </div>
@@ -53,6 +55,7 @@ export default function AddListForm() {
               value={description}
               className="listDescriptionText"
               onChange={(e) => setDescription(e.target.value)}
+              aria-label="description-input"
             />
           </label>
         </div>

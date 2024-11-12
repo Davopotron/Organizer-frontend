@@ -36,6 +36,7 @@ function NearMe() {
             value={searchInput}
              placeholder="Search Map..."
             onChange={(e) => setSearchInput(e.target.value)}
+            aria-label="list-search-input"
           />
           </div>
           <MapComponent searchInput={searchInput} />
