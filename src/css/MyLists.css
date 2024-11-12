@@ -74,10 +74,6 @@ ul {
   border-radius: 6px;
 }
 
-.dropdownMenu.show {
-  display: block;
-}
-
 .dropdownContainer {
   position: relative;
 }
@@ -172,6 +168,10 @@ ul {
   border-top-right-radius: 0;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+}
+
+.myListBody {
+  background-color: rgb(30, 101, 173);
 }
 
 .myListsName {
