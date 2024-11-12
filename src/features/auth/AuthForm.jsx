@@ -29,8 +29,9 @@ function AuthForm() {
 
     try {
       await authMethod(credentials).unwrap();
+      toastr.options.extendedTimeOut = 0;
+      toastr.options.positionClass = "toast-bottom-right";
       toastr.success(`${authAction} successful!`);
-      toastr.options.extendedTimeOut = 30;
       navigate("/");
     } catch (error) {
       console.error(error);

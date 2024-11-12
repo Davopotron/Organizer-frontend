@@ -4,10 +4,12 @@ import { useGetMyListQuery } from "./myListsSlice";
 import {
   useUpdateListItemsMutation,
   useDeleteListItemsMutation,
+  useGetListItemsQuery,
 } from "../listItems/listItemsSlice";
 import AddListItemForm from "../listItems/AddListItemForm";
 import "../../css/ListDetails.css";
 import toastr from "toastr";
+import Modal from "./ModalDeleteListItem";
 
 export default function ListDetails() {
   const { id } = useParams();
@@ -18,6 +20,9 @@ export default function ListDetails() {
   const [newName, setNewName] = useState("");
   const [showAddForm, setShowAddForm] = useState(false);
   const [showDropdown, setShowDropdown] = useState(null); // Track which dropdown is open
+  const [showModal, setShowModal] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
+  const { refetch } = useGetMyListQuery(id);
 
   const listId = parseInt(id, 10);
   if (isLoading) return <p>Loading Item...</p>;
@@ -42,24 +47,29 @@ export default function ListDetails() {
     toastr.options.extendedTimeOut = 0;
   };
 
+  //Open Modal to delete
   const handleDelete = async (listItemId) => {
-    toastr.info(
-      `Are you sure you want to delete this list? <button id="delete-listItem-button" class id=delete-listItem-button>Confirm</button>`
-    );
-    const confirmButton = document.getElementById("delete-listItem-button");
+    setItemToDelete(listItemId);
+    setShowModal(true);
+  };
 
-    if (confirmButton) {
-      confirmButton.onclick = async () => {
-        try {
-          await deleteListItem(listItemId).unwrap();
-          setShowDropdown(null); // Close dropdown after deletion
-          toastr.success("Item deleted.");
-        } catch (error) {
-          console.error("failed to delete list item:", error);
-        }
-        toastr.clear();
-      };
+  //Confirm delete, close modal
+  const confirmDelete = async () => {
+    if (itemToDelete) {
+      try {
+        await deleteListItem(itemToDelete).unwrap();
+        setShowDropdown(null); // Close dropdown after deletion
+        toastr.success("Item deleted.");
+        refetch();
+      } catch (error) {
+        console.error("failed to delete list item:", error);
+      }
+      setShowModal(false);
     }
+  };
+
+  const cancelDelete = () => {
+    setShowModal(false);
   };
 
   return (
@@ -156,6 +166,9 @@ export default function ListDetails() {
           </tr>
         </tbody>
       </table>
+      {showModal && (
+        <Modal handleClose={cancelDelete} handleConfirm={confirmDelete} />
+      )}
     </div>
   );
 }
