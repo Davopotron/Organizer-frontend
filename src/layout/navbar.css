@@ -2,12 +2,12 @@
   padding: 10px 5%;
   box-sizing: border-box;
   width: 100%;
-  background-color: rgb(30, 101, 173);
+  background-color: #004AAD;
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: white;
-  color: var(--text-color); /* Sets link color to white as defined in :root */
+  color: var(--text-color); 
   text-decoration: none;
   font-family: Tahoma, sans-serif;
 }
@@ -18,7 +18,7 @@
 }
 
 .navbar a:visited {
-  color: white; /* Ensures visited links are also white */
+  color: white; 
   text-decoration: none;
 }
 
@@ -45,10 +45,10 @@ menu {
 
 .navbar-left {
   color: white;
-  font-size: 1.5rem; /* Increase the font size */
-  font-weight: bold; /* Make the text bold */
-  color: white; /* Ensure the text color is white */
-  text-decoration: none; /* Remove underline */
+  font-size: 1.5rem; 
+  font-weight: bold; 
+  color: white; 
+  text-decoration: none; 
   font-family: Tahoma, sans-serif;
 }
 
@@ -63,5 +63,5 @@ menu {
 
 .navbar-left-logo a {
   text-decoration: none;
-  color: white; /* Ensures color is also applied directly to the link */
+  color: white; 
 }

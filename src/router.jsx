@@ -9,7 +9,7 @@ import AddListItemForm from './features/listItems/AddListItemForm';
 import ListItems from './features/listItems/ListItems';
 import NearMe from './features/NearMe';
 import Shopping from './features/Shopping';
-import About from './features/about';
+import About from './features/About';
 import Contact from './features/contact';
 import PrivacyPolicy from './features/PrivacyPolicy';
 import TermsOfService from './features/TermsOfService';

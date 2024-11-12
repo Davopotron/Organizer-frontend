@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../css/footer.css";
 import { Link } from "react-router-dom";
-
 function Footer() {
   return (
     <div className="footer-container">
@@ -12,7 +11,6 @@ function Footer() {
           <Link to="/PrivacyPolicy">Privacy Policy</Link>
           <Link to="/TermsOfService">Terms of Service</Link>
         </div>
-
         <div className="footer-links">
           <span className="logo">
             <a href="#">TasteTracker</a>
@@ -28,5 +26,4 @@ function Footer() {
     </div>
   );
 }
-
 export default Footer;

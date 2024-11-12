@@ -31,7 +31,7 @@ export default function AddListForm() {
 
   return (
     <>
-      <h2>Add a List</h2>
+      <h2 className="addAList">Add a List</h2>
       <form onSubmit={postList}>
         <div className="nameContainer">
           <label className="name">
