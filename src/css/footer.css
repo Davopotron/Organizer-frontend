@@ -1,5 +1,5 @@
 .footer-container {
-  background-color: rgb(30, 101, 173);
+  background-color: #004AAD;
   padding: 40px 0%;
   display: flex;
   justify-content: center;
@@ -119,7 +119,7 @@ p {
   }
 
   .footer-links {
-    flex-direction: column; /* Stacks logo and contact info vertically */
+    flex-direction: column; 
     gap: 10px;
   }
 

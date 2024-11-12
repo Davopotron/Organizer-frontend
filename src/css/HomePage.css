@@ -7,7 +7,7 @@ body {
   }
 
   .homepage-background {
-    background-color: #004AAD; 
+    background-color: rgb(30, 101, 173); /* may add this #f8f9fa color in lieu of blue  */
     color: #333333; 
     width: 100%;
     min-height: 100vh; 
@@ -62,4 +62,10 @@ body {
   .here-SU:hover {
     color: #2980b9; 
     transform: translateX(3px);
+}
+
+@media (max-width: 650px) {
+  .container {
+    margin: 5em 3em 0 3em;
+  }
 }

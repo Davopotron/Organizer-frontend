@@ -6,12 +6,12 @@ ul {
 
 .list-details-container {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   font-family: "Arial", sans-serif;
   margin: 20px;
   padding: 20px;
   padding-bottom: 50px;
-  background-color: #FAF3E0; /* changed to make it more consistent with other pages */
+  background-color: #f9f9f9;
   border: solid slategray;
   border-radius: 8px;
 }

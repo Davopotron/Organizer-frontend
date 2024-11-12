@@ -1,11 +1,9 @@
-/* changes made ln 161, ln 152, ln 168-171 */
-
 ul {
   list-style-type: none;
 }
 
 .mainList {
-  border: 2px solid rgb(82, 82, 82);
+  border: 2px solid #FAF3E0;
   position: relative;
   border-radius: 15px;
   height: 250px;
@@ -13,13 +11,13 @@ ul {
   display: flex;
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #d2c6b6;
+  background-color: #FAF3E0;
   margin: 2em;
   padding-bottom: 1em;
 }
 
 .nearMeMyLists .mainList {
-  border: 2px solid rgb(82, 82, 82);
+  border: 2px solid #FAF3E0;
   position: relative;
   border-radius: 15px;
   height: 50px;
@@ -27,14 +25,14 @@ ul {
   display: flex;
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #d2c6b6;
+  background-color: #FAF3E0;
   margin: 2em;
   padding-bottom: 1em;
   margin: 1px 0 1px 0;
 }
 
 .mainList:hover {
-  box-shadow: 0.5em 0.5em 0.5em 0.5em gray;
+  box-shadow: 0.5em 0.5em 1em 0 rgba(240, 240, 240, 0.3);
 }
 
 .listItems {
@@ -148,12 +146,7 @@ ul {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   padding: 1em 0 2em 0;
-  background-color: #d2c6b6;
-  /* border-radius: 8px; *//* had added border radius 8px */
-}
-
-.myListBody  {
-  background-color: #FAF3E0;
+  background-color: rgb(30, 101, 173);
 }
 
 .nearMeMyLists .listForm {
@@ -165,21 +158,21 @@ ul {
 }
 
 .listContainer {
-  background-color: #FAF3E0; /*changed from white to beige */
+  background-color: rgb(30, 101, 173); 
   width: 100%;
 }
 
 .trim {
-  background-color: #FAF3E0; 
+  background-color: rgb(30, 101, 173);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  /* border-radius: 8px; */
-} /* added this to fill out and round out near me border*/
+}
 
 .myListsName {
   font-family: Arial, Helvetica, sans-serif;
+  color: white;
 }
 
 .editField {

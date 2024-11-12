@@ -92,7 +92,7 @@ export default function GetList({
     content = <p>There are no lists.</p>;
   } else {
     content = (
-      <body className="myListBody">
+      <div className="myListBody">
       <table className="trim">
         <tbody>
           <tr>
@@ -218,7 +218,7 @@ export default function GetList({
           </tr>
         </tbody>
       </table>
-      </body>
+      </div>
     );
   }
 

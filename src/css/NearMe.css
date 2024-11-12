@@ -1,11 +1,11 @@
 .nearMe {
   display: flex;
   flex: 1;
-  background-color: #004AAD;
+  background-color: rgb(30, 101, 173);
 }
 
 .nearMyLists {
-  flex: 1; /* removed beige background-color and changed in NearMe.jsx from myLists to nearMyLists to remove padding from myLists in shopping */
+  flex: 1; 
   padding: 0;
   margin: 0;
   height: 100%;
@@ -14,23 +14,23 @@
 }
 
 .map {
-  height: 100vh;
+  height: 75vh;
   width: 100%;
   flex: 4;
   overflow: hidden;
   border: 3px solid #f5f2ef;
   border-radius: 4px;
-} /* added border and b-radius */
+} 
 
 .myListSearch {
   height: 3%;
-  width: 40%; /* original h: 3% w: 100% */
+  width: 40%; 
 }
 
 .searchContainer {
   display: flex;
   justify-content: left;
-  width: 100%; /* added .searchcontainer to move search bar on near me, jsx too */
+  width: 100%; 
   background-color: #f5f2ef;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .nearMeBackground {
-  background-color: #004AAD;
+  background-color: rgb(30, 101, 173);
   min-height: 100vh;
   padding-top: 0;
   display: flex;
@@ -59,6 +59,7 @@
 .nearMeBackground .listForm {
   border-top-left-radius: 8px;
   border-top-right-radius: 3px;
+  background-color: transparent;
 }
 
 .nearMeBackground h2:hover {
