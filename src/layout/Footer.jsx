@@ -54,9 +54,9 @@ function Footer() {
         </form>
         <div className='footer-links'>
           <Link to='/about'>About Us</Link>
-          <a href='#'>Contact</a>
-          <a href='#'>Privacy Policy</a>
-          <a href='#'>Terms of Service</a>
+          <Link to='/contact'>Contact</Link>
+          <Link to='/PrivacyPolicy'>Privacy Policy</Link>
+          <Link to='/TermsOfService'>Terms of Service</Link>
         </div>
 
         <div className='footer-links'>

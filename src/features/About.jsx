@@ -29,7 +29,9 @@ function About() {
         want to inspire you to create delicious meals and help you keep track of
         all the ingredients and recipes you love.
       </p>
-      <p>Let #TasteTracker be your companion in the kitchen – happy cooking!</p>
+      <h3>
+        Let #TasteTracker be your companion in the kitchen – happy cooking!{' '}
+      </h3>
     </div>
   );
 }
