@@ -1,117 +1,268 @@
-.shoppingPage {
-  display: flex;
-}
-
-.myLists {
-  flex: 1;
-  padding: 20px;
-}
-
-.rightColumn {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-}
-
-.shopcart {
-  margin-bottom: 20px;
-}
-
-.map {
-  flex: 1;
-}
-
-.shopping-container {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  width: 400px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  justify-self: center;
-  margin-bottom: 20px;
-}
-
-/* MY LISTsection */
-
-.shoppingPage .listContainer {
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  max-width: 400px;
-  margin: 0 auto;
+/* --- Global Styles --- */
+body {
   font-family: "Arial", sans-serif;
-  border: solid grey;
-}
-
-/* Title styling */
-.myListsTitle {
-  font-size: 24px;
-  text-align: center;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-/* main list items */
-.lists {
-  list-style-type: none;
+  background-color: #f4f5f7; /* Light background for modern feel */
+  color: #333; /* Neutral text color */
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.listItem {
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
   cursor: pointer;
 }
 
-.listHeader {
-  font-size: 18px;
-  font-weight: bold;
-  color: #555;
-}
-
-/* Styling for the items in the selected list */
-.listItems {
-  list-style-type: none;
-  padding-left: 20px;
-  margin-top: 10px;
-}
-
-.item {
+/* --- Layout Styles --- */
+.shoppingPage {
   display: flex;
+  flex-wrap: wrap; /* Responsive design */
+  padding: 16px;
+  gap: 16px;
+}
+
+/* --- My Lists Section --- */
+.myLists {
+  flex: 1 1 60%; /* Take 60% width on larger screens */
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  overflow: hidden;
+}
+
+.myListsTitle {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #1e65ad;
+}
+
+.lists {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  font-size: 16px;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.listItem:hover {
+  background-color: #e9ecef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.listHeader {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  padding: 0;
+}
+
+.delete-button {
+  padding: 6px 12px;
+  margin-left: 8px;
+  background-color: #1e65ad;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.delete-button:hover {
+  background-color: #1e65ad;
+}
+
+/* --- Right Column (Map and Search) --- */
+.rightColumn {
+  flex: 1 1 35%; /* Take 35% width on larger screens */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.map {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+
+.myListSearch {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.myListSearch:focus {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
+}
+
+/* --- List Details and Items --- */
+.list-details-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 16px;
   color: #333;
 }
 
-.item input[type="checkbox"] {
-  margin-right: 8px;
+.backbutton {
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  width: 150px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  justify-self: center;
+  margin-bottom: 20px;
+  border: #ccc;
 }
 
-/* Shopping.css */
+.listItems {
+  list-style-type: none;
+  padding: 0;
+  margin: 16px 0;
+}
 
-.details-layout {
+.listItems .item {
   display: flex;
   justify-content: space-between;
-}
-
-.list-details {
-  width: 60%;
-  padding: 20px;
-}
-
-.shopcart-container {
-  width: 35%;
-  padding: 20px;
-  position: sticky;
-  top: 0;
-}
-
-.shopcart-container .shopCart {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 15px;
+  align-items: center;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
   border-radius: 8px;
+  background-color: #f9fafb;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.listItems .item:hover {
+  background-color: #e9ecef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Toggle Selection Buttons (ShopCart) --- */
+button.toggle-selection {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #1e65ad;
+  transition: color 0.2s ease;
+}
+
+.toggle-selection:hover {
+  color: #1e65ad;
+}
+
+/* --- Shopping Cart Section --- */
+.shopping-container {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+
+.shopping-container h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.shopping-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.shopping-container h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 16px;
+  text-align: right;
+  color: #333;
+}
+
+/* List item container */
+.shopping-item {
+  display: flex;
+  justify-content: space-between; /* Ensures content is spaced out */
+  align-items: center; /* Vertically aligns items */
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shopping-item:hover {
+  background-color: #e9ecef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Content of the list item */
+.item-content {
+  flex: 1; /* Ensures this section takes available space */
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+/* Toggle button styling */
+.toggle-selection {
+  font-size: 1.4rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #1e65ad !important;
+  transition: color 0.2s ease;
+  margin-left: 8px; /* Adds some spacing from the content */
+}
+
+.toggle-selection:hover {
+  color: #14457a; /* Slightly darker blue on hover */
+}
+
+.status {
+  width: 20px; /* Fixed width for alignment */
+  margin-left: 8px; /* Spacing from the item name */
+  font-size: 1.2rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .shoppingPage {
+    flex-direction: column;
+  }
+
+  .myLists,
+  .rightColumn {
+    flex: 1 1 100%; /* Take full width on smaller screens */
+  }
 }
