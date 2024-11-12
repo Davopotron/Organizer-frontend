@@ -1,5 +1,3 @@
-/* HomePage.css */
-
 body {
     margin: 0;
     background-color: #f8f9fa; 
@@ -7,7 +5,7 @@ body {
   }
 
   .homepage-background {
-    background-color: rgb(30, 101, 173); /* may add this #f8f9fa color in lieu of blue  */
+    background-color: rgb(30, 101, 173); 
     color: #333333; 
     width: 100%;
     min-height: 100vh; 
