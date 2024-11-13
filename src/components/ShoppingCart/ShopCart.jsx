@@ -89,7 +89,10 @@ export default function ShopCart({ selectedList }) {
       return (
         <li key={listItem.id} className="shopping-item">
           <div className="item-content">
-            {listItem.itemName} - ${shopItem.price}{" "}
+            <div className="item-name">
+              {listItem.itemName}
+              {shopItem?.inStock && `- $${shopItem.price}`}
+            </div>
             <span
               className="status"
               style={{
