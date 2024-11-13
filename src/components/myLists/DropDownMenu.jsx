@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/MyLists.css";
+import "../../css/myLists.css";
 
 /**
  * Dropdown component with either listItems or option to click see details, edit, or delete
