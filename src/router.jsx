@@ -30,8 +30,8 @@ const router = createBrowserRouter([
       { path: "/shopping", element: <Shopping /> },
       { path: "/About", element: <About /> },
       { path: "/Contact", element: <Contact /> },
-      { path: "/PrivacyPolicy", element: <PrivacyPolicy /> },
-      { path: "/TermsOfService", element: <TermsOfService /> },
+      { path: "/privacy-policy", element: <PrivacyPolicy /> },
+      { path: "/terms-of-service", element: <TermsOfService /> },
     ],
   },
 ]);
