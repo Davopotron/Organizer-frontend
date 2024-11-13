@@ -30,7 +30,7 @@ function MapComponent({ searchInput }) {
     },
   });
 
-  // RTK state variables
+  //State
   const [map, setMap] = useState(null);
   const [markerLib, setMarkerLib] = useState(null);
   const [center, setCenter] = useState({ lat: 40.24, lng: -96.491 });
