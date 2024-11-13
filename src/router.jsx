@@ -10,7 +10,7 @@ import MyLists from "./components/myLists/MyLists";
 import NearMe from "./components/NearMe";
 import Shopping from "./components/Shopping";
 import About from "./components/About";
-import Contact from "./components/contact";
+import Contact from "./components/Contact";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfService";
 
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
       { path: "/list-items", element: <AddListItemForm /> },
       { path: "/near-me", element: <NearMe /> },
       { path: "/shopping", element: <Shopping /> },
-      { path: "/About", element: <About /> },
-      { path: "/Contact", element: <Contact /> },
+      { path: "/about", element: <About /> },
+      { path: "/contact", element: <Contact /> },
       { path: "/privacy-policy", element: <PrivacyPolicy /> },
       { path: "/terms-of-service", element: <TermsOfService /> },
     ],
