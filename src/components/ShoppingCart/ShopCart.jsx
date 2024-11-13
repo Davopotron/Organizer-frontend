@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import {
   useGetShoppingItemsQuery,
   useAddToCartMutation,
-} from "../../features/ShoppingCart/shopCartSlice";
+} from "../../slices/shopCartSlice";
 import { selectToken } from "../../slices/authSlice";
-import { useGetListItemsIdQuery } from "../listItems/listItemsSlice"; // To fetch list items
+import { useGetListItemsIdQuery } from "../../slices/listItemsSlice"; // To fetch list items
 import "../../css/shopping.css";
 
 export default function ShopCart({ selectedList }) {

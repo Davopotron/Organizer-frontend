@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { useGetMyListsQuery } from "../../slices/myListsSlice";
 import {
   useGetListItemsIdQuery,
   useDeleteListItemsMutation,
 } from "../../slices/listItemsSlice";
-import SearchBar from "../../components/myLists/Searchbar";
-import { useGetMyListsQuery } from "../../features/myLists/myListsSlice";
-import { useAddToCartMutation } from "../../features/ShoppingCart/shopCartSlice";
-import SearchBar from "../../features/myLists/Searchbar";
+import { useGetMyListsQuery } from "../../slices/myListsSlice";
+import { useAddToCartMutation } from "../../slices/shopCartSlice";
+import SearchBar from "../myLists/Searchbar";
 import ShopCart from "./ShopCart";
 import "../../css/shopping.css";
 

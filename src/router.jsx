@@ -9,10 +9,10 @@ import Login from "./components/auth/AuthForm";
 import MyLists from "./components/myLists/MyLists";
 import NearMe from "./components/NearMe";
 import Shopping from "./components/Shopping";
-import About from "./features/About";
-import Contact from "./features/contact";
-import PrivacyPolicy from "./features/PrivacyPolicy";
-import TermsOfService from "./features/TermsOfService";
+import About from "./components/About";
+import Contact from "./components/contact";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsOfService from "./components/TermsOfService";
 
 const router = createBrowserRouter([
   {
