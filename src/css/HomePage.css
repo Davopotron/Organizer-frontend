@@ -1,60 +1,61 @@
 body {
-    margin: 0;
-    background-color: #f8f9fa; 
-    color: #333; 
-  }
+  margin: 0;
+  background-color: #f8f9fa;
+  color: #333;
+}
 
-  .homepage-background {
-    background-color: rgb(30, 101, 173); 
-    color: #333333; 
-    width: 100%;
-    min-height: 100vh; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-    box-sizing: border-box;
-    overflow-x: hidden; 
-    margin: 0; 
-  }
-  
-  .htitle {
-    font-family: Verdana, sans-serif;
-    text-align: center;
-    font-size: 2.5em; 
-    color: #2c3e50; 
-    margin-top: 20px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-  }
-  
-  .hpara {
-    max-width: 800px; 
-    margin: 10px auto; 
-    padding: 10px 20px; 
-    line-height: 1.6; 
-    font-size: 1.1em; 
-    font-family: Tahoma, sans-serif;
-  }
+.homepage-background {
+  background-color: rgb(30, 101, 173);
+  color: #333333;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  margin: 0;
+}
 
-  .container {
-    padding: 20px; 
-    background-color: #FAF3E0;
-    border-radius: 16px; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    max-width: 90%;
-    margin: 10px auto;
-  }
+.htitle {
+  font-family: Verdana, sans-serif;
+  text-align: center;
+  font-size: 2.5em;
+  color: #2c3e50;
+  margin-top: 20px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
 
-  .here-SU {
-    color:skyblue;
-    text-decoration: none;
-    transition: color 0.3s; transform: 0.3s;
-    font-family: Tahoma, sans-serif;
-  }
+.hpara {
+  max-width: 800px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  line-height: 1.6;
+  font-size: 1.1em;
+  font-family: Tahoma, sans-serif;
+}
 
-  .here-SU:hover {
-    color: #2980b9; 
-    transform: translateX(3px);
+.container {
+  padding: 20px;
+  background-color: #faf3e0;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 90%;
+  margin: 10px auto;
+}
+
+.here-SU {
+  color: skyblue;
+  text-decoration: none;
+  transition: color 0.3s;
+  transform: 0.3s;
+  font-family: Tahoma, sans-serif;
+}
+
+.here-SU:hover {
+  color: #2980b9;
+  transform: translateX(3px);
 }
 
 @media (max-width: 650px) {
