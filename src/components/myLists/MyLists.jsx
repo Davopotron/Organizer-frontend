@@ -16,7 +16,7 @@ import Dropdown from "./DropDownMenu";
 import Modal from "./ModalDeleteList";
 import "../../css/modal.css";
 
-// Function that renders a list of all lists
+// Function that renders a list of all lists.
 export default function GetList({
   className = "",
   showAddForm = true,
