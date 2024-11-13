@@ -29,13 +29,21 @@ export default function ShopCart({ selectedList }) {
 
   // Set the default selected items to all in-stock items on mount
   useEffect(() => {
-    if (shopItems.length) {
+    if (shopItems.length && selectedListItems.listItems.length) {
       const defaultSelected = shopItems
-        .filter((item) => item.inStock)
+        .filter((shopItem) =>
+          selectedListItems.listItems.some(
+            (listItem) =>
+              shopItem.name.toLowerCase() === listItem.itemName.toLowerCase() &&
+              shopItem.inStock
+          )
+        )
         .map((item) => item.id);
       setSelectedItems(defaultSelected);
+    } else {
+      setSelectedItems([]);
     }
-  }, [shopItems]);
+  }, [selectedListItems, shopItems]);
 
   // Calculate the total price based on selected items
   useEffect(() => {
