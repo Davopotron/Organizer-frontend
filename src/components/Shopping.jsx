@@ -1,6 +1,5 @@
 import MyListsShop from "../components/ShoppingCart/MyListsShop";
 import MapComponent from "./map/GoogleMap";
-import ShoppingCart from "./ShoppingCart/ShopCart";
 import "../css/shopping.css";
 
 function Shopping() {
