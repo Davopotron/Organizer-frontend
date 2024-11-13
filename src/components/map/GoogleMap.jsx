@@ -3,6 +3,7 @@ import { GoogleMap, InfoWindow, useJsApiLoader } from "@react-google-maps/api";
 
 //List of Google Maps libraries to load
 const libraries = ["places", "marker"];
+const GOOGLE_MAPS_API_KEY = "AIzaSyAvWbZNQYen7dVRqVFPMvphhJY2FRYdP1E";
 // Fields to request from the google Places API
 const markerFields = [
   "place_id",
@@ -19,8 +20,14 @@ function MapComponent({ searchInput }) {
   // Load Google Maps JS API with the libraries array
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyAvWbZNQYen7dVRqVFPMvphhJY2FRYdP1E",
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
     libraries,
+    options: {
+      csp: {
+        // Disable the content security policy check
+        enabled: false,
+      },
+    },
   });
 
   // RTK state variables

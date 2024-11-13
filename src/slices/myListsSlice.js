@@ -1,19 +1,19 @@
-import api from "../../app/api";
+import api from "./api";
 const MyListApi = api.injectEndpoints({
   endpoints: (build) => ({
     getMyLists: build.query({
-      query: () => "/myLists",
+      query: () => "/my-lists",
       transformResponse: (response) => response,
       providesTags: ["MyList"],
     }),
     getMyList: build.query({
-      query: (id) => "/myLists/" + id,
+      query: (id) => "/my-lists/" + id,
       transformResponse: (response) => response,
       providesTags: ["MyList"],
     }),
     updateMyList: build.mutation({
       query: ({ id, ...myList }) => ({
-        url: "/myLists/" + id,
+        url: "/my-lists/" + id,
         method: "PATCH",
         body: myList,
       }),
@@ -21,7 +21,7 @@ const MyListApi = api.injectEndpoints({
     }),
     addMyList: build.mutation({
       query: (myList) => ({
-        url: "/myLists",
+        url: "/my-lists",
         method: "POST",
         body: myList,
       }),
@@ -30,7 +30,7 @@ const MyListApi = api.injectEndpoints({
     }),
     deleteMyList: build.mutation({
       query: (id) => ({
-        url: "myLists/" + id,
+        url: "my-lists/" + id,
         method: "DELETE",
       }),
       invalidatesTags: ["MyList"],

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../css/MyLists.css";
+import "../../css/myLists.css";
 
 function SearchBar({ names = [], onSearch }) {
   const [filter, setFilter] = useState("");

@@ -1,6 +1,6 @@
-import { useGetListItemsQuery } from "./listItemsSlice";
+import { useGetListItemsQuery } from "../../slices/listItemsSlice";
 import { useSelector } from "react-redux";
-import { selectToken } from "../auth/authSlice";
+import { selectToken } from "../../slices/authSlice";
 
 //Function that renders a singular list's items
 

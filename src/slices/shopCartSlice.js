@@ -1,4 +1,4 @@
-import api from "../../app/api";
+import api from "../slices/api";
 
 const ShopCartApi = api.injectEndpoints({
   endpoints: (build) => ({

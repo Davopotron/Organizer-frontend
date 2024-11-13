@@ -1,25 +1,27 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useGetMyListQuery } from "./myListsSlice";
+import { useGetMyListQuery } from "../../slices/myListsSlice";
 import {
   useUpdateListItemsMutation,
   useDeleteListItemsMutation,
   useGetListItemsQuery,
-} from "../listItems/listItemsSlice";
+} from "../../slices/listItemsSlice";
 import AddListItemForm from "../listItems/AddListItemForm";
-import "../../css/ListDetails.css";
+import "../../css/myListDetails.css";
 import toastr from "toastr";
 import Modal from "./ModalDeleteListItem";
 
 export default function ListDetails() {
   const { id } = useParams();
   const { data: myList, isLoading } = useGetMyListQuery(id);
-  const [deleteListItem] = useDeleteListItemsMutation();
-  const [updateListItem] = useUpdateListItemsMutation(id);
+
   const [editMode, setEditMode] = useState("");
   const [newName, setNewName] = useState("");
   const [showAddForm, setShowAddForm] = useState(false);
   const [showDropdown, setShowDropdown] = useState(null); // Track which dropdown is open
+
+  const [deleteListItem] = useDeleteListItemsMutation();
+  const [updateListItem] = useUpdateListItemsMutation(id);
   const [showModal, setShowModal] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
   const { refetch } = useGetMyListQuery(id);

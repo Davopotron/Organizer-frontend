@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAddListItemsMutation } from "../listItems/listItemsSlice";
+import { useAddListItemsMutation } from "../../slices/listItemsSlice";
 import toastr from "toastr";
 
 function AddListItemForm({ myListId }) {
