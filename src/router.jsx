@@ -9,6 +9,10 @@ import Login from "./components/auth/AuthForm";
 import MyLists from "./components/myLists/MyLists";
 import NearMe from "./components/NearMe";
 import Shopping from "./components/Shopping";
+import About from "./features/About";
+import Contact from "./features/contact";
+import PrivacyPolicy from "./features/PrivacyPolicy";
+import TermsOfService from "./features/TermsOfService";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +28,10 @@ const router = createBrowserRouter([
       { path: "/list-items", element: <AddListItemForm /> },
       { path: "/near-me", element: <NearMe /> },
       { path: "/shopping", element: <Shopping /> },
+      { path: "/About", element: <About /> },
+      { path: "/Contact", element: <Contact /> },
+      { path: "/PrivacyPolicy", element: <PrivacyPolicy /> },
+      { path: "/TermsOfService", element: <TermsOfService /> },
     ],
   },
 ]);

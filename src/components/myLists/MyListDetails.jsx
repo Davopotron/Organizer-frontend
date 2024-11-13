@@ -4,9 +4,12 @@ import { useGetMyListQuery } from "../../slices/myListsSlice";
 import {
   useUpdateListItemsMutation,
   useDeleteListItemsMutation,
+  useGetListItemsQuery,
 } from "../../slices/listItemsSlice";
 import AddListItemForm from "../listItems/AddListItemForm";
 import "../../css/myListDetails.css";
+import toastr from "toastr";
+import Modal from "./ModalDeleteListItem";
 
 export default function ListDetails() {
   const { id } = useParams();
@@ -19,6 +22,9 @@ export default function ListDetails() {
 
   const [deleteListItem] = useDeleteListItemsMutation();
   const [updateListItem] = useUpdateListItemsMutation(id);
+  const [showModal, setShowModal] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
+  const { refetch } = useGetMyListQuery(id);
 
   const listId = parseInt(id, 10);
   if (isLoading) return <p>Loading Item...</p>;
@@ -39,17 +45,33 @@ export default function ListDetails() {
         console.error("Failed to update list item:", error);
       }
     }
+    toastr.success("Updated item.");
+    toastr.options.extendedTimeOut = 0;
   };
 
+  //Open Modal to delete
   const handleDelete = async (listItemId) => {
-    if (window.confirm("Are you sure you want to delete this list item?")) {
+    setItemToDelete(listItemId);
+    setShowModal(true);
+  };
+
+  //Confirm delete, close modal
+  const confirmDelete = async () => {
+    if (itemToDelete) {
       try {
-        await deleteListItem(listItemId).unwrap();
+        await deleteListItem(itemToDelete).unwrap();
         setShowDropdown(null); // Close dropdown after deletion
+        toastr.success("Item deleted.");
+        refetch();
       } catch (error) {
         console.error("failed to delete list item:", error);
       }
+      setShowModal(false);
     }
+  };
+
+  const cancelDelete = () => {
+    setShowModal(false);
   };
 
   return (
@@ -87,6 +109,7 @@ export default function ListDetails() {
                           type="text"
                           value={newName || ""}
                           onChange={(e) => setNewName(e.target.value)}
+                          aria-label="edit-mode-input"
                         />
                         <button
                           onClick={() => handleUpdate(listItem.id)}
@@ -145,6 +168,9 @@ export default function ListDetails() {
           </tr>
         </tbody>
       </table>
+      {showModal && (
+        <Modal handleClose={cancelDelete} handleConfirm={confirmDelete} />
+      )}
     </div>
   );
 }

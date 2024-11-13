@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../slices/authSlice";
 import "../css/navbar.css";
+import logo from "../logo.svg";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -17,9 +18,9 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <li className="navbar-left-logo">
-          <NavLink to="/">TasteTracker</NavLink>
-        </li>
+        <NavLink to="/" className="navbar-left-logo">
+          <img src={logo} alt="TasteTracker Logo" className="logo-image" />
+        </NavLink>
       </div>
       <menu className="navbar-right">
         <li className="navbar-line">

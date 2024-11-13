@@ -8,13 +8,19 @@
   margin-bottom: 1em;
 }
 
+.addAList {
+  color: white;
+}
+
 .name {
   font-weight: bold;
   margin-right: 2em;
+  color: white;
 }
 
 .description {
   font-weight: bold;
+  color: white;
 }
 
 .listNameText {

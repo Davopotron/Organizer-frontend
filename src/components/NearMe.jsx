@@ -14,9 +14,10 @@ function NearMe() {
 
   return (
     <>
-      <h1>Near Me</h1>
+    <div className="nearMeBackground">
+      <h1 className="nearMeTitle">Near Me</h1>
       <div className="nearMe">
-        <div className="myLists">
+        <div className="nearMyLists">
           <MyLists
             className="nearMeMyLists"
             showAddForm={false}
@@ -27,15 +28,20 @@ function NearMe() {
           />
         </div>
         <div className="map">
+        <div className="searchContainer">
           <input
             type="text"
             name="myListSearch"
             className="myListSearch"
             value={searchInput}
+             placeholder="Search Map..."
             onChange={(e) => setSearchInput(e.target.value)}
+            aria-label="list-search-input"
           />
+          </div>
           <MapComponent searchInput={searchInput} />
         </div>
+      </div>
       </div>
     </>
   );

@@ -32,6 +32,7 @@ function SearchBar({ names = [], onSearch }) {
           value={filter}
           className="searchBar"
           onChange={handleInputChange} // Call search on every input change
+          aria-label="search-input"
         />
         <button className="searchButton" type="button" onClick={handleSearch}>
           Search

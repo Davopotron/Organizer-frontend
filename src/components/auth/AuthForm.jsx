@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLoginMutation, useRegisterMutation } from "../../slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import "../../css/auth.css";
+import toastr from "toastr";
 
 /** AuthForm allows a user to either login or register for an account. */
 function AuthForm() {
@@ -28,9 +29,20 @@ function AuthForm() {
 
     try {
       await authMethod(credentials).unwrap();
+      toastr.options.extendedTimeOut = 0;
+      toastr.options.positionClass = "toast-bottom-right";
+      toastr.success(`${authAction} successful!`);
       navigate("/");
     } catch (error) {
       console.error(error);
+
+      if (isLogin && loginError) {
+        toastr.error(`${JSON.stringify(loginError.data)}`);
+        toastr.options.extendedTimeOut = 30;
+      } else if (!isLogin && registerError) {
+        toastr.error(`${JSON.stringify(registerError.data.error)}`);
+        toastr.options.extendedTimeOut = 30;
+      }
     }
   };
 
@@ -48,6 +60,7 @@ function AuthForm() {
                   value={username}
                   className="usernameText"
                   onChange={(evt) => setUsername(evt.target.value)}
+                  aria-label="username-input"
                 />
               </label>
             </div>
@@ -60,6 +73,7 @@ function AuthForm() {
                   className="passwordText"
                   value={password}
                   onChange={(evt) => setPassword(evt.target.value)}
+                  aria-label="password-input"
                 />
               </label>
             </div>
@@ -72,10 +86,6 @@ function AuthForm() {
           >
             {altCopy}
           </a>
-          {isLogin && loginError && <p role="alert">{loginError.message}</p>}
-          {!isLogin && registerError && (
-            <p role="alert">{registerError.message}</p>
-          )}
         </div>
       </div>
     </>
